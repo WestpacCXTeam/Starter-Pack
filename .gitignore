@@ -1,0 +1,10 @@
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+codekit-config.json
+*.codekit
+node_modules
+.tmp
+.sass-cache
+.idea
+PROD/
