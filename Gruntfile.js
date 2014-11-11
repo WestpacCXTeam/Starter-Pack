@@ -353,9 +353,9 @@ module.exports = function(grunt) {
 					dest: './PROD/BOM/css',
 				}],
 				options: {
-					datasvgcss: '<%= currentVersion  %>-symbols.data.svg.css',
-					datapngcss: '<%= currentVersion  %>-symbols.data.png.css',
-					urlpngcss: '<%= currentVersion  %>-symbols.fallback.css',
+					datasvgcss: '<%= currentVersion  %>.data.svg.css',
+					datapngcss: '<%= currentVersion  %>.data.png.css',
+					urlpngcss: '<%= currentVersion  %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -375,9 +375,9 @@ module.exports = function(grunt) {
 					dest: './PROD/BSA/css',
 				}],
 				options: {
-					datasvgcss: '<%= currentVersion  %>-symbols.data.svg.css',
-					datapngcss: '<%= currentVersion  %>-symbols.data.png.css',
-					urlpngcss: '<%= currentVersion  %>-symbols.fallback.css',
+					datasvgcss: '<%= currentVersion  %>.data.svg.css',
+					datapngcss: '<%= currentVersion  %>.data.png.css',
+					urlpngcss: '<%= currentVersion  %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -397,9 +397,9 @@ module.exports = function(grunt) {
 					dest: './PROD/STG/css',
 				}],
 				options: {
-					datasvgcss: '<%= currentVersion  %>-symbols.data.svg.css',
-					datapngcss: '<%= currentVersion  %>-symbols.data.png.css',
-					urlpngcss: '<%= currentVersion  %>-symbols.fallback.css',
+					datasvgcss: '<%= currentVersion  %>.data.svg.css',
+					datapngcss: '<%= currentVersion  %>.data.png.css',
+					urlpngcss: '<%= currentVersion  %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -419,9 +419,9 @@ module.exports = function(grunt) {
 					dest: './PROD/WBC/css',
 				}],
 				options: {
-					datasvgcss: '<%= currentVersion  %>-symbols.data.svg.css',
-					datapngcss: '<%= currentVersion  %>-symbols.data.png.css',
-					urlpngcss: '<%= currentVersion  %>-symbols.fallback.css',
+					datasvgcss: '<%= currentVersion  %>.data.svg.css',
+					datapngcss: '<%= currentVersion  %>.data.png.css',
+					urlpngcss: '<%= currentVersion  %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -677,6 +677,7 @@ module.exports = function(grunt) {
 				options: {
 					open: false,
 					port: 9000,
+					base: './PROD/'
 				},
 			},
 		},
