@@ -899,7 +899,7 @@ module.exports = function(grunt) {
 
 	grunt.registerTask('scaffold', ['mkdir']);  // create basic folder structure
 
-	grunt.registerTask('get-theme', ['clean:pre', 'curl', 'unzip', 'clean:post']);  // get the latest theme for all brands
+	grunt.registerTask('get-theme', ['curl', 'unzip', 'clean:post']);  // get the latest theme for all brands
 
 	grunt.registerTask('default', ['connect', 'build', 'watch']);  // work
 
