@@ -70,7 +70,7 @@ module.exports = function(grunt) {
 
 						'./BOM/_css/png',
 						'./BOM/_fonts',
-						'./BOM/_HTML/includes',
+						'./BOM/_HTMLincludes',
 						'./BOM/_img',
 						'./BOM/_js/libs',
 						'./BOM/_less',
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 
 						'./BSA/_css/png',
 						'./BSA/_fonts',
-						'./BSA/_HTML/includes',
+						'./BSA/_HTMLincludes',
 						'./BSA/_img',
 						'./BSA/_js/libs',
 						'./BSA/_less',
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 
 						'./STG/_css/png',
 						'./STG/_fonts',
-						'./STG/_HTML/includes',
+						'./STG/_HTMLincludes',
 						'./STG/_img',
 						'./STG/_js/libs',
 						'./STG/_less',
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 
 						'./WBC/_css/png',
 						'./WBC/_fonts',
-						'./WBC/_HTML/includes',
+						'./WBC/_HTMLincludes',
 						'./WBC/_img',
 						'./WBC/_js/libs',
 						'./WBC/_less',
@@ -802,6 +802,7 @@ module.exports = function(grunt) {
 				'BSA/**/*',
 				'STG/**/*',
 				'WBC/**/*',
+				'_CORE/**/*',
 			],
 			tasks: ['build'],
 		},
