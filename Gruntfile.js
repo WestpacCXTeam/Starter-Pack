@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
 	//dependencies
 	grunt.loadNpmTasks('grunt-contrib-less');
@@ -116,8 +116,8 @@ module.exports = function(grunt) {
 				dest: './temp/BOM',
 				options: {
 					flatten: false,
-					includePath: './BOM/_HTMLincludes/',
-				},
+					includePath: './BOM/_HTMLincludes/'
+				}
 			},
 
 			BSA: { // compile all HTML files in BSA
@@ -126,8 +126,8 @@ module.exports = function(grunt) {
 				dest: './temp/BSA',
 				options: {
 					flatten: false,
-					includePath: './BSA/_HTMLincludes/',
-				},
+					includePath: './BSA/_HTMLincludes/'
+				}
 			},
 
 			STG: { // compile all HTML files in STG
@@ -136,8 +136,8 @@ module.exports = function(grunt) {
 				dest: './temp/STG',
 				options: {
 					flatten: false,
-					includePath: './STG/_HTMLincludes/',
-				},
+					includePath: './STG/_HTMLincludes/'
+				}
 			},
 
 			WBC: { // compile all HTML files in WBC
@@ -146,9 +146,9 @@ module.exports = function(grunt) {
 				dest: './temp/WBC',
 				options: {
 					flatten: false,
-					includePath: './WBC/_HTMLincludes/',
-				},
-			},
+					includePath: './WBC/_HTMLincludes/'
+				}
+			}
 		},
 
 
@@ -163,10 +163,12 @@ module.exports = function(grunt) {
 					'./PROD/BOM/**/*.js',
 				],
 				overwrite: true,
-				replacements: [{
-					from: '--currentVersion--',
-					to: '<%= currentVersion %>',
-				}],
+				replacements: [
+					{
+						from: '--currentVersion--',
+						to: '<%= currentVersion %>'
+					}
+				]
 			},
 
 			BSA: { // look for versioning strings in BSA
@@ -176,10 +178,12 @@ module.exports = function(grunt) {
 					'./PROD/BSA/**/*.js',
 				],
 				overwrite: true,
-				replacements: [{
-					from: '--currentVersion--',
-					to: '<%= currentVersion %>',
-				}],
+				replacements: [
+					{
+						from: '--currentVersion--',
+						to: '<%= currentVersion %>'
+					}
+				]
 			},
 
 			STG: { // look for versioning strings in STG
@@ -189,10 +193,12 @@ module.exports = function(grunt) {
 					'./PROD/STG/**/*.js',
 				],
 				overwrite: true,
-				replacements: [{
-					from: '--currentVersion--',
-					to: '<%= currentVersion %>',
-				}],
+				replacements: [
+					{
+						from: '--currentVersion--',
+						to: '<%= currentVersion %>'
+					}
+				]
 			},
 
 			WBC: { // look for versioning strings in WBC
@@ -202,11 +208,13 @@ module.exports = function(grunt) {
 					'./PROD/WBC/**/*.js',
 				],
 				overwrite: true,
-				replacements: [{
-					from: '--currentVersion--',
-					to: '<%= currentVersion %>',
-				}],
-			},
+				replacements: [
+					{
+						from: '--currentVersion--',
+						to: '<%= currentVersion %>'
+					}
+				]
+			}
 		},
 
 
@@ -219,11 +227,11 @@ module.exports = function(grunt) {
 					cleancss: true,
 					compress: true,
 					ieCompat: true,
-					report: 'min',
+					report: 'min'
 				},
 				files: {
-					'./PROD/BOM/css/<%= currentVersion  %>.min.css': './BOM/_less/_settings.less',
-				},
+					'./PROD/BOM/css/<%= currentVersion  %>.min.css': './BOM/_less/_settings.less'
+				}
 			},
 
 			BSA: { // compile less files with BSA specific settings
@@ -231,11 +239,11 @@ module.exports = function(grunt) {
 					cleancss: true,
 					compress: true,
 					ieCompat: true,
-					report: 'min',
+					report: 'min'
 				},
 				files: {
-					'./PROD/BSA/css/<%= currentVersion  %>.min.css': './BSA/_less/_settings.less',
-				},
+					'./PROD/BSA/css/<%= currentVersion  %>.min.css': './BSA/_less/_settings.less'
+				}
 			},
 
 			STG: { // compile less files with STG specific settings
@@ -243,10 +251,10 @@ module.exports = function(grunt) {
 					cleancss: true,
 					compress: true,
 					ieCompat: true,
-					report: 'min',
+					report: 'min'
 				},
 				files: {
-					'./PROD/STG/css/<%= currentVersion  %>.min.css': './STG/_less/_settings.less',
+					'./PROD/STG/css/<%= currentVersion  %>.min.css': './STG/_less/_settings.less'
 				},
 			},
 
@@ -255,12 +263,12 @@ module.exports = function(grunt) {
 					cleancss: true,
 					compress: true,
 					ieCompat: true,
-					report: 'min',
+					report: 'min'
 				},
 				files: {
-					'./PROD/WBC/css/<%= currentVersion  %>.min.css': './WBC/_less/_settings.less',
-				},
-			},
+					'./PROD/WBC/css/<%= currentVersion  %>.min.css': './WBC/_less/_settings.less'
+				}
+			}
 		},
 
 
@@ -270,71 +278,73 @@ module.exports = function(grunt) {
 		autoprefixer: {
 			BOM: { // generate vendor prefixes for BOM
 				src: './PROD/BOM/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/BOM/css/<%= currentVersion  %>.min.css',
+				dest: './PROD/BOM/css/<%= currentVersion  %>.min.css'
 			},
 
 			BSA: { // generate vendor prefixes for BSA
 				src: './PROD/BSA/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/BSA/css/<%= currentVersion  %>.min.css',
+				dest: './PROD/BSA/css/<%= currentVersion  %>.min.css'
 			},
 
 			STG: { // generate vendor prefixes for STG
 				src: './PROD/STG/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/STG/css/<%= currentVersion  %>.min.css',
+				dest: './PROD/STG/css/<%= currentVersion  %>.min.css'
 			},
 
 			WBC: { // generate vendor prefixes for WBC
 				src: './PROD/WBC/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/WBC/css/<%= currentVersion  %>.min.css',
-			},
+				dest: './PROD/WBC/css/<%= currentVersion  %>.min.css'
+			}
 		},
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// JS minification
+		// Minify js files into temp file, ready for concatenation into a single file 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		uglify: {
-			BOM: { // minifying BOM js files into temp file
+			BOM: {
 				options: {
-					mangle: false,
+					mangle: false
 				},
 				files: {
-					'./temp/BOM/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
-				},
+					'./temp/BOM/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js']
+				}
 			},
-			BSA: { // minifying BSA js files into temp file
+			BSA: {
 				options: {
-					mangle: false,
+					mangle: false
 				},
 				files: {
-					'./temp/BSA/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
-				},
+					'./temp/BSA/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js']
+				}
 			},
-			STG: { // minifying STG js files into temp file
+			STG: {
 				options: {
-					mangle: false,
+					mangle: false
 				},
 				files: {
-					'./temp/STG/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
-				},
+					'./temp/STG/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js']
+				}
 			},
-			WBC: { // minifying WBC js files into temp file
+			WBC: {
 				options: {
-					mangle: false,
+					mangle: false
 				},
 				files: {
 					'./temp/WBC/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
-				},
-			},
+				}
+			}
 		},
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// JS concatentation - core libraries
 		//
 		// This section contcatenates the library files into the app file, this is pretty much the bare minium if you want to work with IE8
+		//
+		// all core js files are concatenated into a single file ( minifying, already minified scripts causes errors )
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		concat: {
-			BOM: { // Concatenate all BOM core js files into a single file(minifying would cause errors here)
+			BOM: {
 				src: [
 					'./_CORE/_JS/libs/angularjs/angular.min.js',
 					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
@@ -348,9 +358,9 @@ module.exports = function(grunt) {
 					'./_CORE/_JS/libs/polyfills.js',
 					'./temp/BOM/js/zzz.min.js',
 				],
-				dest: './PROD/BOM/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/BOM/js/<%= currentVersion  %>.min.js'
 			},
-			BSA: { // Concatenate all BSA core js files into a single file(minifying would cause errors here)
+			BSA: {
 				src: [
 					'./_CORE/_JS/libs/angularjs/angular.min.js',
 					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
@@ -364,9 +374,9 @@ module.exports = function(grunt) {
 					'./_CORE/_JS/libs/polyfills.js',
 					'./temp/BOM/js/zzz.min.js',
 				],
-				dest: './PROD/BSA/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/BSA/js/<%= currentVersion  %>.min.js'
 			},
-			STG: { // Concatenate all STG core js files into a single file(minifying would cause errors here)
+			STG: {
 				src: [
 					'./_CORE/_JS/libs/angularjs/angular.min.js',
 					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
@@ -380,9 +390,9 @@ module.exports = function(grunt) {
 					'./_CORE/_JS/libs/polyfills.js',
 					'./temp/BOM/js/zzz.min.js',
 				],
-				dest: './PROD/STG/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/STG/js/<%= currentVersion  %>.min.js'
 			},
-			WBC: { // Concatenate all WBC core js files into a single file(minifying would cause errors here)
+			WBC: {
 				src: [
 					'./_CORE/_JS/libs/angularjs/angular.min.js',
 					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
@@ -396,7 +406,7 @@ module.exports = function(grunt) {
 					'./_CORE/_JS/libs/polyfills.js',
 					'./temp/BOM/js/zzz.min.js',
 				],
-				dest: './PROD/WBC/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/WBC/js/<%= currentVersion  %>.min.js'
 			},
 		},
 
@@ -405,40 +415,48 @@ module.exports = function(grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		svgmin: {
 			BOM: { // minify BOM svgs
-				files: [{
-					expand: true,
-					cwd: './BOM/_svg/',
-					src: ['*.svg'],
-					dest: './temp/BOM/svg/',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './BOM/_svg/',
+						src: ['*.svg'],
+						dest: './temp/BOM/svg/'
+					}
+				]
 			},
 
 			BSA: { // minify BSA svgs
-				files: [{
-					expand: true,
-					cwd: './BSA/_svg/',
-					src: ['*.svg'],
-					dest: './temp/BSA/svg/',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './BSA/_svg/',
+						src: ['*.svg'],
+						dest: './temp/BSA/svg/'
+					}
+				]
 			},
 
 			STG: { // minify STG svgs
-				files: [{
-					expand: true,
-					cwd: './STG/_svg/',
-					src: ['*.svg'],
-					dest: './temp/STG/svg/',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './STG/_svg/',
+						src: ['*.svg'],
+						dest: './temp/STG/svg/'
+					}
+				]
 			},
 
 			WBC: { // minify WBC svgs
-				files: [{
-					expand: true,
-					cwd: './WBC/_svg/',
-					src: ['*.svg'],
-					dest: './temp/WBC/svg/',
-				}],
-			},
+				files: [
+					{
+						expand: true,
+						cwd: './WBC/_svg/',
+						src: ['*.svg'],
+						dest: './temp/WBC/svg/'
+					}
+				]
+			}
 		},
 
 
@@ -447,12 +465,14 @@ module.exports = function(grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		grunticon: {
 			BOM: { // generate SVG fallback files for BOM
-				files: [{
-					expand: true,
-					cwd: './temp/BOM/svg',
-					src: '*.svg',
-					dest: './PROD/BOM/css',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './temp/BOM/svg',
+						src: '*.svg',
+						dest: './PROD/BOM/css'
+					}
+				],
 				options: {
 					datasvgcss: '<%= currentVersion  %>.data.svg.css',
 					datapngcss: '<%= currentVersion  %>.data.png.css',
@@ -464,17 +484,19 @@ module.exports = function(grunt) {
 						// 'radio-off': ['.radio label', '.radio-inline label'],
 						// 'checkbox-on': ['input[type="checkbox"]:checked + label'],
 						// 'checkbox-off': ['.checkbox label', '.checkbox-inline label']
-					},
-				},
+					}
+				}
 			},
 
 			BSA: { // generate SVG fallback files for BSA
-				files: [{
-					expand: true,
-					cwd: './temp/BSA/svg',
-					src: '*.svg',
-					dest: './PROD/BSA/css',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './temp/BSA/svg',
+						src: '*.svg',
+						dest: './PROD/BSA/css'
+					}
+				],
 				options: {
 					datasvgcss: '<%= currentVersion  %>.data.svg.css',
 					datapngcss: '<%= currentVersion  %>.data.png.css',
@@ -491,12 +513,14 @@ module.exports = function(grunt) {
 			},
 
 			STG: { // generate SVG fallback files for STG
-				files: [{
-					expand: true,
-					cwd: './temp/STG/svg',
-					src: '*.svg',
-					dest: './PROD/STG/css',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './temp/STG/svg',
+						src: '*.svg',
+						dest: './PROD/STG/css'
+					}
+				],
 				options: {
 					datasvgcss: '<%= currentVersion  %>.data.svg.css',
 					datapngcss: '<%= currentVersion  %>.data.png.css',
@@ -508,17 +532,19 @@ module.exports = function(grunt) {
 						// 'radio-off': ['.radio label', '.radio-inline label'],
 						// 'checkbox-on': ['input[type="checkbox"]:checked + label'],
 						// 'checkbox-off': ['.checkbox label', '.checkbox-inline label']
-					},
-				},
+					}
+				}
 			},
 
 			WBC: { // generate SVG fallback files for WBC
-				files: [{
-					expand: true,
-					cwd: './temp/WBC/svg',
-					src: '*.svg',
-					dest: './PROD/WBC/css',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './temp/WBC/svg',
+						src: '*.svg',
+						dest: './PROD/WBC/css'
+					}
+				],
 				options: {
 					datasvgcss: '<%= currentVersion  %>.data.svg.css',
 					datapngcss: '<%= currentVersion  %>.data.png.css',
@@ -530,9 +556,9 @@ module.exports = function(grunt) {
 						// 'radio-off': ['.radio label', '.radio-inline label'],
 						// 'checkbox-on': ['input[type="checkbox"]:checked + label'],
 						// 'checkbox-off': ['.checkbox label', '.checkbox-inline label']
-					},
-				},
-			},
+					}
+				}
+			}
 		},
 
 
@@ -542,51 +568,59 @@ module.exports = function(grunt) {
 		imagemin: {
 			BOM: { //minify images for BOM
 				options: {
-					optimizationLevel: 4,
+					optimizationLevel: 4
 				},
-				files: [{
-					expand: true,
-					cwd: './BOM/_img',
-					src: ['**/*.{png,jpg,gif}'],
-					dest: './PROD/BOM/img/',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './BOM/_img',
+						src: ['**/*.{png,jpg,gif}'],
+						dest: './PROD/BOM/img/'
+					}
+				]
 			},
 
 			BSA: { //minify images for BSA
 				options: {
-					optimizationLevel: 4,
+					optimizationLevel: 4
 				},
-				files: [{
-					expand: true,
-					cwd: './BSA/_img',
-					src: ['**/*.{png,jpg,gif}'],
-					dest: './PROD/BSA/img/',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './BSA/_img',
+						src: ['**/*.{png,jpg,gif}'],
+						dest: './PROD/BSA/img/'
+					}
+				]
 			},
 
 			STG: { //minify images for STG
 				options: {
 					optimizationLevel: 4,
 				},
-				files: [{
-					expand: true,
-					cwd: './STG/_img',
-					src: ['**/*.{png,jpg,gif}'],
-					dest: './PROD/STG/img/',
-				}],
+				files: [
+					{
+						expand: true,
+						cwd: './STG/_img',
+						src: ['**/*.{png,jpg,gif}'],
+						dest: './PROD/STG/img/'
+					}
+				]
 			},
 
 			WBC: { //minify images for WBC
 				options: {
-					optimizationLevel: 4,
+					optimizationLevel: 4
 				},
-				files: [{
-					expand: true,
-					cwd: './WBC/_img',
-					src: ['**/*.{png,jpg,gif}'],
-					dest: './PROD/WBC/img/',
-				}],
-			},
+				files: [
+					{
+						expand: true,
+						cwd: './WBC/_img',
+						src: ['**/*.{png,jpg,gif}'],
+						dest: './PROD/WBC/img/'
+					}
+				]
+			}
 		},
 
 
@@ -597,167 +631,199 @@ module.exports = function(grunt) {
 
 			// JavaScript files
 			BOMJS: { // move BOM js folder content
-				files: [{
-					cwd: './BOM/_js/',
-					src: ['**/*.js'],
-					dest: './PROD/BOM/js/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './BOM/_js/',
+						src: ['**/*.js'],
+						dest: './PROD/BOM/js/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			BSAJS: { // move BSA js folder content
-				files: [{
-					cwd: './BSA/_js/',
-					src: ['**/*.js'],
-					dest: './PROD/BSA/js/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './BSA/_js/',
+						src: ['**/*.js'],
+						dest: './PROD/BSA/js/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			STGJS: { // move STG js folder content
-				files: [{
-					cwd: './STG/_js/',
-					src: ['**/*.js'],
-					dest: './PROD/STG/js/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './STG/_js/',
+						src: ['**/*.js'],
+						dest: './PROD/STG/js/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			WBCJS: { // move WBC js folder content
-				files: [{
-					cwd: './WBC/_js/',
-					src: ['**/*.js'],
-					dest: './PROD/WBC/js/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './WBC/_js/',
+						src: ['**/*.js'],
+						dest: './PROD/WBC/js/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			// CSS files
 			BOMCSS: { // move BOM css folder content
-				files: [{
-					cwd: './BOM/_css/',
-					src: ['**/*'],
-					dest: './PROD/BOM/css/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './BOM/_css/',
+						src: ['**/*'],
+						dest: './PROD/BOM/css/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			BSACSS: { // move BSA css folder content
-				files: [{
-					cwd: './BSA/_css/',
-					src: ['**/*'],
-					dest: './PROD/BSA/css/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './BSA/_css/',
+						src: ['**/*'],
+						dest: './PROD/BSA/css/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			STGCSS: { // move STG css folder content
-				files: [{
-					cwd: './STG/_css/',
-					src: ['**/*'],
-					dest: './PROD/STG/css/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './STG/_css/',
+						src: ['**/*'],
+						dest: './PROD/STG/css/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			WBCCSS: { // move WBC css folder content
-				files: [{
-					cwd: './WBC/_css/',
-					src: ['**/*'],
-					dest: './PROD/WBC/css/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './WBC/_css/',
+						src: ['**/*'],
+						dest: './PROD/WBC/css/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			// font files
 			BOMFonts: { // move BOM fonts folder content
-				files: [{
-					cwd: './BOM/_fonts/',
-					src: ['**/*'],
-					dest: './PROD/BOM/fonts/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './BOM/_fonts/',
+						src: ['**/*'],
+						dest: './PROD/BOM/fonts/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			BSAFonts: { // move BSA fonts folder content
-				files: [{
-					cwd: './BSA/_fonts/',
-					src: ['**/*'],
-					dest: './PROD/BSA/fonts/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './BSA/_fonts/',
+						src: ['**/*'],
+						dest: './PROD/BSA/fonts/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			STGFonts: { // move STG fonts folder content
-				files: [{
-					cwd: './STG/_fonts/',
-					src: ['**/*'],
-					dest: './PROD/STG/fonts/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './STG/_fonts/',
+						src: ['**/*'],
+						dest: './PROD/STG/fonts/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			WBCFonts: { // move WBC fonts folder content
-				files: [{
-					cwd: './WBC/_fonts/',
-					src: ['**/*'],
-					dest: './PROD/WBC/fonts/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './WBC/_fonts/',
+						src: ['**/*'],
+						dest: './PROD/WBC/fonts/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			// html template
 			BOMHTML: { // move BOM html files into place
-				files: [{
-					cwd: './temp/BOM/',
-					src: ['**/*.html'],
-					dest: './PROD/BOM/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './temp/BOM/',
+						src: ['**/*.html'],
+						dest: './PROD/BOM/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			BSAHTML: { // move BSA html files into place
-				files: [{
-					cwd: './temp/BSA/',
-					src: ['**/*.html'],
-					dest: './PROD/BSA/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './temp/BSA/',
+						src: ['**/*.html'],
+						dest: './PROD/BSA/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			STGHTML: { // move STG html files into place
-				files: [{
-					cwd: './temp/STG/',
-					src: ['**/*.html'],
-					dest: './PROD/STG/',
-					filter: 'isFile',
-					expand: true,
-				}],
+				files: [
+					{
+						cwd: './temp/STG/',
+						src: ['**/*.html'],
+						dest: './PROD/STG/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
 			},
 
 			WBCHTML: { // move WBC html files into place
-				files: [{
-					cwd: './temp/WBC/',
-					src: ['**/*.html'],
-					dest: './PROD/WBC/',
-					filter: 'isFile',
-					expand: true,
-				}],
-			},
+				files: [
+					{
+						cwd: './temp/WBC/',
+						src: ['**/*.html'],
+						dest: './PROD/WBC/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			}
 
 		},
 
@@ -766,7 +832,7 @@ module.exports = function(grunt) {
 		// bum version
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		bumpup: {
-			files: 'package.json',
+			files: 'package.json'
 		},
 
 
@@ -776,22 +842,22 @@ module.exports = function(grunt) {
 		curl: {
 			BOM: { // download latest BOM theme
 				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
-				dest: './temp/BOM/theme.zip',
+				dest: './temp/BOM/theme.zip'
 			},
 
 			BSA: { // download latest BSA theme
 				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
-				dest: './temp/BSA/theme.zip',
+				dest: './temp/BSA/theme.zip'
 			},
 
 			STG: { // download latest STG theme
 				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
-				dest: './temp/STG/theme.zip',
+				dest: './temp/STG/theme.zip'
 			},
 
 			WBC: { // download latest WBC theme
 				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
-				dest: './temp/WBC/theme.zip',
+				dest: './temp/WBC/theme.zip'
 			},
 		},
 
@@ -806,7 +872,7 @@ module.exports = function(grunt) {
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
-						'css': '_css',
+						'css': '_css'
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
@@ -816,7 +882,7 @@ module.exports = function(grunt) {
 				},
 
 				src: './temp/BOM/theme.zip',
-				dest: './BOM/',
+				dest: './BOM/'
 			},
 
 			BSA: { // unzip BSA zip and sort in
@@ -825,7 +891,7 @@ module.exports = function(grunt) {
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
-						'css': '_css',
+						'css': '_css'
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
@@ -835,7 +901,7 @@ module.exports = function(grunt) {
 				},
 
 				src: './temp/BSA/theme.zip',
-				dest: './BSA/',
+				dest: './BSA/'
 			},
 
 			STG: { // unzip STG zip and sort in
@@ -854,7 +920,7 @@ module.exports = function(grunt) {
 				},
 
 				src: './temp/STG/theme.zip',
-				dest: './STG/',
+				dest: './STG/'
 			},
 
 			WBC: { // unzip WBC zip and sort in
@@ -863,7 +929,7 @@ module.exports = function(grunt) {
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
-						'css': '_css',
+						'css': '_css'
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
@@ -873,8 +939,8 @@ module.exports = function(grunt) {
 				},
 
 				src: './temp/WBC/theme.zip',
-				dest: './WBC/',
-			},
+				dest: './WBC/'
+			}
 		},
 
 
@@ -887,8 +953,8 @@ module.exports = function(grunt) {
 					open: false,
 					port: 9000,
 					base: './PROD/'
-				},
-			},
+				}
+			}
 		},
 
 
@@ -903,8 +969,8 @@ module.exports = function(grunt) {
 				'WBC/**/*',
 				'_CORE/**/*',
 			],
-			tasks: ['build'],
-		},
+			tasks: ['build']
+		}
 
 	});
 
