@@ -5,7 +5,7 @@
     module.controller('MainCtrl', ['$scope', '$rootScope', '$window',
         function ($scope, $rootScope, $window) {
 
-           //console.log("test");
+        $scope.message = "this is a message from the $scope of the first controller";
 
         }
     ])
