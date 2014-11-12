@@ -61,16 +61,16 @@ module.exports = function(grunt) {
 			scaffold: {
 				options: {
 					create: [
-						'./_CORE/_HTML/_tamples',
+						'./_CORE/_HTML/_templates',
 						'./_CORE/_HTML/_views',
-						'./_CORE/_JS',
+						'./_CORE/_js',
 						'./_CORE/_less/base',
 						'./_CORE/_less/modules',
 						'./_CORE/_Mock',
 
 						'./BOM/_css/png',
 						'./BOM/_fonts',
-						'./BOM/_HTMLincludes',
+						'./BOM/_HTML/includes',
 						'./BOM/_img',
 						'./BOM/_js/libs',
 						'./BOM/_less',
@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 
 						'./BSA/_css/png',
 						'./BSA/_fonts',
-						'./BSA/_HTMLincludes',
+						'./BSA/_HTML/includes',
 						'./BSA/_img',
 						'./BSA/_js/libs',
 						'./BSA/_less',
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 
 						'./STG/_css/png',
 						'./STG/_fonts',
-						'./STG/_HTMLincludes',
+						'./STG/_HTML/includes',
 						'./STG/_img',
 						'./STG/_js/libs',
 						'./STG/_less',
@@ -94,7 +94,7 @@ module.exports = function(grunt) {
 
 						'./WBC/_css/png',
 						'./WBC/_fonts',
-						'./WBC/_HTMLincludes',
+						'./WBC/_HTML/includes',
 						'./WBC/_img',
 						'./WBC/_js/libs',
 						'./WBC/_less',
