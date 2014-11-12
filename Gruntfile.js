@@ -19,6 +19,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-text-replace');
+	grunt.loadNpmTasks('grunt-curl');
+	grunt.loadNpmTasks('grunt-zip');
 
 
 	grunt.initConfig({
@@ -766,6 +768,114 @@ module.exports = function(grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// download latest GUI
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		curl: {
+			BOM: { // download latest BOM theme
+				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
+				dest: './temp/BOM/theme.zip',
+			},
+
+			BSA: { // download latest BSA theme
+				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
+				dest: './temp/BSA/theme.zip',
+			},
+
+			STG: { // download latest STG theme
+				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
+				dest: './temp/STG/theme.zip',
+			},
+
+			WBC: { // download latest WBC theme
+				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
+				dest: './temp/WBC/theme.zip',
+			},
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// unzip theme and move files to brands
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		unzip: {
+			BOM: { // unzip Bom zip and sort in
+				router: function (filepath) {
+					var $dir = filepath.split('/');
+					var $newDirs = {
+						'fonts': '_fonts',
+						'js': '_js',
+						'css': '_css',
+					};
+
+					$dir[0] = $newDirs[ $dir[0] ];
+					var newPath = $dir.join('/');
+
+					return newPath;
+				},
+
+				src: './temp/BOM/theme.zip',
+				dest: './BOM/',
+			},
+
+			BSA: { // unzip BSA zip and sort in
+				router: function (filepath) {
+					var $dir = filepath.split('/');
+					var $newDirs = {
+						'fonts': '_fonts',
+						'js': '_js',
+						'css': '_css',
+					};
+
+					$dir[0] = $newDirs[ $dir[0] ];
+					var newPath = $dir.join('/');
+
+					return newPath;
+				},
+
+				src: './temp/BSA/theme.zip',
+				dest: './BSA/',
+			},
+
+			STG: { // unzip STG zip and sort in
+				router: function (filepath) {
+					var $dir = filepath.split('/');
+					var $newDirs = {
+						'fonts': '_fonts',
+						'js': '_js',
+						'css': '_css',
+					};
+
+					$dir[0] = $newDirs[ $dir[0] ];
+					var newPath = $dir.join('/');
+
+					return newPath;
+				},
+
+				src: './temp/STG/theme.zip',
+				dest: './STG/',
+			},
+
+			WBC: { // unzip WBC zip and sort in
+				router: function (filepath) {
+					var $dir = filepath.split('/');
+					var $newDirs = {
+						'fonts': '_fonts',
+						'js': '_js',
+						'css': '_css',
+					};
+
+					$dir[0] = $newDirs[ $dir[0] ];
+					var newPath = $dir.join('/');
+
+					return newPath;
+				},
+
+				src: './temp/WBC/theme.zip',
+				dest: './WBC/',
+			},
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// server
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		connect: {
@@ -788,6 +898,7 @@ module.exports = function(grunt) {
 				'BSA/**/*',
 				'STG/**/*',
 				'WBC/**/*',
+				'_CORE/**/*',
 			],
 			tasks: ['build'],
 		},
@@ -888,6 +999,8 @@ module.exports = function(grunt) {
 
 
 	grunt.registerTask('scaffold', ['mkdir']);  // create basic folder structure
+
+	grunt.registerTask('get-theme', ['curl', 'unzip', 'clean:post']);  // get the latest theme for all brands
 
 	grunt.registerTask('default', ['connect', 'build', 'watch']);  // work
 

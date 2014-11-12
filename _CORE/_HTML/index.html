@@ -1,15 +1,4 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>
-<html xmlns:data-ng="http://angularjs.org" class="no-js  lt-ie9 lt-ie8 lt-ie7" lang="en" id="ng-app" data-ng-app="starter"> <![endif]-->
-<!--[if IE 7]>
-<html xmlns:data-ng="http://angularjs.org" class="no-js  lt-ie9 lt-ie8" lang="en" id="ng-app" data-ng-app="starter"> <![endif]-->
-<!--[if IE 8]>
-<html xmlns:data-ng="http://angularjs.org" class="no-js  lt-ie9" lang="en" id="ng-app" data-ng-app="starter"> <![endif]-->
-<!--[if IE 9 ]>
-<html xmlns:data-ng="http://angularjs.org" class="ie9" id="ng-app" data-ng-app="starter"> <![endif]-->
-<!--[if !(IE)]><!-->
-<html xmlns:data-ng="http://angularjs.org" lang="en" id="ng-app" data-ng-app="starter"> <!--<![endif]-->
-
 
 <!--
 	This is just an examnple HTML page
@@ -23,17 +12,24 @@
 	<link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
 	<meta name="viewport" content="width=device-width">
 
+	include "defaults/theme-head.html"
+
+	<!-- Uncomment the following line if you are using custom svgs -->
+	<!-- include "defaults/svgs.html" -->
+
+	 <!-- Examples for a good use of includes -->
 	include "modernizr.html"
 	include "windows.html"
 
 </head>
 <body class="home">
 
-	<main class="main" data-ng-controller="MainCtrl">
-		<div data-ui-view=""></div>
+	<main class="main">
+		Hello world!
 	</main>
 
 	<script type="text/javascript" src="js/--currentVersion--.min.js"></script>
 
+	include "defaults/theme-foot.html"
 </body>
 </html>
