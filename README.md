@@ -3,6 +3,7 @@ SPA Scaffolding
 
 > A grunt workflow to get you started with your SPA.
 
+#### if you're interested looking for team related documentation and best practice please visit our [wiki] (https://github.com/WestpacCXTeam/CX-GIT/wiki)
 
 # Setup
 
@@ -167,8 +168,12 @@ Images in here will be minified and copied to its counterpart folder in `PROD`.
 ### The _js brand folder (6)
 
 Files in here will automatically copied to its counterpart folder in `PROD`.
-There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`
+There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
+We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version of our SPA. We have chosen to use
+[ui-router] (https://github.com/angular-ui/ui-router)
+
+< more to come >
 
 ### The _less brand folder (7)
 
