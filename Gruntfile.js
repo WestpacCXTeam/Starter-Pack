@@ -299,7 +299,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// Minify js files into temp file, ready for concatenation into a single file 
+		// Minify js files into temp file, ready for concatenation into a single file
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		uglify: {
 			BOM: {
