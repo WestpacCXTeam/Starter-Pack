@@ -107,7 +107,15 @@ The below folder structure will explain what should go where:
     │   ├── _templates
     │   ├── _views
     │   └── index.html
-    ├── _js                              // The _js core folder (13)
+    ├── _js                               // The _js core folder (13)
+    │   ├── common
+    │   ├── controllers
+    │   ├── directives
+    │   ├── factories
+    │   ├── filters
+    │   ├── libs
+    │   │   └──
+    |   └── services
     ├── _Mock                            // The _Mock core folder (14)
     └── _less                            // The _less core folder (15)
         ├── base
@@ -222,7 +230,7 @@ _Remember: you can use your [_HTMLincludes](#the-_htmlincludes-folder-2) to bran
 
 ### The _js core folder (13)
 
-...
+
 
 
 ### The _Mock core folder (14)
