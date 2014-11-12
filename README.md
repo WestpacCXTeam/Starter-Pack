@@ -136,7 +136,7 @@ You can merge two HTML files into on with a simple code snippet like:
 include "modernizr.html"
 ```
 
-_Note that you can also organize your `_HTMLincludes` folder in subfolders_
+_Note: you can also organize your `_HTMLincludes` folder in subfolders_
 
 
 ### The _css brand folder (3)
@@ -194,7 +194,7 @@ Include these into your site by pasting the follwoing snippet into your header:
 <noscript><link href="css/--currentVersion--.fallback.css" rel="stylesheet"></noscript>
 ```
 
-_Note: we included an `HTMLinclude` file for you that you only need to uncomment in your index file_
+_Note: we included an `HTMLinclude` snippet for you that you only need to uncomment in the index file_
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
