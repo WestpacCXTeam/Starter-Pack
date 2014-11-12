@@ -29,6 +29,12 @@ To personalise your project make sure you enter the projects name in the `packag
   etc...
 ```
 
+Get the current theme for all brands with:
+
+```
+grunt get-theme
+```
+
 
 # Run
 
