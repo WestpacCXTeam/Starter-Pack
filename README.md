@@ -43,7 +43,7 @@ _Note: we have included two `HTMLincludes` snippets for header and footer code t
 After adding your files and saving them use below command to create a server and add a watch:
 
 ```
-gunt
+grunt
 ```
 
 Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder.
