@@ -35,6 +35,8 @@ Get the current theme for all brands with:
 grunt get-theme
 ```
 
+_Note: we have included two `HTMLincludes` snippets for header and footer code to make the inclusion of the theme easy_
+
 
 # Run
 
@@ -72,11 +74,11 @@ The below folder structure will explain what should go where:
 .
 ├── BOM                                  // BRAND FOLDER FOR BOM (1)
 │   ├── _HTMLincludes                    // The _HTMLincludes folder (2)
-│   │   ├── modernizr.html
-│   │   └── windows.html
+│   │   ├── svgs.html
+│   │   ├── theme-foot.html
+│   │   └── theme-head.html
 │   ├── _css                             // The _css brand folder (3)
-│   │   ├── ie.css
-│   │   ├── ie8.css
+│   │   ├── theme.min.css
 │   │   └── png
 │   ├── _fonts                           // The _fonts brand folder (4)
 │   │   ├── font.eot
@@ -85,7 +87,7 @@ The below folder structure will explain what should go where:
 │   ├── _img                             // The _img brand folder (5)
 │   │   └── image.png
 │   ├── _js                              // The _js brand folder (6)
-│   │   ├── jquery-1.9.1.min.js
+│   │   ├── jquery.min.js
 │   │   └── libs
 │   │       └── polyfills.js
 │   ├── _less                            // The _less brand folder (7)
@@ -191,6 +193,8 @@ Include these into your site by pasting the follwoing snippet into your header:
 <script>window.grunticon=function(e){if(e&&3===e.length){var t=window,n=!(!t.document.createElementNS||!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||window.opera&&-1===navigator.userAgent.indexOf("Chrome")),o=function(o){var r=t.document.createElement("link"),a=t.document.getElementsByTagName("script")[0];r.rel="stylesheet",r.href=e[o&&n?0:o?1:2],a.parentNode.insertBefore(r,a)},r=new t.Image;r.onerror=function(){o(!1)},r.onload=function(){o(1===r.width&&1===r.height)},r.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="}};grunticon( [ "css/--currentVersion--.data.svg.css", "css/--currentVersion--.data.png.css", "css/--currentVersion--.fallback.css" ] );</script>
 <noscript><link href="css/--currentVersion--.fallback.css" rel="stylesheet"></noscript>
 ```
+
+_Note: we included an `HTMLinclude` file for you that you only need to uncomment in your index file_
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
