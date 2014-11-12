@@ -115,7 +115,7 @@ The below folder structure will explain what should go where:
     │   ├── filters
     │   ├── libs
     │   │   └──
-    |   └── services
+    │   └── services
     ├── _Mock                            // The _Mock core folder (14)
     └── _less                            // The _less core folder (15)
         ├── base

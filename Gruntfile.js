@@ -8,7 +8,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-includes');
 	grunt.loadNpmTasks('grunt-grunticon');
 	grunt.loadNpmTasks('grunt-svgmin');
@@ -25,7 +25,7 @@ module.exports = function(grunt) {
 
 	grunt.initConfig({
 
-		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON('package.json'), // get the version and name from the package.json file
 		currentVersion: '<%= pkg.name  %>.<%= pkg.version %>',
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -294,108 +294,111 @@ module.exports = function(grunt) {
 		// JS minification
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		uglify: {
-			BOMjsMin: {
-                options: {
-                    mangle: false
-                },
+			BOM: { // minifying BOM js files into temp file
+				options: {
+					mangle: false,
+				},
 				files: {
-					'./temp/BOM/js/zzz.min.js': ['./_CORE/_JS/**/*.js','!./_CORE/_JS/libs/**/*.js']
-				}
+					'./temp/BOM/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
+				},
 			},
-            BSAjsMin: {
-                options: {
-                    mangle: false
-                },
-                files: {
-                    './temp/BSA/js/zzz.min.js': ['./_CORE/_JS/**/*.js','!./_CORE/_JS/libs/**/*.js']
-                }
-           },
-           STGjsMin: {
-               options: {
-                   mangle: false
-               },
-               files: {
-                    './temp/STG/js/zzz.min.js': ['./_CORE/_JS/**/*.js','!./_CORE/_JS/libs/**/*.js']
-               }
-           },
-           WBCjsMin: {
-               options: {
-                   mangle: false
-               },
-               files: {
-                    './temp/WBC/js/zzz.min.js': ['./_CORE/_JS/**/*.js','!./_CORE/_JS/libs/**/*.js']
-               }
-           }
+			BSA: { // minifying BSA js files into temp file
+				options: {
+					mangle: false,
+				},
+				files: {
+					'./temp/BSA/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
+				},
+			},
+			STG: { // minifying STG js files into temp file
+				options: {
+					mangle: false,
+				},
+				files: {
+					'./temp/STG/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
+				},
+			},
+			WBC: { // minifying WBC js files into temp file
+				options: {
+					mangle: false,
+				},
+				files: {
+					'./temp/WBC/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
+				},
+			},
 		},
 
-        //----------------------------------------------------------------------------------------------------------------------------------------------------------
-        // JS concatentation - core libraries
-        //----------------------------------------------------------------------------------------------------------------------------------------------------------
-
-        //this section contcatenates the library files into the app file, this is pretty much the bare minium if you want to work with IE8
-
-        concat: {
-			BOM: {
-               src: ['./_CORE/_JS/libs/angularjs/angular.min.js',
-                     './_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-                     './_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-                     './_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-                     './_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-                     './_CORE/_JS/libs/html5/html5shiv.js',
-                     './_CORE/_JS/libs/json/json3.min.js',
-                     './_CORE/_JS/libs/respond/respond.min.js',
-                     './_CORE/_JS/libs/underscore/underscore-min.js',
-                     './_CORE/_JS/libs/polyfills.js',
-                     './temp/BOM/js/zzz.min.js'
-               ],
-               dest: './PROD/BOM/js/<%= currentVersion  %>.min.js'
-            },
-            BSA: {
-                src: ['./_CORE/_JS/libs/angularjs/angular.min.js',
-                      './_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-                      './_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-                      './_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-                      './_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-                      './_CORE/_JS/libs/html5/html5shiv.js',
-                      './_CORE/_JS/libs/json/json3.min.js',
-                      './_CORE/_JS/libs/respond/respond.min.js',
-                      './_CORE/_JS/libs/underscore/underscore-min.js',
-                      './_CORE/_JS/libs/polyfills.js',
-                      './temp/BOM/js/zzz.min.js'
-                ],
-                dest: './PROD/BSA/js/<%= currentVersion  %>.min.js'
-            },
-            STG: {
-                src: ['./_CORE/_JS/libs/angularjs/angular.min.js',
-                     './_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-                     './_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-                     './_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-                     './_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-                     './_CORE/_JS/libs/html5/html5shiv.js',
-                     './_CORE/_JS/libs/json/json3.min.js',
-                     './_CORE/_JS/libs/respond/respond.min.js',
-                     './_CORE/_JS/libs/underscore/underscore-min.js',
-                     './_CORE/_JS/libs/polyfills.js',
-                     './temp/BOM/js/zzz.min.js'
-                ],
-                dest: './PROD/STG/js/<%= currentVersion  %>.min.js'
-            },
-            WBC: {
-                src: ['./_CORE/_JS/libs/angularjs/angular.min.js',
-                     './_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-                     './_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-                     './_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-                     './_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-                     './_CORE/_JS/libs/html5/html5shiv.js',
-                     './_CORE/_JS/libs/json/json3.min.js',
-                     './_CORE/_JS/libs/respond/respond.min.js',
-                     './_CORE/_JS/libs/underscore/underscore-min.js',
-                     './_CORE/_JS/libs/polyfills.js',
-                     './temp/BOM/js/zzz.min.js'
-                ],
-                dest: './PROD/WBC/js/<%= currentVersion  %>.min.js'
-            }
-        },
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// JS concatentation - core libraries
+		//
+		// This section contcatenates the library files into the app file, this is pretty much the bare minium if you want to work with IE8
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		concat: {
+			BOM: { // Concatenate all BOM core js files into a single file(minifying would cause errors here)
+				src: [
+					'./_CORE/_JS/libs/angularjs/angular.min.js',
+					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
+					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
+					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
+					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
+					'./_CORE/_JS/libs/html5/html5shiv.js',
+					'./_CORE/_JS/libs/json/json3.min.js',
+					'./_CORE/_JS/libs/respond/respond.min.js',
+					'./_CORE/_JS/libs/underscore/underscore-min.js',
+					'./_CORE/_JS/libs/polyfills.js',
+					'./temp/BOM/js/zzz.min.js',
+				],
+				dest: './PROD/BOM/js/<%= currentVersion  %>.min.js',
+			},
+			BSA: { // Concatenate all BSA core js files into a single file(minifying would cause errors here)
+				src: [
+					'./_CORE/_JS/libs/angularjs/angular.min.js',
+					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
+					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
+					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
+					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
+					'./_CORE/_JS/libs/html5/html5shiv.js',
+					'./_CORE/_JS/libs/json/json3.min.js',
+					'./_CORE/_JS/libs/respond/respond.min.js',
+					'./_CORE/_JS/libs/underscore/underscore-min.js',
+					'./_CORE/_JS/libs/polyfills.js',
+					'./temp/BOM/js/zzz.min.js',
+				],
+				dest: './PROD/BSA/js/<%= currentVersion  %>.min.js',
+			},
+			STG: { // Concatenate all STG core js files into a single file(minifying would cause errors here)
+				src: [
+					'./_CORE/_JS/libs/angularjs/angular.min.js',
+					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
+					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
+					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
+					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
+					'./_CORE/_JS/libs/html5/html5shiv.js',
+					'./_CORE/_JS/libs/json/json3.min.js',
+					'./_CORE/_JS/libs/respond/respond.min.js',
+					'./_CORE/_JS/libs/underscore/underscore-min.js',
+					'./_CORE/_JS/libs/polyfills.js',
+					'./temp/BOM/js/zzz.min.js',
+				],
+				dest: './PROD/STG/js/<%= currentVersion  %>.min.js',
+			},
+			WBC: { // Concatenate all WBC core js files into a single file(minifying would cause errors here)
+				src: [
+					'./_CORE/_JS/libs/angularjs/angular.min.js',
+					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
+					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
+					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
+					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
+					'./_CORE/_JS/libs/html5/html5shiv.js',
+					'./_CORE/_JS/libs/json/json3.min.js',
+					'./_CORE/_JS/libs/respond/respond.min.js',
+					'./_CORE/_JS/libs/underscore/underscore-min.js',
+					'./_CORE/_JS/libs/polyfills.js',
+					'./temp/BOM/js/zzz.min.js',
+				],
+				dest: './PROD/WBC/js/<%= currentVersion  %>.min.js',
+			},
+		},
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// minify svgs
@@ -406,8 +409,8 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: './BOM/_svg/',
 					src: ['*.svg'],
-					dest: './temp/BOM/svg/'
-				}]
+					dest: './temp/BOM/svg/',
+				}],
 			},
 
 			BSA: { // minify BSA svgs
@@ -415,8 +418,8 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: './BSA/_svg/',
 					src: ['*.svg'],
-					dest: './temp/BSA/svg/'
-				}]
+					dest: './temp/BSA/svg/',
+				}],
 			},
 
 			STG: { // minify STG svgs
@@ -424,8 +427,8 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: './STG/_svg/',
 					src: ['*.svg'],
-					dest: './temp/STG/svg/'
-				}]
+					dest: './temp/STG/svg/',
+				}],
 			},
 
 			WBC: { // minify WBC svgs
@@ -433,9 +436,9 @@ module.exports = function(grunt) {
 					expand: true,
 					cwd: './WBC/_svg/',
 					src: ['*.svg'],
-					dest: './temp/WBC/svg/'
-				}]
-			}
+					dest: './temp/WBC/svg/',
+				}],
+			},
 		},
 
 
@@ -920,7 +923,7 @@ module.exports = function(grunt) {
 		'imagemin',
 		'copy',
 		'replace',
-        'concat',
+		'concat',
 		'clean:post'
 	]);
 
@@ -930,7 +933,7 @@ module.exports = function(grunt) {
 		'includes:BOM',
 		'less:BOM',
 		'autoprefixer:BOM',
-		'uglify',
+		'uglify:BOM',
 		'svgmin:BOM',
 		'grunticon:BOM',
 		'imagemin:BOM',
@@ -938,7 +941,7 @@ module.exports = function(grunt) {
 		'copy:BOMCSS',
 		'copy:BOMFonts',
 		'copy:BOMHTML',
-        'concat:BOMjsMin',
+		'concat:BOM',
 		'replace:BOM',
 		'clean:post'
 	]);
@@ -948,7 +951,7 @@ module.exports = function(grunt) {
 		'includes:BSA',
 		'less:BSA',
 		'autoprefixer:BSA',
-		 'uglify',
+		'uglify:BSA',
 		'svgmin:BSA',
 		'grunticon:BSA',
 		'imagemin:BSA',
@@ -956,7 +959,7 @@ module.exports = function(grunt) {
 		'copy:BSACSS',
 		'copy:BSAFonts',
 		'copy:BSAHTML',
-        'concat:BSAjsMin',
+		'concat:BSA',
 		'replace:BSA',
 		'clean:post'
 	]);
@@ -966,7 +969,7 @@ module.exports = function(grunt) {
 		'includes:STG',
 		'less:STG',
 		'autoprefixer:STG',
-		 'uglify',
+		'uglify:STG',
 		'svgmin:STG',
 		'grunticon:STG',
 		'imagemin:STG',
@@ -974,7 +977,7 @@ module.exports = function(grunt) {
 		'copy:STGCSS',
 		'copy:STGFonts',
 		'copy:STGHTML',
-        'concat:STGjsMin',
+		'concat:STG',
 		'replace:STG',
 		'clean:post'
 	]);
@@ -984,7 +987,7 @@ module.exports = function(grunt) {
 		'includes:WBC',
 		'less:WBC',
 		'autoprefixer:WBC',
-		 'uglify',
+		'uglify:WBC',
 		'svgmin:WBC',
 		'grunticon:WBC',
 		'imagemin:WBC',
@@ -992,7 +995,7 @@ module.exports = function(grunt) {
 		'copy:WBCCSS',
 		'copy:WBCFonts',
 		'copy:WBCHTML',
-        'concat:WBCjsMin',
+		'concat:WBC',
 		'replace:WBC',
 		'clean:post'
 	]);
