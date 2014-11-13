@@ -3,7 +3,7 @@ SPA Scaffolding
 
 > A grunt workflow to get you started with your SPA.
 
-If you're interested looking for team related documentation and best practice please visit our [wiki](https://github.com/WestpacCXTeam/CX-GIT/wiki)
+if you're interested looking for team related documentation and best practice please visit our [wiki] (https://github.com/WestpacCXTeam/CX-GIT/wiki)
 
 # Setup
 
