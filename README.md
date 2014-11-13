@@ -241,12 +241,14 @@ _Remember: you can use your [_HTMLincludes](#the-_htmlincludes-folder-2) to bran
 
 ### The _js core folder (13)
 
+There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
-
+We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version of our SPA. We have chosen to use
+[ui-router](https://github.com/angular-ui/ui-router)
 
 ### The _Mock core folder (14)
 
-...
+The mock folder is predominantly for mock API calls. Use it to store JSON structures.
 
 
 ### The _less core folder (15)
