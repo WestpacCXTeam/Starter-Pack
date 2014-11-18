@@ -109,11 +109,18 @@ The below folder structure will explain what should go where:
 ├── STG                                  // BRAND FOLDER FOR STG (1)
 ├── WBC                                  // BRAND FOLDER FOR WBC (1)
 ├── _CORE                                // THE _CORE FOLDER (11)
-│   ├── _HTML                            // The _HTML core folder (12)
+│   ├── _HTML                            // The _HTML core folder (12)
 │   │   ├── _templates
 │   │   ├── _views
 │   │   └── index.html
-│   ├── _js                               // The _js core folder (13)
+│   ├── _HTMLincludes                      // The _HTMLincludes core folder (13)
+│   │   ├── defaults
+│   │   │   ├── svgs.html
+│   │   │   ├── theme-foot.html
+│   │   │   └── theme-head.html
+│   │   ├── modernizr.html
+│   │   └── windows.html
+│   ├── _js                               // The _js core folder (14)
 │   │   ├── common
 │   │   ├── controllers
 │   │   ├── directives
@@ -122,8 +129,8 @@ The below folder structure will explain what should go where:
 │   │   ├── libs
 │   │   ├── services
 │   │   └── tests
-│   ├── _Mock                            // The _Mock core folder (14)
-│   └── _less                            // The _less core folder (15)
+│   ├── _Mock                            // The _Mock core folder (15)
+│   └── _less                            // The _less core folder (16)
 │       ├── base
 │       │   ├── fonts.less
 │       │   ├── mixins.less
@@ -132,7 +139,7 @@ The below folder structure will explain what should go where:
 │       │   └── type.less
 │       ├── modules
 │       │   └── module.less
-│       └── site.less                    // The site.less file (16)
+│       └── site.less                    // The site.less file (17)
 
 ```
 
@@ -179,7 +186,7 @@ There are some GUI js files that will fit in here including `theme.min.js` and `
 We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version of our SPA. We have chosen to use
 [ui-router] (https://github.com/angular-ui/ui-router)
 
-< more to come >
+The unit testing framework we prefer is [Jasmine](http://jasmine.github.io/) < more to come >
 
 ### The _less brand folder (7)
 
@@ -238,25 +245,29 @@ This folder should contain all of your HTML files. Organise them into subfolders
 
 _Remember: you can use your [_HTMLincludes](#the-_htmlincludes-folder-2) to brand these files._
 
+### The _HTMLincludes core folder (13)
 
-### The _js core folder (13)
+The _HTMLincludes folder is copied into each branch folder, then the brand folders override all the files for each brand.
+
+
+### The _js core folder (14)
 
 There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
 We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version of our SPA. We have chosen to use
 [ui-router](https://github.com/angular-ui/ui-router)
 
-### The _Mock core folder (14)
+### The _Mock core folder (15)
 
 The mock folder is predominantly for mock API calls. Use it to store JSON structures.
 
 
-### The _less core folder (15)
+### The _less core folder (16)
 
 Organise your less project here. We have provided a starting point for you in this repo.
 
 
-### The site.less file (16)
+### The site.less file (17)
 
 The `site.less` file should be referenced by the brand `_settings.less` and only includes all modules from the filesystem.
 
