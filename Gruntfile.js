@@ -1088,6 +1088,14 @@ module.exports = function (grunt) {
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.registerTask('build', [
 		'clean:pre',
+		'copy:BOMCoreincludes',
+		'copy:BOMBrandincludes',
+		'copy:BSACoreincludes',
+		'copy:BSABrandincludes',
+		'copy:STGCoreincludes',
+		'copy:STGBrandincludes',
+		'copy:WBCCoreincludes',
+		'copy:WBCBrandincludes',
 		'includes',
 		'less',
 		'autoprefixer',
