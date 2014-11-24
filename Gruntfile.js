@@ -122,7 +122,7 @@ module.exports = function (grunt) {
 			BOM: { // compile all HTML files in BOM
 				cwd: './_CORE/_HTML/',
 				src: ['**/*.html'],
-				dest: './BOM/',
+				dest: './PROD/BOM/',
 				options: {
 					flatten: false,
 					includePath: './temp/BOM/_HTMLincludes/'
@@ -132,7 +132,7 @@ module.exports = function (grunt) {
 			BSA: { // compile all HTML files in BSA
 				cwd: './_CORE/_HTML/',
 				src: ['**/*.html'],
-				dest: './BSA/',
+				dest: './PROD/BSA/',
 				options: {
 					flatten: false,
 					includePath: './temp/BSA/_HTMLincludes/'
@@ -142,7 +142,7 @@ module.exports = function (grunt) {
 			STG: { // compile all HTML files in STG
 				cwd: './_CORE/_HTML/',
 				src: ['**/*.html'],
-				dest: './STG/',
+				dest: './PROD/STG/',
 				options: {
 					flatten: false,
 					includePath: './temp/STG/_HTMLincludes/'
@@ -152,7 +152,7 @@ module.exports = function (grunt) {
 			WBC: { // compile all HTML files in WBC
 				cwd: './_CORE/_HTML/',
 				src: ['**/*.html'],
-				dest: './WBC/',
+				dest: './PROD/WBC/',
 				options: {
 					flatten: false,
 					includePath: './temp/WBC/_HTMLincludes/'
