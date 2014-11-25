@@ -308,7 +308,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// Minify js files into temp file, ready for concatenation into a single file 
+		// Minify js files into temp file, ready for concatenation into a single file
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		uglify: {
 			BOM: {
@@ -980,7 +980,8 @@ module.exports = function (grunt) {
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
-						'css': '_css'
+						'css': '_css',
+						'less': '_less'
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
@@ -999,7 +1000,8 @@ module.exports = function (grunt) {
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
-						'css': '_css'
+						'css': '_css',
+						'less': '_less'
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
@@ -1019,6 +1021,7 @@ module.exports = function (grunt) {
 						'fonts': '_fonts',
 						'js': '_js',
 						'css': '_css',
+						'less': '_less'
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
@@ -1037,7 +1040,8 @@ module.exports = function (grunt) {
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
-						'css': '_css'
+						'css': '_css',
+						'less': '_less'
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
