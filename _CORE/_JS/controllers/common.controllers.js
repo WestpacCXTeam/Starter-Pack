@@ -16,6 +16,12 @@
             //do some stuff inside the controller
 
         }
-    ]);
+    ])
+
+	.controller("MyTwitterCTRL", function($scope, TwitterAPI) {
+		$scope.search = function() {
+			$scope.searchResult = TwitterAPI.get({ q: $scope.searchTerm });
+		};
+	});
 
 }(angular.module('common.controllers',[])));
