@@ -949,12 +949,12 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		curl: {
 			BOM: { // download latest BOM theme
-				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
+				src: 'http://info.westpac.com.au/cx/GEL/GUI/bsa/downloads/theme.zip',
 				dest: './temp/BOM/theme.zip'
 			},
 
 			BSA: { // download latest BSA theme
-				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
+				src: 'http://info.westpac.com.au/cx/GEL/GUI/bom/downloads/theme.zip',
 				dest: './temp/BSA/theme.zip'
 			},
 
@@ -964,7 +964,7 @@ module.exports = function (grunt) {
 			},
 
 			WBC: { // download latest WBC theme
-				src: 'http://info.westpac.com.au/cx/GEL/GUI/stgeorge/downloads/theme.zip',
+				src: 'http://info.westpac.com.au/cx/GEL/GUI/westpac/downloads/theme.zip',
 				dest: './temp/WBC/theme.zip'
 			},
 		},
