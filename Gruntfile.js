@@ -316,7 +316,7 @@ module.exports = function (grunt) {
 					mangle: false
 				},
 				files: {
-					'./temp/BOM/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js']
+					'./temp/BOM/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js','!./_CORE/_JS/tests/**/*.js']
 				}
 			},
 			BSA: {
@@ -324,7 +324,7 @@ module.exports = function (grunt) {
 					mangle: false
 				},
 				files: {
-					'./temp/BSA/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js']
+					'./temp/BSA/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js','!./_CORE/_JS/tests/**/*.js']
 				}
 			},
 			STG: {
@@ -332,7 +332,7 @@ module.exports = function (grunt) {
 					mangle: false
 				},
 				files: {
-					'./temp/STG/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js']
+					'./temp/STG/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js','!./_CORE/_JS/tests/**/*.js']
 				}
 			},
 			WBC: {
@@ -340,7 +340,7 @@ module.exports = function (grunt) {
 					mangle: false
 				},
 				files: {
-					'./temp/WBC/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js'],
+					'./temp/WBC/js/zzz.min.js': ['./_CORE/_JS/**/*.js', '!./_CORE/_JS/libs/**/*.js','!./_CORE/_JS/tests/**/*.js'],
 				}
 			}
 		},
@@ -1110,7 +1110,7 @@ module.exports = function (grunt) {
 		'copy',
 		'replace',
 		'concat',
-		//'clean:post'
+		'clean:post'
 	]);
 
 	// brand specific
