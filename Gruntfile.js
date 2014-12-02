@@ -355,68 +355,30 @@ module.exports = function (grunt) {
 		concat: {
 			BOM: {
 				src: [
-					'./_CORE/_JS/libs/angularjs/angular.min.js',
-					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-					'./_CORE/_JS/libs/html5/html5shiv.js',
-					'./_CORE/_JS/libs/json/json3.min.js',
-					'./_CORE/_JS/libs/respond/respond.min.js',
-					'./_CORE/_JS/libs/underscore/underscore-min.js',
-					'./_CORE/_JS/libs/polyfills.js',
-					'./temp/BOM/js/zzz.min.js',
+					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
 				],
 				dest: './PROD/BOM/js/<%= currentVersion  %>.min.js'
 			},
 			BSA: {
 				src: [
-					'./_CORE/_JS/libs/angularjs/angular.min.js',
-					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-					'./_CORE/_JS/libs/html5/html5shiv.js',
-					'./_CORE/_JS/libs/json/json3.min.js',
-					'./_CORE/_JS/libs/respond/respond.min.js',
-					'./_CORE/_JS/libs/underscore/underscore-min.js',
-					'./_CORE/_JS/libs/polyfills.js',
-					'./temp/BOM/js/zzz.min.js',
+					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
 				],
 				dest: './PROD/BSA/js/<%= currentVersion  %>.min.js'
 			},
 			STG: {
 				src: [
-					'./_CORE/_JS/libs/angularjs/angular.min.js',
-					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-					'./_CORE/_JS/libs/html5/html5shiv.js',
-					'./_CORE/_JS/libs/json/json3.min.js',
-					'./_CORE/_JS/libs/respond/respond.min.js',
-					'./_CORE/_JS/libs/underscore/underscore-min.js',
-					'./_CORE/_JS/libs/polyfills.js',
-					'./temp/BOM/js/zzz.min.js',
+					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
 				],
 				dest: './PROD/STG/js/<%= currentVersion  %>.min.js'
 			},
 			WBC: {
 				src: [
-					'./_CORE/_JS/libs/angularjs/angular.min.js',
-					'./_CORE/_JS/libs/ui-router/angular-ui-router.min.js',
-					'./_CORE/_JS/libs/jquery/jquery-1.9.1.min.js',
-					'./_CORE/_JS/libs/angular-ui/ui-bootstrap-tpls-0.11.2.min.js',
-					'./_CORE/_JS/libs/es5-shim/es5-shim.min.js',
-					'./_CORE/_JS/libs/html5/html5shiv.js',
-					'./_CORE/_JS/libs/json/json3.min.js',
-					'./_CORE/_JS/libs/respond/respond.min.js',
-					'./_CORE/_JS/libs/underscore/underscore-min.js',
-					'./_CORE/_JS/libs/polyfills.js',
-					'./temp/BOM/js/zzz.min.js',
+					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
 				],
 				dest: './PROD/WBC/js/<%= currentVersion  %>.min.js'
-			},
+			}
+
+
 		},
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
