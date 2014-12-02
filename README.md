@@ -126,11 +126,11 @@ The below folder structure will explain what should go where:
 │   │   ├── directives
 │   │   ├── factories
 │   │   ├── filters
-│   │   ├── libs
+│   │   ├── 010.libs
 │   │   ├── services
-│   │   └── tests
-│   ├── _Mock                            // The _Mock core folder (15)
-│   └── _less                            // The _less core folder (16)
+│   │   └── tests                        // The tests core folder (15)
+│   ├── _Mock                            // The _Mock core folder (16)
+│   └── _less                            // The _less core folder (17)
 │       ├── base
 │       │   ├── fonts.less
 │       │   ├── mixins.less
@@ -139,7 +139,7 @@ The below folder structure will explain what should go where:
 │       │   └── type.less
 │       ├── modules
 │       │   └── module.less
-│       └── site.less                    // The site.less file (17)
+│       └── site.less                    // The site.less file (18)
 
 ```
 
@@ -257,17 +257,21 @@ There are some GUI js files that will fit in here including `theme.min.js` and `
 We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version of our SPA. We have chosen to use
 [ui-router](https://github.com/angular-ui/ui-router)
 
-### The _Mock core folder (15)
+### The tests core folder (15)
+
+The tests folder is a place not only to put the tests themselves, but also reference the libraries as well. If you want to use any of the angular goodness in your project then copy the dependencies into the tests/libs folder.
+
+### The _Mock core folder (16)
 
 The mock folder is predominantly for mock API calls. Use it to store JSON structures.
 
 
-### The _less core folder (16)
+### The _less core folder (17)
 
 Organise your less project here. We have provided a starting point for you in this repo.
 
 
-### The site.less file (17)
+### The site.less file (18)
 
 The `site.less` file should be referenced by the brand `_settings.less` and only includes all modules from the filesystem.
 
