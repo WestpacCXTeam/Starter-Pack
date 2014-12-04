@@ -62,18 +62,18 @@ module.exports = function (grunt) {
 			scaffold: {
 				options: {
 					create: [
-                        './_CORE/_HTMLincludes/',
+						'./_CORE/_HTMLincludes/',
 						'./_CORE/_HTML/_templates',
 						'./_CORE/_HTML/_views',
 						'./_CORE/_js',
-                        './_CORE/_js/common',
-                        './_CORE/_js/controllers',
-                        './_CORE/_js/directives',
-                        './_CORE/_js/factories',
-                        './_CORE/_js/filters',
-                        './_CORE/_js/libs',
-                        './_CORE/_js/services',
-                        './_CORE/_js/tests',
+						'./_CORE/_js/common',
+						'./_CORE/_js/controllers',
+						'./_CORE/_js/directives',
+						'./_CORE/_js/factories',
+						'./_CORE/_js/filters',
+						'./_CORE/_js/libs',
+						'./_CORE/_js/services',
+						'./_CORE/_js/tests',
 						'./_CORE/_less/base',
 						'./_CORE/_less/modules',
 						'./_CORE/_Mock',
@@ -600,104 +600,104 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		copy: {
 
-            // HTML includes move directly from the core folder
-            BOMCoreincludes: { // move html includes into the BOM temp includes folder
-                files: [
-                    {
-                        cwd: './_CORE/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/BOM/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			// HTML includes move directly from the core folder
+			BOMCoreincludes: { // move html includes into the BOM temp includes folder
+				files: [
+					{
+						cwd: './_CORE/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/BOM/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
-            BSACoreincludes: { // move html includes into the BSA temp includes folder
-                files: [
-                    {
-                        cwd: './_CORE/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/BSA/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			BSACoreincludes: { // move html includes into the BSA temp includes folder
+				files: [
+					{
+						cwd: './_CORE/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/BSA/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
-            STGCoreincludes: { // move html includes into the STG temp includes folder
-                files: [
-                    {
-                        cwd: './_CORE/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/STG/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			STGCoreincludes: { // move html includes into the STG temp includes folder
+				files: [
+					{
+						cwd: './_CORE/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/STG/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
-            WBCCoreincludes: { // move html includes into the STG temp includes folder
-                files: [
-                    {
-                        cwd: './_CORE/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/WBC/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			WBCCoreincludes: { // move html includes into the STG temp includes folder
+				files: [
+					{
+						cwd: './_CORE/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/WBC/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
 
-            // HTML includes move directly from the brand folder
-            BOMBrandincludes: { // move html includes into the BOM temp includes folder
-                files: [
-                    {
-                        cwd: './BOM/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/BOM/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			// HTML includes move directly from the brand folder
+			BOMBrandincludes: { // move html includes into the BOM temp includes folder
+				files: [
+					{
+						cwd: './BOM/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/BOM/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
-            BSABrandincludes: { // move html includes into the BSA temp includes folder
-                files: [
-                    {
-                        cwd: './BSA/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/BSA/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			BSABrandincludes: { // move html includes into the BSA temp includes folder
+				files: [
+					{
+						cwd: './BSA/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/BSA/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
-            STGBrandincludes: { // move html includes into the STG temp includes folder
-                files: [
-                    {
-                        cwd: './STG/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/STG/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			STGBrandincludes: { // move html includes into the STG temp includes folder
+				files: [
+					{
+						cwd: './STG/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/STG/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
-            WBCBrandincludes: { // move html includes into the STG temp includes folder
-                files: [
-                    {
-                        cwd: './WBC/_HTMLincludes/',
-                        src: ['**/*.html'],
-                        dest: './temp/WBC/_HTMLincludes/',
-                        filter: 'isFile',
-                        expand: true
-                    }
-                ]
-            },
+			WBCBrandincludes: { // move html includes into the STG temp includes folder
+				files: [
+					{
+						cwd: './WBC/_HTMLincludes/',
+						src: ['**/*.html'],
+						dest: './temp/WBC/_HTMLincludes/',
+						filter: 'isFile',
+						expand: true
+					}
+				]
+			},
 
 			// JavaScript files
 			BOMJS: { // move BOM js folder content
@@ -1078,8 +1078,8 @@ module.exports = function (grunt) {
 	// brand specific
 	grunt.registerTask('BOM', [
 		'clean:pre',
-        'copy:BOMCoreincludes',
-        'copy:BOMBrandincludes',
+		'copy:BOMCoreincludes',
+		'copy:BOMBrandincludes',
 		'includes:BOM',
 		'less:BOM',
 		'autoprefixer:BOM',
@@ -1098,8 +1098,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('BSA', [
 		'clean:pre',
-        'copy:BSACoreincludes',
-        'copy:BSABrandincludes',
+		'copy:BSACoreincludes',
+		'copy:BSABrandincludes',
 		'includes:BSA',
 		'less:BSA',
 		'autoprefixer:BSA',
@@ -1118,8 +1118,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('STG', [
 		'clean:pre',
-        'copy:STGCoreincludes',
-        'copy:STGBrandincludes',
+		'copy:STGCoreincludes',
+		'copy:STGBrandincludes',
 		'includes:STG',
 		'less:STG',
 		'autoprefixer:STG',
@@ -1138,8 +1138,8 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('WBC', [
 		'clean:pre',
-        'copy:WBCCoreincludes',
-        'copy:WBCBrandincludes',
+		'copy:WBCCoreincludes',
+		'copy:WBCBrandincludes',
 		'includes:WBC',
 		'less:WBC',
 		'autoprefixer:WBC',
