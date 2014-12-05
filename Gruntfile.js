@@ -355,25 +355,25 @@ module.exports = function (grunt) {
 		concat: {
 			BOM: {
 				src: [
-					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
+					['./temp/BOM/js/**/*']
 				],
 				dest: './PROD/BOM/js/<%= currentVersion  %>.min.js'
 			},
 			BSA: {
 				src: [
-					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
+					['./temp/BSA/js/**/*']
 				],
 				dest: './PROD/BSA/js/<%= currentVersion  %>.min.js'
 			},
 			STG: {
 				src: [
-					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
+					['./temp/STG/js/**/*']
 				],
 				dest: './PROD/STG/js/<%= currentVersion  %>.min.js'
 			},
 			WBC: {
 				src: [
-					['./_CORE/_JS/**/*','!./_CORE/_JS/tests/**/*.js']
+					['./temp/WBC/js/**/*']
 				],
 				dest: './PROD/WBC/js/<%= currentVersion  %>.min.js'
 			}
@@ -1053,7 +1053,7 @@ module.exports = function (grunt) {
 	// TASKS
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.registerTask('build', [
-		//'clean:pre',
+		'clean:pre',
 		'copy:BOMCoreincludes',
 		'copy:BOMBrandincludes',
 		'copy:BSACoreincludes',
