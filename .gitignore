@@ -51,9 +51,15 @@ BOM/_fonts/westpac-icons.eot
 BOM/_fonts/westpac-icons.svg
 BOM/_fonts/westpac-icons.ttf
 BOM/_fonts/westpac-icons.woff
+BOM/_fonts/Stag-Light.woff
+BOM/_fonts/Stag-Medium.eot
+BOM/_fonts/Stag-Medium.svg
+BOM/_fonts/Stag-Medium.ttf
+BOM/_fonts/Stag-Medium.woff
 BOM/_js/theme.min.js
 BOM/_js/polyfills/modernizr.js
 BOM/_js/polyfills/polyfills.js
+BOM/_less/colors.less
 
 BSA/_css/ie.css
 BSA/_css/ie7.css
@@ -99,6 +105,7 @@ BSA/_fonts/westpac-icons.woff
 BSA/_js/theme.min.js
 BSA/_js/polyfills/modernizr.js
 BSA/_js/polyfills/polyfills.js
+BSA/_less/colors.less
 
 STG/_css/ie.css
 STG/_css/ie7.css
@@ -144,6 +151,7 @@ STG/_fonts/westpac-icons.woff
 STG/_js/theme.min.js
 STG/_js/polyfills/modernizr.js
 STG/_js/polyfills/polyfills.js
+STG/_less/colors.less
 
 WBC/_css/ie.css
 WBC/_css/ie7.css
@@ -189,3 +197,4 @@ WBC/_fonts/westpac-icons.woff
 WBC/_js/theme.min.js
 WBC/_js/polyfills/modernizr.js
 WBC/_js/polyfills/polyfills.js
+WBC/_less/colors.less
