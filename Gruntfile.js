@@ -938,82 +938,114 @@ module.exports = function (grunt) {
 		unzip: {
 			BOM: { // unzip Bom zip and sort in
 				router: function (filepath) {
-					var $dir = filepath.split('/');
+					var $dir = filepath.split('/'); //get full file path
+					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $path = filepath.replace($file, ''); //get path
+
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
 						'css': '_css',
-						'less': '_less'
+						'brand': '',
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
 					var newPath = $dir.join('/');
 
-					return newPath;
+					if(newPath === '/less/colors.less') { //move colors.less
+						return '_less/colors.less';
+					}
+					else {
+						return newPath;
+					}
 				},
 
 				src: './temp/BOM/theme.zip',
-				dest: './BOM/'
+				dest: './BOM/',
 			},
 
 			BSA: { // unzip BSA zip and sort in
 				router: function (filepath) {
-					var $dir = filepath.split('/');
+					var $dir = filepath.split('/'); //get full file path
+					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $path = filepath.replace($file, ''); //get path
+
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
 						'css': '_css',
-						'less': '_less'
+						'brand': '',
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
 					var newPath = $dir.join('/');
 
-					return newPath;
+					if(newPath === '/less/colors.less') { //move colors.less
+						return '_less/colors.less';
+					}
+					else {
+						return newPath;
+					}
 				},
 
 				src: './temp/BSA/theme.zip',
-				dest: './BSA/'
+				dest: './BSA/',
 			},
 
 			STG: { // unzip STG zip and sort in
 				router: function (filepath) {
-					var $dir = filepath.split('/');
+					var $dir = filepath.split('/'); //get full file path
+					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $path = filepath.replace($file, ''); //get path
+
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
 						'css': '_css',
-						'less': '_less'
+						'brand': '',
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
 					var newPath = $dir.join('/');
 
-					return newPath;
+					if(newPath === '/less/colors.less') { //move colors.less
+						return '_less/colors.less';
+					}
+					else {
+						return newPath;
+					}
 				},
 
 				src: './temp/STG/theme.zip',
-				dest: './STG/'
+				dest: './STG/',
 			},
 
 			WBC: { // unzip WBC zip and sort in
 				router: function (filepath) {
-					var $dir = filepath.split('/');
+					var $dir = filepath.split('/'); //get full file path
+					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $path = filepath.replace($file, ''); //get path
+
 					var $newDirs = {
 						'fonts': '_fonts',
 						'js': '_js',
 						'css': '_css',
-						'less': '_less'
+						'brand': '',
 					};
 
 					$dir[0] = $newDirs[ $dir[0] ];
 					var newPath = $dir.join('/');
 
-					return newPath;
+					if(newPath === '/less/colors.less') { //move colors.less
+						return '_less/colors.less';
+					}
+					else {
+						return newPath;
+					}
 				},
 
 				src: './temp/WBC/theme.zip',
-				dest: './WBC/'
+				dest: './WBC/',
 			}
 		},
 
