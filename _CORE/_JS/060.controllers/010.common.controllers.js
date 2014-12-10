@@ -10,13 +10,13 @@
 
 (function (module) {
 
-    module.controller('MainCtrl', ['$scope', '$rootScope', '$window',
-        function ($scope, $rootScope, $window) {
+	module.controller('MainCtrl', ['$scope', '$rootScope', '$window',
+		function ($scope, $rootScope, $window) {
 
-            //do some stuff inside the controller
+			//do some stuff inside the controller
 
-        }
-    ])
+		}
+	])
 
 	.controller("MyTwitterCTRL", function($scope, TwitterAPI) {
 		$scope.search = function() {
