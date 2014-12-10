@@ -2,7 +2,7 @@
 
 module.exports = function (grunt) {
 
-	//dependencies
+	//Dependencies
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// clean task
+		// Clean task
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		clean: {
 			pre: [ //delete before running
@@ -64,7 +64,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// scaffold all directories
+		// Scaffold all directories
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		mkdir: {
 			scaffold: {
@@ -123,7 +123,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// includes task
+		// Includes task
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		includes: {
 			BOM: { //compile all HTML files in BOM
@@ -181,7 +181,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// replace task for automatic versioning
+		// Replace task for automatic versioning
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		replace: {
 			BOM: { //look for versioning strings in BOM
@@ -239,7 +239,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// less task
+		// Less task
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		less: {
 			BOM: { //compile less files with BOM specific settings
@@ -293,7 +293,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// vendor prefixes
+		// Vendor prefixes
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		autoprefixer: {
 			BOM: { //generate vendor prefixes for BOM
@@ -369,7 +369,7 @@ module.exports = function (grunt) {
 		//
 		// This section contcatenates the library files into the app file, this is pretty much the bare minium if you want to work with IE8
 		//
-		// all core js files are concatenated into a single file ( minifying, already minified scripts causes errors )
+		// All core js files are concatenated into a single file ( minifying, already minified scripts causes errors )
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		concat: {
 			BOM: { //concatenate files together for BOM
@@ -402,7 +402,7 @@ module.exports = function (grunt) {
 		},
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// minify svgs
+		// Minify svgs
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		svgmin: {
 			BOM: { //minify BOM svgs
@@ -444,7 +444,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// grunticon
+		// Grunticon to convert svgs into cross browser css files and png fallbacks
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		grunticon: {
 			BOM: { //generate SVG fallback files for BOM
@@ -542,7 +542,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// minify images
+		// Minify images
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		imagemin: {
 			BOM: { //minify images for BOM
@@ -596,7 +596,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// copy all files to prod
+		// Copy all files to prod
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		copy: {
 
@@ -851,7 +851,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// bum version
+		// Bump version
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		bumpup: {
 			files: 'package.json',
@@ -859,7 +859,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// download latest GUI
+		// Download latest GUI
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		curl: {
 			BOM: { //download latest BOM theme
@@ -885,7 +885,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// unzip theme and move files to brands
+		// Unzip theme and move files to brands
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		unzip: {
 			BOM: { //unzip Bom zip and sort in
@@ -1003,7 +1003,7 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// server
+		// Server
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		connect: {
 			server: {
@@ -1017,25 +1017,185 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// watch for changes
+		// Watch for changes
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		watch: {
-			files: [
-				'BOM/**/*',
-				'BSA/**/*',
-				'STG/**/*',
-				'WBC/**/*',
-				'_CORE/**/*',
-			],
 
-			tasks: ['build'],
+			HTML: { //watch all HTML files
+				files: [
+					'BOM/**/*.html',
+					'BSA/**/*.html',
+					'STG/**/*.html',
+					'WBC/**/*.html',
+					'_CORE/**/*.html',
+				],
+				tasks: [
+					'copy:BOMCoreincludes',
+					'copy:BOMBrandincludes',
+					'copy:BSACoreincludes',
+					'copy:BSABrandincludes',
+					'copy:STGCoreincludes',
+					'copy:STGBrandincludes',
+					'copy:WBCCoreincludes',
+					'copy:WBCBrandincludes',
+					'includes',
+					'clean:includes',
+					'copy:BOMHTML',
+					'copy:BSAHTML',
+					'copy:STGHTML',
+					'copy:WBCHTML',
+					'replace',
+					'clean:post',
+				],
+			},
+
+			less: { //watch all less files
+				files: [
+					'BOM/**/*.less',
+					'BSA/**/*.less',
+					'STG/**/*.less',
+					'WBC/**/*.less',
+					'_CORE/**/*.less',
+				],
+				tasks: [
+					'less',
+					'autoprefixer',
+					'copy:BOMCSS',
+					'copy:BSACSS',
+					'copy:STGCSS',
+					'copy:WBCCSS',
+					'replace',
+					'clean:post',
+				],
+			},
+
+			svg: { //watch all svg files
+				files: [
+					'BOM/**/*.svg', '!BOM/**/fonts/*.svg',
+					'BSA/**/*.svg', '!BSA/**/fonts/*.svg',
+					'STG/**/*.svg', '!STG/**/fonts/*.svg',
+					'WBC/**/*.svg', '!WBC/**/fonts/*.svg',
+					'_CORE/**/*.svg', '!_CORE/**/fonts/*.svg',
+				],
+				tasks: [
+					'svgmin',
+					'grunticon',
+					'imagemin',
+					'copy:BOMCSS',
+					'copy:BSACSS',
+					'copy:STGCSS',
+					'copy:WBCCSS',
+					'replace',
+					'clean:post',
+				],
+			},
+
+			jsBOM: { //watch all BOM js files
+				files: [
+					'BOM/**/*.js',
+				],
+				tasks: [
+					'uglify:BOM',
+					'copy:BOMJS',
+					'replace:BOM',
+					'concat:BOM',
+					'clean:post',
+				],
+			},
+
+			jsBSA: { //watch all BSA js files
+				files: [
+					'BSA/**/*.js',
+				],
+				tasks: [
+					'uglify:BSA',
+					'copy:BSAJS',
+					'replace:BSA',
+					'concat:BSA',
+					'clean:post',
+				],
+			},
+
+			jsSTG: { //watch all STG js files
+				files: [
+					'STG/**/*.js',
+				],
+				tasks: [
+					'uglify:STG',
+					'copy:STGJS',
+					'replace:STG',
+					'concat:STG',
+					'clean:post',
+				],
+			},
+
+			jsWBC: { //watch all WBC js files
+				files: [
+					'WBC/**/*.js',
+				],
+				tasks: [
+					'uglify:WBC',
+					'copy:WBCJS',
+					'replace:WBC',
+					'concat:WBC',
+					'clean:post',
+				],
+			},
+
+			jsCore: { //watch all _CORE js files
+				files: [
+					'_CORE/**/*.js',
+				],
+				tasks: [
+					'uglify',
+					'copy:BOMJS',
+					'copy:BSAJS',
+					'copy:STGJS',
+					'copy:WBCJS',
+					'replace',
+					'concat',
+					'clean:post',
+				],
+			},
+
+			fonts: { //watch all font files
+				files: [
+					'BOM/**/*.woff', 'BOM/**/*.woff2', 'BOM/**/*.ttf', 'BOM/**/*.eot', 'BOM/**/fonts/*.svg',
+					'BSA/**/*.woff', 'BSA/**/*.woff2', 'BSA/**/*.ttf', 'BSA/**/*.eot', 'BSA/**/fonts/*.svg',
+					'STG/**/*.woff', 'STG/**/*.woff2', 'STG/**/*.ttf', 'STG/**/*.eot', 'STG/**/fonts/*.svg',
+					'WBC/**/*.woff', 'WBC/**/*.woff2', 'WBC/**/*.ttf', 'WBC/**/*.eot', 'WBC/**/fonts/*.svg',
+					'_CORE/**/*.woff', '_CORE/**/*.woff2', '_CORE/**/*.ttf', '_CORE/**/*.eot', '_CORE/**/fonts/*.svg',
+				],
+				tasks: [
+					'copy:BOMFonts',
+					'copy:BSAFonts',
+					'copy:STGFonts',
+					'copy:WBCFonts',
+					'clean:post',
+				],
+			},
+
+			img: { //watch all image files
+				files: [
+					'BOM/**/*.jpg', 'BOM/**/*.jpeg', 'BOM/**/*.png', 'BOM/**/*.gif',
+					'BSA/**/*.jpg', 'BSA/**/*.jpeg', 'BSA/**/*.png', 'BSA/**/*.gif',
+					'STG/**/*.jpg', 'STG/**/*.jpeg', 'STG/**/*.png', 'STG/**/*.gif',
+					'WBC/**/*.jpg', 'WBC/**/*.jpeg', 'WBC/**/*.png', 'WBC/**/*.gif',
+					'_CORE/**/*.jpg', '_CORE/**/*.jpeg', '_CORE/**/*.png', '_CORE/**/*.gif',
+				],
+				tasks: [
+					'imagemin',
+					'clean:post',
+				],
+			},
+
 		},
 
 	});
 
 
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------
-	//TASKS
+	// TASKS
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.registerTask('build', [
 		'clean:pre',
