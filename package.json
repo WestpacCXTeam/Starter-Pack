@@ -20,6 +20,7 @@
     "grunt-mkdir": "^0.1.2",
     "grunt-svgmin": "^1.0.0",
     "grunt-text-replace": "^0.3.12",
+    "grunt-wakeup": "0.0.4",
     "grunt-zip": "^0.16.2",
     "jasmine-core": "^2.1.2",
     "karma-chrome-launcher": "^0.1.5",
