@@ -21,6 +21,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-curl');
 	grunt.loadNpmTasks('grunt-zip');
+	grunt.loadNpmTasks('grunt-wakeup');
 
 
 	grunt.initConfig({
@@ -1017,6 +1018,15 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Wakeup ping
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		wakeup: {
+			wakeme: {
+			},
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// Watch for changes
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		watch: {
@@ -1046,6 +1056,7 @@ module.exports = function (grunt) {
 					'copy:WBCHTML',
 					'replace',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1066,6 +1077,7 @@ module.exports = function (grunt) {
 					'copy:WBCCSS',
 					'replace',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1087,6 +1099,7 @@ module.exports = function (grunt) {
 					'copy:WBCCSS',
 					'replace',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1100,6 +1113,7 @@ module.exports = function (grunt) {
 					'replace:BOM',
 					'concat:BOM',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1113,6 +1127,7 @@ module.exports = function (grunt) {
 					'replace:BSA',
 					'concat:BSA',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1126,6 +1141,7 @@ module.exports = function (grunt) {
 					'replace:STG',
 					'concat:STG',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1139,6 +1155,7 @@ module.exports = function (grunt) {
 					'replace:WBC',
 					'concat:WBC',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1155,6 +1172,7 @@ module.exports = function (grunt) {
 					'replace',
 					'concat',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1172,6 +1190,7 @@ module.exports = function (grunt) {
 					'copy:STGFonts',
 					'copy:WBCFonts',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1186,6 +1205,7 @@ module.exports = function (grunt) {
 				tasks: [
 					'imagemin',
 					'clean:post',
+					'wakeup',
 				],
 			},
 
@@ -1234,6 +1254,7 @@ module.exports = function (grunt) {
 		'replace',
 		'concat',
 		'clean:post',
+		'wakeup',
 	]);
 
 
@@ -1257,6 +1278,7 @@ module.exports = function (grunt) {
 		'concat:BOM',
 		'replace:BOM',
 		'clean:post',
+		'wakeup',
 	]);
 
 	grunt.registerTask('BSA', [
@@ -1278,6 +1300,7 @@ module.exports = function (grunt) {
 		'concat:BSA',
 		'replace:BSA',
 		'clean:post',
+		'wakeup',
 	]);
 
 	grunt.registerTask('STG', [
@@ -1299,6 +1322,7 @@ module.exports = function (grunt) {
 		'concat:STG',
 		'replace:STG',
 		'clean:post',
+		'wakeup',
 	]);
 
 	grunt.registerTask('WBC', [
@@ -1320,14 +1344,13 @@ module.exports = function (grunt) {
 		'concat:WBC',
 		'replace:WBC',
 		'clean:post',
+		'wakeup',
 	]);
 
 
-	grunt.registerTask('scaffold', ['mkdir']);  //create basic folder structure
+	grunt.registerTask('scaffold', ['mkdir', 'wakeup']);  //create basic folder structure
 
-	grunt.registerTask('get-theme', ['curl', 'unzip', 'clean:post']);  //get the latest theme for all brands
-
-	grunt.registerTask('default', ['connect', 'build', 'watch']);  //work
+	grunt.registerTask('get-theme', ['curl', 'unzip', 'clean:post', 'wakeup']);  //get the latest theme for all brands
 
 	grunt.registerTask('buildBOM', ['connect', 'BOM']);  //build only BOM
 	grunt.registerTask('buildBSA', ['connect', 'BSA']);  //build only BSA
@@ -1335,4 +1358,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('buildWBC', ['connect', 'WBC']);  //build only WBC
 
 	grunt.registerTask('bump', ['bumpup', 'build']);  //bump up to new version
+
+
+	grunt.registerTask('default', ['connect', 'build', 'watch']);  //work
 };
