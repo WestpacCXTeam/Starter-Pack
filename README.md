@@ -3,15 +3,39 @@ SPA Scaffolding
 
 > A grunt workflow to get you started with your SPA.
 
-if you're interested looking for team related documentation and best practice please visit our [wiki] (https://github.com/WestpacCXTeam/CX-GIT/wiki)
+This is a starter package to help you work in a multi-brand, best-practice kinda way.
+You can:
+
+- [x] [Create the folder structure](#create-folders)
+- [x] [Download the latest theme and install it](#download-theme)
+- [x] [Run you project against a watch](#run)
+- [x] [Version it](#cache-busting-and-new-versions)
+
+
+_If you're interested looking for team related documentation and best practice please visit our [wiki](https://github.com/WestpacCXTeam/CX-GIT/wiki)_
 
 # Setup
 
-After cloning install all dependencies:
+### MAC
+- Download [NodeJS](http://nodejs.org/) and install on your computer.
+- Run `sudo npm install npm -g` to update to the newest NPM version.
+- Run `sudo npm install -g grunt-cli` to install grunt globally
+- [Download this repo](https://github.com/WestpacCXTeam/SPA-scaffolding/archive/master.zip) and unpack it into a folder of your choice.
+
+### PC
+- Download [NodeJS](http://nodejs.org/) and install on your computer.
+- Run `sudo npm install npm -g` to update to the newest NPM version.
+- Run `sudo npm install -g grunt-cli` to install grunt globally
+- [Download this repo](https://github.com/WestpacCXTeam/SPA-scaffolding/archive/master.zip) and unpack it into a folder of your choice.
+
+After that, `cd` into the folder and install all dependencies:
 
 ```shell
+cd /Users/MYNAME/Sites/MYPROJECT
 npm install
 ```
+
+# Create folders
 
 Then create folder structure with:
 
@@ -29,6 +53,8 @@ To personalise your project make sure you enter the projects name in the `packag
   "devDependencies": {
   etc...
 ```
+
+# Download theme
 
 Get the current theme for all brands with:
 
