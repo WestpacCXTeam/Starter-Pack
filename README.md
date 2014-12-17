@@ -17,23 +17,20 @@ _If you're interested looking for team related documentation and best practice p
 # Setup
 
 ### MAC
-- Download [NodeJS](http://nodejs.org/) and install on your computer.
-- Run `sudo npm install npm -g` to update to the newest NPM version.
-- Run `sudo npm install -g grunt-cli` to install grunt globally
-- [Download this repo](https://github.com/WestpacCXTeam/SPA-scaffolding/archive/master.zip) and unpack it into a folder of your choice.
+2. Download [NodeJS](http://nodejs.org/) and install on your computer.
+2. Run `sudo npm install npm -g` to update to the newest NPM version.
+2. Run `sudo npm install -g grunt-cli` to install grunt globally (You might need to install the xCode command line tools)
 
 ### PC
-- Download [NodeJS](http://nodejs.org/) and install on your computer.
-- Run `sudo npm install npm -g` to update to the newest NPM version.
-- Run `sudo npm install -g grunt-cli` to install grunt globally
-- [Download this repo](https://github.com/WestpacCXTeam/SPA-scaffolding/archive/master.zip) and unpack it into a folder of your choice.
+2. Download [NodeJS](http://nodejs.org/) and install on your computer.
+2. Run `npm install npm -g` to update to the newest NPM version.
+2. Run `npm install -g grunt-cli` to install grunt globally
 
-After that, `cd` into the folder and install all dependencies:
+After that, download, unzip, `cd` into the folder and install all dependencies:
 
-```shell
-cd /Users/MYNAME/Sites/MYPROJECT
-npm install
-```
+4. [Download this repo](https://github.com/WestpacCXTeam/SPA-scaffolding/archive/master.zip) and unpack it into a folder of your choice.
+4. CD into the folder `cd c:/Users/MYNAME/Sites/MYPROJECT`
+4. Run `npm install` to install all dependencies.
 
 # Create folders
 
