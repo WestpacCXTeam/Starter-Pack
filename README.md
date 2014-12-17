@@ -145,39 +145,38 @@ The below folder structure will explain what should go where:
 │   └── WBC
 ├── STG                                  // BRAND FOLDER FOR STG (1)
 ├── WBC                                  // BRAND FOLDER FOR WBC (1)
-├── _CORE                                // THE _CORE FOLDER (11)
-│   ├── _HTML                            // The _HTML core folder (12)
-│   │   ├── _templates
-│   │   ├── _views
-│   │   └── index.html
-│   ├── _HTMLincludes                    // The _HTMLincludes core folder (13)
-│   │   ├── defaults
-│   │   │   ├── svgs.html
-│   │   │   ├── theme-foot.html
-│   │   │   └── theme-head.html
-│   │   ├── modernizr.html
-│   │   └── windows.html
-│   ├── _js                              // The _js core folder (14)
-│   │   ├── common
-│   │   ├── controllers
-│   │   ├── directives
-│   │   ├── factories
-│   │   ├── filters
-│   │   ├── 010.libs
-│   │   ├── services
-│   │   └── tests                        // The tests core folder (15)
-│   ├── _Mock                            // The _Mock core folder (16)
-│   └── _less                            // The _less core folder (17)
-│       ├── base
-│       │   ├── fonts.less
-│       │   ├── mixins.less
-│       │   ├── print.less
-│       │   ├── scaffolding.less
-│       │   └── type.less
-│       ├── modules
-│       │   └── module.less
-│       └── site.less                    // The site.less file (18)
-
+└── _CORE                                // THE _CORE FOLDER (11)
+    ├── _HTML                            // The _HTML core folder (12)
+    │   ├── _templates
+    │   ├── _views
+    │   └── index.html
+    ├── _HTMLincludes                    // The _HTMLincludes core folder (13)
+    │   ├── defaults
+    │   │   ├── svgs.html
+    │   │   ├── theme-foot.html
+    │   │   └── theme-head.html
+    │   ├── modernizr.html
+    │   └── windows.html
+    ├── _js                              // The _js core folder (14)
+    │   ├── common
+    │   ├── controllers
+    │   ├── directives
+    │   ├── factories
+    │   ├── filters
+    │   ├── 010.libs
+    │   ├── services
+    │   └── tests                        // The tests core folder (15)
+    ├── _Mock                            // The _Mock core folder (16)
+    └── _less                            // The _less core folder (17)
+        ├── base
+        │   ├── fonts.less
+        │   ├── mixins.less
+        │   ├── print.less
+        │   ├── scaffolding.less
+        │   └── type.less
+        ├── modules
+        │   └── module.less
+        └── site.less                    // The site.less file (18)
 ```
 
 
