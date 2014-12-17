@@ -12,7 +12,7 @@ You can:
 - [x] [Version it](#cache-busting-and-new-versions)
 
 
-_If you're interested looking for team related documentation and best practice please visit our [wiki](https://github.com/WestpacCXTeam/CX-GIT/wiki)_
+_If you're interested looking for team related documentation and best practice please visit our [wiki](https://github.com/WestpacCXTeam/CX-GIT/wiki)._
 
 # Setup
 
@@ -90,6 +90,20 @@ If you want to reference the new version string in your HTML, JS or CSS just use
 It will be replaced by grunt to the current version.
 
 
+# Branches
+
+We are maintaining two branches here:
+
+* `angular` -> The `angular` branch gives you this starting point with examples for an angular app.
+* `clean` -> The `clean` branch has only the very essentials in it.
+* `less` -> The `less` branch has a clean starting point with just a tiny less structure to get you started.
+
+Other branches are:
+
+* `master` -> This branch only shows the default being developed right now.
+* `dev` -> In `dev` we work on new features so please don't download from here.
+
+
 # Folder structure
 
 The below folder structure will explain what should go where:
@@ -136,14 +150,14 @@ The below folder structure will explain what should go where:
 │   │   ├── _templates
 │   │   ├── _views
 │   │   └── index.html
-│   ├── _HTMLincludes                      // The _HTMLincludes core folder (13)
+│   ├── _HTMLincludes                    // The _HTMLincludes core folder (13)
 │   │   ├── defaults
 │   │   │   ├── svgs.html
 │   │   │   ├── theme-foot.html
 │   │   │   └── theme-head.html
 │   │   ├── modernizr.html
 │   │   └── windows.html
-│   ├── _js                               // The _js core folder (14)
+│   ├── _js                              // The _js core folder (14)
 │   │   ├── common
 │   │   ├── controllers
 │   │   ├── directives
@@ -167,7 +181,7 @@ The below folder structure will explain what should go where:
 ```
 
 
-### BRAND FOLDER FOR BOM (1)
+### BRAND FOLDER FOR BOM/BSA/STG/WBC (1)
 
 The brand folders represent the difference of the codebase between each other.
 Files changed here will feed into its counterpart in `PROD`.
@@ -186,13 +200,13 @@ _Note: you can also organize your `_HTMLincludes` folder in subfolders_
 
 ### The _css brand folder (3)
 
-Files in here will automatically copied to its counterpart folder in `PROD`.
+Files in here will automatically copy to its counterpart folder in `PROD`.
 This is the place to add the GUI and some of its files e.g.: `theme.min.css` or `png/`.
 
 
 ### The _fonts brand folder (4)
 
-Files in here will automatically copied to its counterpart folder in `PROD`.
+Files in here will automatically copy to its counterpart folder in `PROD`.
 There are some GUI font files that will fit in here.
 
 
@@ -203,13 +217,14 @@ Images in here will be minified and copied to its counterpart folder in `PROD`.
 
 ### The _js brand folder (6)
 
-Files in here will automatically copied to its counterpart folder in `PROD`.
+Files in here will automatically copy to its counterpart folder in `PROD`.
 There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
-We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version of our SPA. We have chosen to use
-[ui-router] (https://github.com/angular-ui/ui-router)
+We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version
+of our SPA. We have chosen to use [ui-router] (https://github.com/angular-ui/ui-router)
 
-The unit testing framework we prefer is [Jasmine](http://jasmine.github.io/) < more to come >
+The unit testing framework we suggest is [Jasmine](http://jasmine.github.io/)
+
 
 ### The _less brand folder (7)
 
@@ -245,14 +260,16 @@ Include these into your site by pasting the follwoing snippet into your header:
 
 _Note: we included an `HTMLinclude` snippet for you that you only need to uncomment in the index file_
 
+
 -------------------------------------------------------------------------------------------------------------------------------------
 
 
 ### The PROD folder (10)
 
 The `PROD` folder is where all files are compiled to.
-Each brand has its own folder and should be runnable with the build in server.
+Each brand has its own folder and should be runnable with the build in server on [http://localhost:9000/](http://localhost:9000/).
 *Do not change anything in here as this folder will be deleted and recreated on each iteration*
+
 
 -------------------------------------------------------------------------------------------------------------------------------------
 
@@ -268,6 +285,7 @@ This folder should contain all of your HTML files. Organise them into subfolders
 
 _Remember: you can use your [_HTMLincludes](#the-_htmlincludes-folder-2) to brand these files._
 
+
 ### The _HTMLincludes core folder (13)
 
 The _HTMLincludes folder is copied into each branch folder, then the brand folders override all the files for each brand.
@@ -277,12 +295,15 @@ The _HTMLincludes folder is copied into each branch folder, then the brand folde
 
 There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
-We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version of our SPA. We have chosen to use
-[ui-router](https://github.com/angular-ui/ui-router)
+We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version
+of our SPA. We have chosen to use [ui-router](https://github.com/angular-ui/ui-router)
+
 
 ### The tests core folder (15)
 
-The tests folder is a place not only to put the tests themselves, but also reference the libraries as well. If you want to use any of the angular goodness in your project then copy the dependencies into the tests/libs folder.
+The tests folder is a place not only to put the tests themselves, but also reference the libraries as well.
+If you want to use any of the angular goodness in your project then copy the dependencies into the tests/libs folder.
+
 
 ### The _Mock core folder (16)
 
