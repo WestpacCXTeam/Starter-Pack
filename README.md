@@ -12,8 +12,8 @@ You can:
 - [x] [Version it](#cache-busting-and-new-versions)
 
 
-_To read more about the theme and how to use it, visit: [GEL](http://info.westpac.com.au/cx/GEL/)_
-_For even more on about how we work: [Wiki](https://github.com/WestpacCXTeam/Starter-Pack/wiki)_
+#### To read more about the theme and how to use it, visit: [GEL](http://info.westpac.com.au/cx/GEL/)
+#### For even more on about how we work, read the [Wiki](https://github.com/WestpacCXTeam/Starter-Pack/wiki)
 
 
 # Setup
