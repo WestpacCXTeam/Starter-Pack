@@ -1,7 +1,7 @@
-SPA Scaffolding
-===============
+Westpac Starter-Pack
+====================
 
-> A grunt workflow to get you started with your SPA.
+> A grunt workflow to get you started with your GUI multi-brand project.
 
 This is a starter package to help you work in a multi-brand, best-practice kinda way.
 You can:
@@ -12,7 +12,9 @@ You can:
 - [x] [Version it](#cache-busting-and-new-versions)
 
 
-_If you're interested looking for team related documentation and best practice please visit our [wiki](https://github.com/WestpacCXTeam/CX-GIT/wiki)._
+_To read more about the theme and how to use it, visit: [GEL](http://info.westpac.com.au/cx/GEL/)_
+_For even more on about how we work: [Wiki](https://github.com/WestpacCXTeam/Starter-Pack/wiki)_
+
 
 # Setup
 
@@ -28,7 +30,7 @@ _If you're interested looking for team related documentation and best practice p
 
 After that, download, unzip, `cd` into the folder and install all dependencies:
 
-4. [Download this repo](https://github.com/WestpacCXTeam/SPA-scaffolding/archive/master.zip) and unpack it into a folder of your choice.
+4. [Download this repo](https://github.com/WestpacCXTeam/Starter-Pack/archive/master.zip) and unpack it into a folder of your choice.
 4. CD into the folder `cd c:/Users/MYNAME/Sites/MYPROJECT`
 4. Run `npm install` to install all dependencies.
 
@@ -94,14 +96,14 @@ It will be replaced by grunt to the current version.
 
 We are maintaining two branches here:
 
-* `angular` -> The `angular` branch gives you this starting point with examples for an angular app.
-* `clean` -> The `clean` branch has only the very essentials in it.
-* `less` -> The `less` branch has a clean starting point with just a tiny less structure to get you started.
+* `[angular](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular)` -> The `angular` branch gives you this starting point with examples for an angular app.
+* `[clean](https://github.com/WestpacCXTeam/Starter-Pack/tree/clean)` -> The `clean` branch has only the very essentials in it.
+* `[less](https://github.com/WestpacCXTeam/Starter-Pack/tree/less)` -> The `less` branch has a clean starting point with just a tiny less structure to get you started.
 
 Other branches are:
 
-* `master` -> This branch only shows the default being developed right now.
-* `dev` -> In `dev` we work on new features so please don't download from here.
+* `[master](https://github.com/WestpacCXTeam/Starter-Pack/tree/master)` -> This branch only shows the default being developed right now.
+* `[dev](https://github.com/WestpacCXTeam/Starter-Pack/tree/dev)` -> In `dev` we work on new features so please don't download from here.
 
 
 # Folder structure
@@ -219,8 +221,9 @@ Images in here will be minified and copied to its counterpart folder in `PROD`.
 Files in here will automatically copy to its counterpart folder in `PROD`.
 There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
-We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version
-of our SPA. We have chosen to use [ui-router] (https://github.com/angular-ui/ui-router)
+We have taken the time to include some default libraries to get you started in the `[angular branch](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular)`.
+It's worth noting that we are not using Angulars' default routing in this version
+of our SPA. We have chosen to use [ui-router](https://github.com/angular-ui/ui-router).
 
 The unit testing framework we suggest is [Jasmine](http://jasmine.github.io/)
 
@@ -294,7 +297,8 @@ The _HTMLincludes folder is copied into each branch folder, then the brand folde
 
 There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
-We have taken the time to include some default libraries to get you started. It's worth noting that we are not using Angulars' default routing in this version
+We have taken the time to include some default libraries to get you started in the `[angular branch](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular)`.
+It's worth noting that we are not using Angulars' default routing in this version
 of our SPA. We have chosen to use [ui-router](https://github.com/angular-ui/ui-router)
 
 
