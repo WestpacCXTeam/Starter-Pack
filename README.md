@@ -3,7 +3,7 @@ Westpac Starter-Pack
 
 > A grunt workflow to get you started with your GUI multi-brand project.
 
-This is a starter package to help you work in a multi-brand, best-practice kinda way.
+This is a starter package to help you work in a multi-brand, best-practice kinda way.  
 You can:
 
 - [x] [Create the folder structure](#create-folders)
@@ -14,6 +14,8 @@ You can:
 
 #### To read more about the theme and how to use it, visit: [GEL](http://info.westpac.com.au/cx/GEL/)
 #### For even more on about how we work, read the [Wiki](https://github.com/WestpacCXTeam/Starter-Pack/wiki)
+
+If you have any suggestions, questions or bugs please [launch an issue](https://github.com/WestpacCXTeam/Starter-Pack/issues).
 
 
 # Setup
@@ -42,7 +44,7 @@ The first time after you installed all packages run below command to setup your 
 grunt setup
 ```
 
-To personalise your project make sure you enter the projects name in the `package.json` under the key: `"name"`.
+The setup will make sure your project name is set in the `package.json` under the key: `"name"`.
 
 ```JSON
 {
@@ -123,6 +125,9 @@ The below folder structure will explain what should go where:
 ```
 .
 ├── BOM                                  // BRAND FOLDER FOR BOM (1)
+├── BSA                                  // BRAND FOLDER FOR BSA (1)
+├── STG                                  // BRAND FOLDER FOR STG (1)
+├── WBC                                  // BRAND FOLDER FOR WBC (1)
 │   │
 │   ├── _css                             // The _css brand folder (2)
 │   │   ├── png
@@ -159,13 +164,8 @@ The below folder structure will explain what should go where:
 │       └── symbol.svg
 │
 │
-├── BSA                                  // BRAND FOLDER FOR BSA (1)
-├── STG                                  // BRAND FOLDER FOR STG (1)
-├── WBC                                  // BRAND FOLDER FOR WBC (1)
 │
-│
-│
-├── PROD                                 // The PROD folder (10)
+├── PROD                                 // THE PROD FOLDER (10)
 │   ├── BOM
 │   ├── BSA
 │   ├── STG
@@ -290,7 +290,7 @@ SVG files in here will be minified and run through a grunticon task. The resulti
 
 Include these into your site by pasting the follwoing snippet into your header:
 
-```
+```HTML
 <script>window.grunticon=function(e){if(e&&3===e.length){var t=window,n=!(!t.document.createElementNS||!t.document.createElementNS("http://www.w3.org/2000/svg","svg").createSVGRect||!document.implementation.hasFeature("http://www.w3.org/TR/SVG11/feature#Image","1.1")||window.opera&&-1===navigator.userAgent.indexOf("Chrome")),o=function(o){var r=t.document.createElement("link"),a=t.document.getElementsByTagName("script")[0];r.rel="stylesheet",r.href=e[o&&n?0:o?1:2],a.parentNode.insertBefore(r,a)},r=new t.Image;r.onerror=function(){o(!1)},r.onload=function(){o(1===r.width&&1===r.height)},r.src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="}};grunticon( [ "css/--currentVersion--.data.svg.css", "css/--currentVersion--.data.png.css", "css/--currentVersion--.fallback.css" ] );</script>
 <noscript><link href="css/--currentVersion--.fallback.css" rel="stylesheet"></noscript>
 ```
@@ -301,7 +301,7 @@ _Note: we included an `HTMLinclude` snippet for you that you only need to uncomm
 -------------------------------------------------------------------------------------------------------------------------------------
 
 
-### The PROD folder (10)
+### THE PROD FOLDER (10)
 
 The `PROD` folder is where all files are compiled to.
 Each brand has its own folder and should be runnable with the build in server on [http://localhost:9000/](http://localhost:9000/).
