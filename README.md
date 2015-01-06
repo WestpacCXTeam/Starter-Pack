@@ -36,13 +36,13 @@ After that, download, unzip, `cd` into the folder and install all dependencies:
 
 # Create folders
 
-Then create folder structure with:
+The first time after you installed all packages run below command to setup your folders and the name of your project.
 
 ```shell
-grunt scaffold
+grunt setup
 ```
 
-To personalise your project make sure you enter the projects name in the `package.json` with the key: `"name"`.
+To personalise your project make sure you enter the projects name in the `package.json` under the key: `"name"`.
 
 ```JSON
 {
@@ -77,10 +77,10 @@ Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder
 
 # Cache busting and new versions
 
-Run below code to bump up to the next version and cache bust your application:
+Run the below code to bump up to the next version and cache bust your application:
 
 ```
-grunt bumpup
+grunt bump
 ```
 
 If you want to reference the new version string in your HTML, JS or CSS just use this:
@@ -89,21 +89,31 @@ If you want to reference the new version string in your HTML, JS or CSS just use
 --currentVersion--
 ```
 
-It will be replaced by grunt to the current version.
+It will be replaced by grunt with the current version string. Both CSS and Javascript files that are compiled for you will be named according to your
+name and version of your project.
+
+To include your Javascript, CSS files use:
+```HTML
+<script type="text/javascript" src="js/--currentVersion--.min.js"></script>
+```
+and
+```HTML
+<link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
+```
 
 
 # Branches
 
 We are maintaining two branches here:
 
-* `[angular](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular)` -> The `angular` branch gives you this starting point with examples for an angular app.
-* `[clean](https://github.com/WestpacCXTeam/Starter-Pack/tree/clean)` -> The `clean` branch has only the very essentials in it.
-* `[less](https://github.com/WestpacCXTeam/Starter-Pack/tree/less)` -> The `less` branch has a clean starting point with just a tiny less structure to get you started.
+* [angular](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular) -> The `angular` branch gives you this starting point with examples for an angular app.
+* [clean](https://github.com/WestpacCXTeam/Starter-Pack/tree/clean) -> The `clean` branch has only the very essentials in it.
+* [less](https://github.com/WestpacCXTeam/Starter-Pack/tree/less) -> The `less` branch has a clean starting point with just a tiny less structure to get you started.
 
 Other branches are:
 
-* `[master](https://github.com/WestpacCXTeam/Starter-Pack/tree/master)` -> This branch only shows the default being developed right now.
-* `[dev](https://github.com/WestpacCXTeam/Starter-Pack/tree/dev)` -> In `dev` we work on new features so please don't download from here.
+* [master](https://github.com/WestpacCXTeam/Starter-Pack/tree/master) -> This branch only shows the default being developed right now.
+* [dev](https://github.com/WestpacCXTeam/Starter-Pack/tree/dev) -> In `dev` we work on new features so please don't download from here.
 
 
 # Folder structure
@@ -113,45 +123,65 @@ The below folder structure will explain what should go where:
 ```
 .
 ├── BOM                                  // BRAND FOLDER FOR BOM (1)
-│   ├── _HTML
-│   │   └── includes
-│   ├── _HTMLincludes                    // The _HTMLincludes folder (2)
+│   │
+│   ├── _css                             // The _css brand folder (2)
+│   │   ├── png
+│   │   └── theme.min.css
+│   │
+│   ├── _fonts                           // The _fonts brand folder (3)
+│   │   ├── font.eot
+│   │   ├── font.svg
+│   │   └── font.ttf
+│   │
+│   ├── _HTMLincludes                    // The _HTMLincludes folder (4)
 │   │   ├── defaults
 │   │   │   ├── svgs.html
 │   │   │   ├── theme-foot.html
 │   │   │   └── theme-head.html
 │   │   ├── modernizr.html
 │   │   └── windows.html
-│   ├── _css                             // The _css brand folder (3)
-│   │   ├── png
-│   │   └── theme.min.css
-│   ├── _fonts                           // The _fonts brand folder (4)
-│   │   ├── font.eot
-│   │   ├── font.svg
-│   │   └── font.ttf
+│   │
 │   ├── _img                             // The _img brand folder (5)
+│   │   ├── image.jpg
+│   │   └── banner.png
+│   │
 │   ├── _js                              // The _js brand folder (6)
 │   │   ├── libs
 │   │   ├── polyfills
 │   │   │   ├── modernizr.js
 │   │   │   └── polyfills.js
 │   │   └── theme.min.js
+│   │
 │   ├── _less                            // The _less brand folder (7)
 │   │   └── _settings.less               // The _settings.less file (8)
+│   │
 │   └── _svg                             // The _svg brand folder (9)
+│       └── symbol.svg
+│
+│
 ├── BSA                                  // BRAND FOLDER FOR BSA (1)
+├── STG                                  // BRAND FOLDER FOR STG (1)
+├── WBC                                  // BRAND FOLDER FOR WBC (1)
+│
+│
+│
 ├── PROD                                 // The PROD folder (10)
 │   ├── BOM
 │   ├── BSA
 │   ├── STG
 │   └── WBC
-├── STG                                  // BRAND FOLDER FOR STG (1)
-├── WBC                                  // BRAND FOLDER FOR WBC (1)
+│
+│
+│
 └── _CORE                                // THE _CORE FOLDER (11)
+    │
     ├── _HTML                            // The _HTML core folder (12)
-    │   ├── _templates
-    │   ├── _views
+    │   ├── templates
+    │   │   └── template1.html
+    │   ├── views
+    │   │   └── state1.html
     │   └── index.html
+    │
     ├── _HTMLincludes                    // The _HTMLincludes core folder (13)
     │   ├── defaults
     │   │   ├── svgs.html
@@ -159,16 +189,19 @@ The below folder structure will explain what should go where:
     │   │   └── theme-head.html
     │   ├── modernizr.html
     │   └── windows.html
+    │
     ├── _js                              // The _js core folder (14)
-    │   ├── common
-    │   ├── controllers
-    │   ├── directives
-    │   ├── factories
-    │   ├── filters
     │   ├── 010.libs
-    │   ├── services
-    │   └── tests                        // The tests core folder (15)
+    │   ├── 020.directives
+    │   ├── 030.services
+    │   ├── 040.filters
+    │   ├── 050.factories
+    │   ├── 060.controllers
+    │   ├── 070.common
+    │   └── _tests                       // The tests core folder (15)
+    │
     ├── _Mock                            // The _Mock core folder (16)
+    │
     └── _less                            // The _less core folder (17)
         ├── base
         │   ├── fonts.less
@@ -176,8 +209,10 @@ The below folder structure will explain what should go where:
         │   ├── print.less
         │   ├── scaffolding.less
         │   └── type.less
+        │
         ├── modules
         │   └── module.less
+        │
         └── site.less                    // The site.less file (18)
 ```
 
@@ -188,7 +223,19 @@ The brand folders represent the difference of the codebase between each other.
 Files changed here will feed into its counterpart in `PROD`.
 
 
-### The _HTMLincludes folder (2)
+### The _css brand folder (2)
+
+Files in here will automatically copy to its counterpart folder in `PROD`.
+This is the place to add the GUI and some of its files e.g.: `theme.min.css` or `png/`.
+
+
+### The _fonts brand folder (3)
+
+Files in here will automatically copy to its counterpart folder in `PROD`.
+There are some GUI font files that will fit in here.
+
+
+### The _HTMLincludes folder (4)
 
 You can merge two HTML files into on with a simple code snippet like:
 
@@ -197,18 +244,6 @@ include "modernizr.html"
 ```
 
 _Note: you can also organize your `_HTMLincludes` folder in subfolders_
-
-
-### The _css brand folder (3)
-
-Files in here will automatically copy to its counterpart folder in `PROD`.
-This is the place to add the GUI and some of its files e.g.: `theme.min.css` or `png/`.
-
-
-### The _fonts brand folder (4)
-
-Files in here will automatically copy to its counterpart folder in `PROD`.
-There are some GUI font files that will fit in here.
 
 
 ### The _img brand folder (5)
@@ -221,7 +256,7 @@ Images in here will be minified and copied to its counterpart folder in `PROD`.
 Files in here will automatically copy to its counterpart folder in `PROD`.
 There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
-We have taken the time to include some default libraries to get you started in the `[angular branch](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular)`.
+We have taken the time to include some default libraries to get you started in the [angular branch](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular).
 It's worth noting that we are not using Angulars' default routing in this version
 of our SPA. We have chosen to use [ui-router](https://github.com/angular-ui/ui-router).
 
@@ -297,7 +332,7 @@ The _HTMLincludes folder is copied into each branch folder, then the brand folde
 
 There are some GUI js files that will fit in here including `theme.min.js` and `polyfills.js`, these are essential in having an application that works cross browser.
 
-We have taken the time to include some default libraries to get you started in the `[angular branch](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular)`.
+We have taken the time to include some default libraries to get you started in the [angular branch](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular).
 It's worth noting that we are not using Angulars' default routing in this version
 of our SPA. We have chosen to use [ui-router](https://github.com/angular-ui/ui-router)
 

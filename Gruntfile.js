@@ -1,5 +1,26 @@
 'use strict';
 
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Custom functions
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+function nextVersion( grunt ) { //get current version and increment by one
+	var pkg = grunt.file.readJSON('package.json');
+	var newVersion = pkg.version.split(".");
+	newVersion[ (newVersion.length - 1) ] = parseInt( newVersion[ (newVersion.length - 1) ] ) + 1;
+
+	return newVersion.join(".");
+}
+
+
+function handleize( string ) { //handleize a string
+	return string.replace(/\W+/g, '-').toLowerCase();
+}
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Grunt module
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
 module.exports = function (grunt) {
 
 	//Dependencies
@@ -14,7 +35,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-text-replace');
-	grunt.loadNpmTasks('grunt-bumpup');
+	grunt.loadNpmTasks('grunt-prompt');
 	grunt.loadNpmTasks('grunt-mkdir');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-autoprefixer');
@@ -27,7 +48,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
 
 		pkg: grunt.file.readJSON('package.json'), //get the version and name from the package.json file
-		currentVersion: '<%= pkg.name  %>.<%= pkg.version %>',
+		currentVersion: '<%= pkg.name %>.<%= pkg.version %>',
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -74,13 +95,13 @@ module.exports = function (grunt) {
 						'./_CORE/_HTMLincludes/',
 						'./_CORE/_HTML/templates',
 						'./_CORE/_HTML/views',
-						'./_CORE/_js/common',
-						'./_CORE/_js/controllers',
-						'./_CORE/_js/directives',
-						'./_CORE/_js/factories',
-						'./_CORE/_js/filters',
-						'./_CORE/_js/libs',
-						'./_CORE/_js/services',
+						'./_CORE/_js/010.libs',
+						'./_CORE/_js/020.directives',
+						'./_CORE/_js/030.services',
+						'./_CORE/_js/040.filters',
+						'./_CORE/_js/050.factories',
+						'./_CORE/_js/060.controllers',
+						'./_CORE/_js/070.common',
 						'./_CORE/_js/_tests',
 						'./_CORE/_less/base',
 						'./_CORE/_less/modules',
@@ -251,7 +272,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/BOM/css/<%= currentVersion  %>.min.css': './BOM/_less/_settings.less',
+					'./PROD/BOM/css/<%= currentVersion %>.min.css': './BOM/_less/_settings.less',
 				},
 			},
 
@@ -263,7 +284,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/BSA/css/<%= currentVersion  %>.min.css': './BSA/_less/_settings.less',
+					'./PROD/BSA/css/<%= currentVersion %>.min.css': './BSA/_less/_settings.less',
 				},
 			},
 
@@ -275,7 +296,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/STG/css/<%= currentVersion  %>.min.css': './STG/_less/_settings.less',
+					'./PROD/STG/css/<%= currentVersion %>.min.css': './STG/_less/_settings.less',
 				},
 			},
 
@@ -287,7 +308,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/WBC/css/<%= currentVersion  %>.min.css': './WBC/_less/_settings.less',
+					'./PROD/WBC/css/<%= currentVersion %>.min.css': './WBC/_less/_settings.less',
 				},
 			}
 		},
@@ -298,23 +319,23 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		autoprefixer: {
 			BOM: { //generate vendor prefixes for BOM
-				src: './PROD/BOM/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/BOM/css/<%= currentVersion  %>.min.css',
+				src: './PROD/BOM/css/<%= currentVersion %>.min.css',
+				dest: './PROD/BOM/css/<%= currentVersion %>.min.css',
 			},
 
 			BSA: { //generate vendor prefixes for BSA
-				src: './PROD/BSA/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/BSA/css/<%= currentVersion  %>.min.css',
+				src: './PROD/BSA/css/<%= currentVersion %>.min.css',
+				dest: './PROD/BSA/css/<%= currentVersion %>.min.css',
 			},
 
 			STG: { //generate vendor prefixes for STG
-				src: './PROD/STG/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/STG/css/<%= currentVersion  %>.min.css',
+				src: './PROD/STG/css/<%= currentVersion %>.min.css',
+				dest: './PROD/STG/css/<%= currentVersion %>.min.css',
 			},
 
 			WBC: { //generate vendor prefixes for WBC
-				src: './PROD/WBC/css/<%= currentVersion  %>.min.css',
-				dest: './PROD/WBC/css/<%= currentVersion  %>.min.css',
+				src: './PROD/WBC/css/<%= currentVersion %>.min.css',
+				dest: './PROD/WBC/css/<%= currentVersion %>.min.css',
 			},
 		},
 
@@ -377,28 +398,28 @@ module.exports = function (grunt) {
 				src: [
 					['./temp/BOM/js/**/*'],
 				],
-				dest: './PROD/BOM/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/BOM/js/<%= currentVersion %>.min.js',
 			},
 
 			BSA: { //concatenate files together for BSA
 				src: [
 					['./temp/BSA/js/**/*'],
 				],
-				dest: './PROD/BSA/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/BSA/js/<%= currentVersion %>.min.js',
 			},
 
 			STG: { //concatenate files together for STG
 				src: [
 					['./temp/STG/js/**/*'],
 				],
-				dest: './PROD/STG/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/STG/js/<%= currentVersion %>.min.js',
 			},
 
 			WBC: { //concatenate files together for WBC
 				src: [
 					['./temp/WBC/js/**/*'],
 				],
-				dest: './PROD/WBC/js/<%= currentVersion  %>.min.js',
+				dest: './PROD/WBC/js/<%= currentVersion %>.min.js',
 			},
 		},
 
@@ -457,9 +478,9 @@ module.exports = function (grunt) {
 				}],
 
 				options: {
-					datasvgcss: '<%= currentVersion  %>.data.svg.css',
-					datapngcss: '<%= currentVersion  %>.data.png.css',
-					urlpngcss: '<%= currentVersion  %>.fallback.css',
+					datasvgcss: '<%= currentVersion %>.data.svg.css',
+					datapngcss: '<%= currentVersion %>.data.png.css',
+					urlpngcss: '<%= currentVersion %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -480,9 +501,9 @@ module.exports = function (grunt) {
 				}],
 
 				options: {
-					datasvgcss: '<%= currentVersion  %>.data.svg.css',
-					datapngcss: '<%= currentVersion  %>.data.png.css',
-					urlpngcss: '<%= currentVersion  %>.fallback.css',
+					datasvgcss: '<%= currentVersion %>.data.svg.css',
+					datapngcss: '<%= currentVersion %>.data.png.css',
+					urlpngcss: '<%= currentVersion %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -503,9 +524,9 @@ module.exports = function (grunt) {
 				}],
 
 				options: {
-					datasvgcss: '<%= currentVersion  %>.data.svg.css',
-					datapngcss: '<%= currentVersion  %>.data.png.css',
-					urlpngcss: '<%= currentVersion  %>.fallback.css',
+					datasvgcss: '<%= currentVersion %>.data.svg.css',
+					datapngcss: '<%= currentVersion %>.data.png.css',
+					urlpngcss: '<%= currentVersion %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -526,9 +547,9 @@ module.exports = function (grunt) {
 				}],
 
 				options: {
-					datasvgcss: '<%= currentVersion  %>.data.svg.css',
-					datapngcss: '<%= currentVersion  %>.data.png.css',
-					urlpngcss: '<%= currentVersion  %>.fallback.css',
+					datasvgcss: '<%= currentVersion %>.data.svg.css',
+					datapngcss: '<%= currentVersion %>.data.png.css',
+					urlpngcss: '<%= currentVersion %>.fallback.css',
 					cssprefix: '.sitesymbol-',
 					pngfolder: 'sitepng/',
 					customselectors: {
@@ -852,10 +873,72 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// Bump version
+		// Prompt for name and versioning
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		bumpup: {
-			files: 'package.json',
+		prompt: {
+			name: { //ask for name
+				options: {
+					questions: [{
+						config: 'newName',
+						type: 'input',
+						message: 'Current name: ' + '<%= pkg.name %>'.yellow + "\n\n" +
+							'Please provide a new name for your project (leave empty to keep current)',
+					}],
+					then: function(results) { //writing package.json
+						if(results.newName !== "") {
+							var packageFile = grunt.file.readJSON('package.json');
+							packageFile.name = handleize( results.newName );
+							grunt.file.write('package.json', JSON.stringify( packageFile ) );
+
+							console.log("\n\nNew name has been set".green);
+						}
+						else {
+							console.log("\n\nNo name has been set".yellow);
+						}
+					},
+				},
+			},
+
+			bumpup: { //bump up version
+				options: {
+					questions: [{
+						config: 'newVersion',
+						type: 'list',
+						message: 'Current version: ' + '<%= pkg.version %>'.red,
+						choices: [
+							{
+								value: nextVersion(grunt),
+								name: 'Build: '.yellow + nextVersion(grunt).yellow + ' Next release within this version.'
+							},
+							{
+								value: 'custom',
+								name: 'Custom: ?.?.?'.yellow + ' Specify version...'
+							},
+							{
+								value: '##',
+								name: 'No versioning'.yellow
+							},
+						]
+					},
+					{
+						config: 'newVersion',
+						type: 'input',
+						message: 'What specific version would you like',
+						when: function(answers) {
+							return answers['newVersion'] === 'custom';
+						}
+					}],
+					then: function(results) { //writing package.json
+						if(results.newVersion !== "##") {
+							var packageFile = grunt.file.readJSON('package.json');
+							packageFile.version = results.newVersion;
+							grunt.file.write('package.json', JSON.stringify( packageFile ) );
+
+							console.log("\n\nNew version has been set".green);
+						}
+					},
+				},
+			},
 		},
 
 
@@ -1348,17 +1431,17 @@ module.exports = function (grunt) {
 	]);
 
 
-	grunt.registerTask('scaffold', ['mkdir', 'wakeup']);  //create basic folder structure
+	grunt.registerTask('setup', ['prompt:name', 'mkdir', 'wakeup']); //set name and create basic folder structure
 
-	grunt.registerTask('get-theme', ['curl', 'unzip', 'clean:post', 'wakeup']);  //get the latest theme for all brands
+	grunt.registerTask('get-theme', ['curl', 'unzip', 'clean:post', 'wakeup']); //get the latest theme for all brands
 
-	grunt.registerTask('buildBOM', ['connect', 'BOM']);  //build only BOM
-	grunt.registerTask('buildBSA', ['connect', 'BSA']);  //build only BSA
-	grunt.registerTask('buildSTG', ['connect', 'STG']);  //build only STG
-	grunt.registerTask('buildWBC', ['connect', 'WBC']);  //build only WBC
+	grunt.registerTask('buildBOM', ['connect', 'BOM']); //build only BOM
+	grunt.registerTask('buildBSA', ['connect', 'BSA']); //build only BSA
+	grunt.registerTask('buildSTG', ['connect', 'STG']); //build only STG
+	grunt.registerTask('buildWBC', ['connect', 'WBC']); //build only WBC
 
-	grunt.registerTask('bump', ['bumpup', 'build']);  //bump up to new version
+	grunt.registerTask('bump', ['prompt:bumpup', 'build']); //bump up to new version
 
 
-	grunt.registerTask('default', ['connect', 'build', 'watch']);  //work
+	grunt.registerTask('default', ['connect', 'build', 'watch']); //work
 };
