@@ -34,10 +34,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-grunticon');
 	grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
-<<<<<<< HEAD
-	grunt.loadNpmTasks('grunt-text-replace');
-=======
->>>>>>> dev
 	grunt.loadNpmTasks('grunt-prompt');
 	grunt.loadNpmTasks('grunt-mkdir');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
