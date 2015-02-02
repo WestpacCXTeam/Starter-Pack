@@ -48,11 +48,11 @@ The setup will make sure your project name is set in the `package.json` under th
 
 ```JSON
 {
-  "name": "YOUR-NAME-HERE",
-  "version": "0.0.1",
-  "private": true,
-  "devDependencies": {
-  etc...
+	"name": "YOUR-NAME-HERE",
+	"version": "0.0.1",
+	"private": true,
+	"devDependencies": {
+	etc...
 ```
 
 # Download theme
@@ -75,6 +75,9 @@ grunt
 ```
 
 Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # Cache busting and new versions
@@ -102,6 +105,9 @@ and
 ```HTML
 <link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
 ```
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # Branches
@@ -298,7 +304,7 @@ Include these into your site by pasting the follwoing snippet into your header:
 _Note: we included an `HTMLinclude` snippet for you that you only need to uncomment in the index file_
 
 
--------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ### THE PROD FOLDER (10)
@@ -308,7 +314,7 @@ Each brand has its own folder and should be runnable with the build in server on
 *Do not change anything in here as this folder will be deleted and recreated on each iteration*
 
 
--------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ### THE _CORE FOLDER (11)
@@ -358,3 +364,11 @@ Organise your less project here. We have provided a starting point for you in th
 The `site.less` file should be referenced by the brand `_settings.less` and only includes all modules from the filesystem.
 
 _Remember: Less files are cheap and so is documentation in less_
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Release History
+* 0.9.0 - Fixed bugs, added better watch, questionnaire
+* 0.0.1 - Alpha/beta test
