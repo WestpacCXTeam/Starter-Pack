@@ -974,7 +974,7 @@ module.exports = function (grunt) {
 			BOM: { //unzip Bom zip and sort in
 				router: function (filepath) {
 					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
 					var $path = filepath.replace($file, ''); //get path
 
 					var $newDirs = {
@@ -989,6 +989,9 @@ module.exports = function (grunt) {
 
 					if(newPath === '/less/colors.less') { //move colors.less
 						return '_less/colors.less';
+					}
+					else if(newPath === '/less/') {
+						return '_less/';
 					}
 					else {
 						return newPath;
@@ -1002,7 +1005,7 @@ module.exports = function (grunt) {
 			BSA: { //unzip BSA zip and sort in
 				router: function (filepath) {
 					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
 					var $path = filepath.replace($file, ''); //get path
 
 					var $newDirs = {
@@ -1017,6 +1020,9 @@ module.exports = function (grunt) {
 
 					if(newPath === '/less/colors.less') { //move colors.less
 						return '_less/colors.less';
+					}
+					else if(newPath === '/less/') {
+						return '_less/';
 					}
 					else {
 						return newPath;
@@ -1030,7 +1036,7 @@ module.exports = function (grunt) {
 			STG: { //unzip STG zip and sort in
 				router: function (filepath) {
 					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
 					var $path = filepath.replace($file, ''); //get path
 
 					var $newDirs = {
@@ -1045,6 +1051,9 @@ module.exports = function (grunt) {
 
 					if(newPath === '/less/colors.less') { //move colors.less
 						return '_less/colors.less';
+					}
+					else if(newPath === '/less/') {
+						return '_less/';
 					}
 					else {
 						return newPath;
@@ -1058,7 +1067,7 @@ module.exports = function (grunt) {
 			WBC: { //unzip WBC zip and sort in
 				router: function (filepath) {
 					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 )]; //get file name
+					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
 					var $path = filepath.replace($file, ''); //get path
 
 					var $newDirs = {
@@ -1073,6 +1082,9 @@ module.exports = function (grunt) {
 
 					if(newPath === '/less/colors.less') { //move colors.less
 						return '_less/colors.less';
+					}
+					else if(newPath === '/less/') {
+						return '_less/';
 					}
 					else {
 						return newPath;
