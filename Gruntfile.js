@@ -2,6 +2,12 @@
 
 
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+// External dependencies
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
+var figures = require('figures');
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Custom functions
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 function nextVersion( grunt ) { //get current version and increment by one
@@ -18,12 +24,19 @@ function handleize( string ) { //handleize a string
 }
 
 
+function colorize( boolen ) { //colorize a boolen value
+	return boolen ? figures.tick.green + '  true'.green : figures.cross.red + '  false'.red;
+}
+
+
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Grunt module
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 module.exports = function (grunt) {
 
-	//Dependencies
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------
+	// Dependencies
+	//------------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -1290,7 +1303,7 @@ module.exports = function (grunt) {
 		font: {
 			options: {
 				space: false,
-				colors: ['white', 'green'],
+				colors: ['white', 'magenta'],
 				maxLength: 13,
 			},
 
@@ -1506,7 +1519,35 @@ module.exports = function (grunt) {
 
 
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------
-	// TASKS
+	// CUSTOM TASKS
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------
+	grunt.registerTask('check', 'Check if setup has run yet', function() {
+		var _hasPackage = grunt.file.isFile('./package.json');
+		var _hasCore = grunt.file.isDir('./_CORE');
+		var _hasBOM = grunt.file.isDir('./BOM');
+		var _hasBSA = grunt.file.isDir('./BSA');
+		var _hasSTG = grunt.file.isDir('./STG');
+		var _hasWBC = grunt.file.isDir('./WBC');
+
+		if(! (_hasPackage === _hasCore === _hasBOM === _hasBSA === _hasSTG === _hasWBC) ) { //if any false
+
+			console.log("\n\n" + 'The installation is incomplete.'.red.bold + "\n" +
+				'Please run '.red + 'grunt setup'.yellow + ' to potential fix the issues files.'.red + "\n\n" +
+				'Is the package.json file present?: ' + colorize(_hasPackage) + "\n" +
+				'Is the _CORE folder present?:      ' + colorize(_hasCore) + "\n" +
+				'Is the BOM folder present?:        ' + colorize(_hasBOM) + "\n" +
+				'Is the BSA folder present?:        ' + colorize(_hasBSA) + "\n" +
+				'Is the STG folder present?:        ' + colorize(_hasSTG) + "\n" +
+				'Is the WBC folder present?:        ' + colorize(_hasWBC) + "\n"
+			);
+
+			grunt.task.clearQueue(); //clear queue
+		}
+	});
+
+
+	//----------------------------------------------------------------------------------------------------------------------------------------------------------
+	// DEFAULT TASKS
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------
 	grunt.registerTask('build', [
 		'clean:pre',
@@ -1641,13 +1682,13 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('setup', ['font:setup', 'prompt:setup', 'wakeup']); //setup your project by running this task first
 
-	grunt.registerTask('buildBOM', ['font:logo', 'connect', 'BOM']); //build only BOM
-	grunt.registerTask('buildBSA', ['font:logo', 'connect', 'BSA']); //build only BSA
-	grunt.registerTask('buildSTG', ['font:logo', 'connect', 'STG']); //build only STG
-	grunt.registerTask('buildWBC', ['font:logo', 'connect', 'WBC']); //build only WBC
+	grunt.registerTask('buildBOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM']); //build only BOM
+	grunt.registerTask('buildBSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA']); //build only BSA
+	grunt.registerTask('buildSTG', ['font:logo', 'check', 'font:logo', 'connect', 'STG']); //build only STG
+	grunt.registerTask('buildWBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC']); //build only WBC
 
-	grunt.registerTask('bump', ['prompt:bumpup', 'build']); //bump up to new version
+	grunt.registerTask('bump', ['font:logo', 'check', 'prompt:bumpup', 'build']); //bump up to new version
 
 
-	grunt.registerTask('default', ['font:logo', 'connect', 'build', 'watch']); //work
+	grunt.registerTask('default', ['font:logo', 'check', 'connect', 'build', 'watch']); //work
 };
