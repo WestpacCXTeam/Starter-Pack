@@ -36,39 +36,31 @@ After that, download, unzip, `cd` into the folder and install all dependencies:
 4. CD into the folder `cd c:/Users/MYNAME/Sites/MYPROJECT`
 4. Run `npm install` to install all dependencies.
 
-# Create folders
+# Start with templates
 
-The first time after you installed all packages run below command to setup your folders and the name of your project.
+The first time after you installed all packages run below command to setup your folders, the name of your project, the GUI files and all the other goodies
+that come with the Starter-Pack.
 
 ```shell
 grunt setup
 ```
 
-The setup will make sure your project name is set in the `package.json` under the key: `"name"`.
+The setup will save your project name and version in the `package.json`.
 
 ```JSON
 {
 	"name": "YOUR-NAME-HERE",
-	"version": "0.0.1",
+	"version": "YOUR-VERSION-HERE",
 	"private": true,
 	"devDependencies": {
 	etc...
 ```
 
-# Download theme
-
-Get the current theme for all brands with:
-
-```
-grunt get-theme
-```
-
-_Note: we have included two `HTMLincludes` snippets for header and footer code to make the inclusion of the theme easy_
-
+And depending on what kind of template you chose it will provide some js, less and HTML files to get you running asap.
 
 # Run
 
-After adding your files and saving them use below command to create a server and add a watch:
+Now runt the default grunt task to watch your files for changes:
 
 ```
 grunt
@@ -206,7 +198,7 @@ The below folder structure will explain what should go where:
     │   ├── 070.common
     │   └── _tests                       // The tests core folder (15)
     │
-    ├── _Mock                            // The _Mock core folder (16)
+    ├── _mock                            // The _mock core folder (16)
     │
     └── _less                            // The _less core folder (17)
         ├── base
@@ -349,7 +341,7 @@ The tests folder is a place not only to put the tests themselves, but also refer
 If you want to use any of the angular goodness in your project then copy the dependencies into the tests/libs folder.
 
 
-### The _Mock core folder (16)
+### The _mock core folder (16)
 
 The mock folder is predominantly for mock API calls. Use it to store JSON structures.
 

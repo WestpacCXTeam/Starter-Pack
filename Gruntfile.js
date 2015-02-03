@@ -41,6 +41,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-curl');
 	grunt.loadNpmTasks('grunt-zip');
+	grunt.loadNpmTasks('grunt-font');
 	grunt.loadNpmTasks('grunt-wakeup');
 
 
@@ -88,24 +89,46 @@ module.exports = function (grunt) {
 		// Scaffold all directories
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		mkdir: {
-			scaffold: {
+			angular: { //angular template
 				options: {
 					create: [
-						'./_CORE/_HTMLincludes/',
 						'./_CORE/_HTML/templates',
 						'./_CORE/_HTML/views',
-						'./_CORE/_js/010.libs',
 						'./_CORE/_js/020.directives',
 						'./_CORE/_js/030.services',
 						'./_CORE/_js/040.filters',
 						'./_CORE/_js/050.factories',
 						'./_CORE/_js/060.controllers',
 						'./_CORE/_js/070.common',
+					],
+				},
+			},
+
+			less: { //less template
+				options: {
+					create: [
+						'./_CORE/_js/010.libs',
 						'./_CORE/_js/_tests',
 						'./_CORE/_less/base',
 						'./_CORE/_less/modules',
-						'./_CORE/_Mock',
+					],
+				},
+			},
 
+			clean: { //clean template
+				options: {
+					create: [
+						'./_CORE/_HTMLincludes/',
+						'./_CORE/_js/',
+						'./_CORE/_less/',
+						'./_CORE/_mock',
+					],
+				},
+			},
+
+			brands: { //all the rest which is needed regardless of the type of template
+				options: {
+					create: [
 						'./BOM/_css/png',
 						'./BOM/_fonts',
 						'./BOM/_HTMLincludes',
@@ -621,7 +644,9 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		copy: {
 
-			//HTML includes move directly from the core folder
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// HTML includes move directly from the core folder
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMCoreincludes: { //move html includes into the BOM temp includes folder
 				files: [{
 					cwd: './_CORE/_HTMLincludes/',
@@ -663,7 +688,9 @@ module.exports = function (grunt) {
 			},
 
 
-			//HTML includes merge from the brand folder intot the code includes
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// HTML includes merge from the brand folder intot the code includes
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMBrandincludes: { //move html includes into the BOM temp includes folder
 				files: [{
 					cwd: './BOM/_HTMLincludes/',
@@ -704,7 +731,9 @@ module.exports = function (grunt) {
 				}],
 			},
 
-			//JavaScript files
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// JavaScript files
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMJS: { //move BOM js folder content
 				files: [{
 					cwd: './BOM/_js/',
@@ -745,7 +774,9 @@ module.exports = function (grunt) {
 				}],
 			},
 
-			//CSS files
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// CSS files
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMCSS: { //move BOM css folder content
 				files: [{
 					cwd: './BOM/_css/',
@@ -786,7 +817,9 @@ module.exports = function (grunt) {
 				}],
 			},
 
-			//font files
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// font files
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMFonts: { //move BOM fonts folder content
 				files: [{
 					cwd: './BOM/_fonts/',
@@ -827,7 +860,10 @@ module.exports = function (grunt) {
 				}],
 			},
 
-			//html template
+
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// html template
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMHTML: { //move BOM html files into place
 				files: [{
 					cwd: './temp/BOM/',
@@ -868,76 +904,40 @@ module.exports = function (grunt) {
 				}],
 			},
 
-		},
 
-
-		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		// Prompt for name and versioning
-		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		prompt: {
-			name: { //ask for name
-				options: {
-					questions: [{
-						config: 'newName',
-						type: 'input',
-						message: 'Current name: ' + '<%= pkg.name %>'.yellow + "\n\n" +
-							'Please provide a new name for your project (leave empty to keep current)',
-					}],
-					then: function(results) { //writing package.json
-						if(results.newName !== "") {
-							var packageFile = grunt.file.readJSON('package.json');
-							packageFile.name = handleize( results.newName );
-							grunt.file.write('package.json', JSON.stringify( packageFile ) );
-
-							console.log("\n\nNew name has been set".green);
-						}
-						else {
-							console.log("\n\nNo name has been set".yellow);
-						}
-					},
-				},
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// Setup files
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			setupClean: { //move clean template files
+				files: [{
+					cwd: './.templates/clean/',
+					src: ['**/*'],
+					dest: './',
+					filter: 'isFile',
+					expand: true,
+				}],
 			},
 
-			bumpup: { //bump up version
-				options: {
-					questions: [{
-						config: 'newVersion',
-						type: 'list',
-						message: 'Current version: ' + '<%= pkg.version %>'.red,
-						choices: [
-							{
-								value: nextVersion(grunt),
-								name: 'Build: '.yellow + nextVersion(grunt).yellow + ' Next release within this version.'
-							},
-							{
-								value: 'custom',
-								name: 'Custom: ?.?.?'.yellow + ' Specify version...'
-							},
-							{
-								value: '##',
-								name: 'No versioning'.yellow
-							},
-						]
-					},
-					{
-						config: 'newVersion',
-						type: 'input',
-						message: 'What specific version would you like',
-						when: function(answers) {
-							return answers['newVersion'] === 'custom';
-						}
-					}],
-					then: function(results) { //writing package.json
-						if(results.newVersion !== "##") {
-							var packageFile = grunt.file.readJSON('package.json');
-							packageFile.version = results.newVersion;
-							grunt.file.write('package.json', JSON.stringify( packageFile ) );
-
-							console.log("\n\nNew version has been set".green);
-						}
-					},
-				},
+			setupLess: { //move less template files
+				files: [{
+					cwd: './.templates/less/',
+					src: ['**/*'],
+					dest: './',
+					filter: 'isFile',
+					expand: true,
+				}],
 			},
+
+			setupAngular: { //move angular template files
+				files: [{
+					cwd: './.templates/angular/',
+					src: ['**/*'],
+					dest: './',
+					filter: 'isFile',
+					expand: true,
+				}],
+			},
+
 		},
 
 
@@ -1098,6 +1098,179 @@ module.exports = function (grunt) {
 
 
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Prompts for setup and versioning
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		prompt: {
+			setup: { //setup questionnaire
+				options: {
+					questions: [
+						{
+							config: 'setupKind',
+							type: 'list',
+							message: "\n\n" + '		With what kind of template do you want to start your project?'.magenta + "\n\n",
+							choices: [
+								{
+									value: 'angular',
+									name: 'Angular SPA with library files and prepared folders plus less files with settings for each brand and some commenly used HTMLincludes.',
+								},
+								{
+									value: 'less',
+									name: 'Only less files with settings for each brand plus some commenly used HTMLincludes',
+								},
+								{
+									value: 'clean',
+									name: 'A clean start without any assumtions about your project plus some commenly used HTMLincludes',
+								},
+							]
+						},
+						{
+							config: 'setupGUI',
+							type: 'list',
+							message: "\n\n" + '		Do you want to download and install the latest GUI files?'.magenta + "\n\n",
+							choices: ['YES', 'NO'],
+						},
+						{
+							config: 'setupName',
+							type: 'input',
+							message: "\n\n" + '		Please provide a new name for your project!'.magenta + "\n\n" +
+								'Current name: ' + '<%= pkg.name %>'.yellow + ' (leave empty to keep current)',
+						},
+						{
+							config: 'setupVersion',
+							type: 'list',
+							message: "\n\n" + '		With what version number would you like to start your project?'.magenta + "\n\n",
+							choices: [
+								{
+									value: '0.0.1',
+									name: '0.0.1 '.yellow,
+								},
+								{
+									value: 'custom',
+									name: '?.?.?'.yellow + ' Specify version...',
+								},
+							]
+						},
+						{
+							config: 'setupVersion',
+							type: 'input',
+							message: "\n\n" + '		What specific version(?.?.?) would you like it to be?'.magenta + "\n\n",
+							when: function(answers) {
+								return answers['setupVersion'] === 'custom';
+							},
+						},
+					],
+					then: function(results) {
+						var packageFile = grunt.file.readJSON('package.json');
+						var messages = '';
+
+
+						// create folders and copy template files
+						grunt.task.run('mkdir:brands'); //create base folders
+						grunt.task.run('mkdir:clean'); //create clean template folders
+						grunt.task.run('copy:setupClean'); //copy clean template files
+
+						if(results.setupKind === 'less' || results.setupKind === 'angular') {
+							grunt.task.run('mkdir:less'); //create less template folders
+							grunt.task.run('copy:setupLess'); //copy less template files
+						}
+						if(results.setupKind === 'angular') {
+							grunt.task.run('mkdir:angular'); //create angular template folders
+							grunt.task.run('copy:setupAngular'); //copy angular template files
+						}
+						messages += "\n" + '• We created all folders and copied the template into them...'.green;
+
+
+						// download and install GUI
+						if(results.setupGUI === 'YES') {
+							grunt.task.run(['curl', 'unzip', 'clean:post']);
+							messages += "\n" + '• We downloaded the GUI for you and installed it into your folders...'.green;
+						}
+						else {
+							messages += "\n" + '- We did not download the GUI for you...'.grey;
+						}
+
+
+						// set the app name
+						if(results.setupName !== '') {
+							packageFile.name = handleize( results.setupName );
+							grunt.file.write('package.json', JSON.stringify( packageFile ) );
+
+							messages += "\n" + '• We set your new name for you...'.green;
+						}
+						else {
+							messages += "\n" + '- We left the current name alone...'.grey;
+						}
+
+
+						// set the app version
+						if(results.setupVersion !== '##') {
+							packageFile.version = results.setupVersion;
+							grunt.file.write('package.json', JSON.stringify( packageFile ) );
+
+							messages += "\n" + '• We set the new version for you...'.green;
+						}
+
+
+						// report what has run and what hasn't
+						grunt.registerTask('report', 'Report the summary', function() {
+							console.log("\n" + messages + "\n\n");
+						});
+
+						grunt.task.run(['font:summary', 'report']);
+					},
+				},
+			},
+
+
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// Bumb up to a new version
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			bumpup: {
+				options: {
+					questions: [
+						{
+							config: 'newVersion',
+							type: 'list',
+							message: 'Current version: ' + '<%= pkg.version %>'.red,
+							choices: [
+								{
+									value: nextVersion(grunt),
+									name: 'Build: '.yellow + nextVersion(grunt).yellow + ' Next release within this version.',
+								},
+								{
+									value: 'custom',
+									name: 'Custom: ?.?.?'.yellow + ' Specify version...',
+								},
+								{
+									value: '##',
+									name: 'No versioning'.yellow,
+								},
+							],
+						},
+						{
+							config: 'newVersion',
+							type: 'input',
+							message: 'What specific version would you like',
+							when: function(answers) {
+								return answers['newVersion'] === 'custom';
+							},
+						},
+					],
+					then: function(results) { //writing package.json
+						if(results.newVersion !== "##") {
+							var packageFile = grunt.file.readJSON('package.json');
+							packageFile.version = results.newVersion;
+							grunt.file.write('package.json', JSON.stringify( packageFile ) );
+
+							console.log("\n\nNew version has been set".green);
+						}
+					},
+				},
+			},
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// Server
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		connect: {
@@ -1108,6 +1281,30 @@ module.exports = function (grunt) {
 					base: './PROD/',
 				},
 			},
+		},
+
+
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		// Banners
+		//----------------------------------------------------------------------------------------------------------------------------------------------------------
+		font: {
+			options: {
+				space: false,
+				colors: ['white', 'green'],
+				maxLength: 13,
+			},
+
+			setup: {
+				text: ' Starter-Pack|        Setup',
+			},
+
+			summary: {
+				text: '| Summary',
+			},
+
+			logo: {
+				text: '|Starter-Pack',
+			}
 		},
 
 
@@ -1442,17 +1639,15 @@ module.exports = function (grunt) {
 	]);
 
 
-	grunt.registerTask('setup', ['prompt:name', 'mkdir', 'wakeup']); //set name and create basic folder structure
+	grunt.registerTask('setup', ['font:setup', 'prompt:setup', 'wakeup']); //setup your project by running this task first
 
-	grunt.registerTask('get-theme', ['curl', 'unzip', 'clean:post', 'wakeup']); //get the latest theme for all brands
-
-	grunt.registerTask('buildBOM', ['connect', 'BOM']); //build only BOM
-	grunt.registerTask('buildBSA', ['connect', 'BSA']); //build only BSA
-	grunt.registerTask('buildSTG', ['connect', 'STG']); //build only STG
-	grunt.registerTask('buildWBC', ['connect', 'WBC']); //build only WBC
+	grunt.registerTask('buildBOM', ['font:logo', 'connect', 'BOM']); //build only BOM
+	grunt.registerTask('buildBSA', ['font:logo', 'connect', 'BSA']); //build only BSA
+	grunt.registerTask('buildSTG', ['font:logo', 'connect', 'STG']); //build only STG
+	grunt.registerTask('buildWBC', ['font:logo', 'connect', 'WBC']); //build only WBC
 
 	grunt.registerTask('bump', ['prompt:bumpup', 'build']); //bump up to new version
 
 
-	grunt.registerTask('default', ['connect', 'build', 'watch']); //work
+	grunt.registerTask('default', ['font:logo', 'connect', 'build', 'watch']); //work
 };
