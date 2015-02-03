@@ -36,45 +36,40 @@ After that, download, unzip, `cd` into the folder and install all dependencies:
 4. CD into the folder `cd c:/Users/MYNAME/Sites/MYPROJECT`
 4. Run `npm install` to install all dependencies.
 
-# Create folders
+# Start with templates
 
-The first time after you installed all packages run below command to setup your folders and the name of your project.
+The first time after you installed all packages run below command to setup your folders, the name of your project, the GUI files and all the other goodies
+that come with the Starter-Pack.
 
 ```shell
 grunt setup
 ```
 
-The setup will make sure your project name is set in the `package.json` under the key: `"name"`.
+The setup will save your project name and version in the `package.json`.
 
 ```JSON
 {
-  "name": "YOUR-NAME-HERE",
-  "version": "0.0.1",
-  "private": true,
-  "devDependencies": {
-  etc...
+	"name": "YOUR-NAME-HERE",
+	"version": "YOUR-VERSION-HERE",
+	"private": true,
+	"devDependencies": {
+	etc...
 ```
 
-# Download theme
-
-Get the current theme for all brands with:
-
-```
-grunt get-theme
-```
-
-_Note: we have included two `HTMLincludes` snippets for header and footer code to make the inclusion of the theme easy_
-
+And depending on what kind of template you chose it will provide some js, less and HTML files to get you running asap.
 
 # Run
 
-After adding your files and saving them use below command to create a server and add a watch:
+Now runt the default grunt task to watch your files for changes:
 
 ```
 grunt
 ```
 
 Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # Cache busting and new versions
@@ -102,6 +97,9 @@ and
 ```HTML
 <link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
 ```
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # Branches
@@ -200,7 +198,7 @@ The below folder structure will explain what should go where:
     │   ├── 070.common
     │   └── _tests                       // The tests core folder (15)
     │
-    ├── _Mock                            // The _Mock core folder (16)
+    ├── _mock                            // The _mock core folder (16)
     │
     └── _less                            // The _less core folder (17)
         ├── base
@@ -298,7 +296,7 @@ Include these into your site by pasting the follwoing snippet into your header:
 _Note: we included an `HTMLinclude` snippet for you that you only need to uncomment in the index file_
 
 
--------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ### THE PROD FOLDER (10)
@@ -308,7 +306,7 @@ Each brand has its own folder and should be runnable with the build in server on
 *Do not change anything in here as this folder will be deleted and recreated on each iteration*
 
 
--------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 ### THE _CORE FOLDER (11)
@@ -343,7 +341,7 @@ The tests folder is a place not only to put the tests themselves, but also refer
 If you want to use any of the angular goodness in your project then copy the dependencies into the tests/libs folder.
 
 
-### The _Mock core folder (16)
+### The _mock core folder (16)
 
 The mock folder is predominantly for mock API calls. Use it to store JSON structures.
 
@@ -358,3 +356,11 @@ Organise your less project here. We have provided a starting point for you in th
 The `site.less` file should be referenced by the brand `_settings.less` and only includes all modules from the filesystem.
 
 _Remember: Less files are cheap and so is documentation in less_
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Release History
+* 0.9.0 - Fixed bugs, added better watch, questionnaire
+* 0.0.1 - Alpha/beta test
