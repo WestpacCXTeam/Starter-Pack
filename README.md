@@ -18,6 +18,9 @@ You can:
 If you have any suggestions, questions or bugs please [launch an issue](https://github.com/WestpacCXTeam/Starter-Pack/issues).
 
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 # Setup
 
 ### MAC
@@ -106,14 +109,12 @@ and
 
 We are maintaining two branches here:
 
-* [angular](https://github.com/WestpacCXTeam/Starter-Pack/tree/angular) -> The `angular` branch gives you this starting point with examples for an angular app.
-* [clean](https://github.com/WestpacCXTeam/Starter-Pack/tree/clean) -> The `clean` branch has only the very essentials in it.
-* [less](https://github.com/WestpacCXTeam/Starter-Pack/tree/less) -> The `less` branch has a clean starting point with just a tiny less structure to get you started.
+* [master](https://github.com/WestpacCXTeam/Starter-Pack/tree/master) -> This branch has a stable running version of the Starter Pack.
+  _Please only use this branch for development of new GUI applications._
+* [dev](https://github.com/WestpacCXTeam/Starter-Pack/tree/dev) -> In `dev` we work on new features and this branch might not be stable at any point in time.
 
-Other branches are:
 
-* [master](https://github.com/WestpacCXTeam/Starter-Pack/tree/master) -> This branch only shows the default being developed right now.
-* [dev](https://github.com/WestpacCXTeam/Starter-Pack/tree/dev) -> In `dev` we work on new features so please don't download from here.
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 # Folder structure
