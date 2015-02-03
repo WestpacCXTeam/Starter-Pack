@@ -1529,7 +1529,7 @@ module.exports = function (grunt) {
 		var _hasSTG = grunt.file.isDir('./STG');
 		var _hasWBC = grunt.file.isDir('./WBC');
 
-		if(! (_hasPackage === _hasCore === _hasBOM === _hasBSA === _hasSTG === _hasWBC) ) {
+		if(! (_hasPackage === _hasCore === _hasBOM === _hasBSA === _hasSTG === _hasWBC) ) { //if any false
 
 			console.log("\n\n" + 'The installation is incomplete.'.red.bold + "\n" +
 				'Please run '.red + 'grunt setup'.yellow + ' to potential fix the issues files.'.red + "\n\n" +
@@ -1540,6 +1540,8 @@ module.exports = function (grunt) {
 				'Is the STG folder present?:        ' + colorize(_hasSTG) + "\n" +
 				'Is the WBC folder present?:        ' + colorize(_hasWBC) + "\n"
 			);
+
+			grunt.task.clearQueue(); //clear queue
 		}
 	});
 
