@@ -43,13 +43,13 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-includes');
 	grunt.loadNpmTasks('grunt-grunticon');
 	grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-prompt');
 	grunt.loadNpmTasks('grunt-mkdir');
-	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-autoprefixer');
 	grunt.loadNpmTasks('grunt-text-replace');
 	grunt.loadNpmTasks('grunt-curl');
@@ -142,37 +142,37 @@ module.exports = function (grunt) {
 			brands: { //all the rest which is needed regardless of the type of template
 				options: {
 					create: [
-						'./BOM/_css/png',
-						'./BOM/_fonts',
-						'./BOM/_HTMLincludes',
-						'./BOM/_img',
-						'./BOM/_js/libs',
-						'./BOM/_less',
-						'./BOM/_svg',
+						'./_BOM/_css/png',
+						'./_BOM/_fonts',
+						'./_BOM/_HTMLincludes',
+						'./_BOM/_img',
+						'./_BOM/_js/libs',
+						'./_BOM/_less',
+						'./_BOM/_svg',
 
-						'./BSA/_css/png',
-						'./BSA/_fonts',
-						'./BSA/_HTMLincludes',
-						'./BSA/_img',
-						'./BSA/_js/libs',
-						'./BSA/_less',
-						'./BSA/_svg',
+						'./_BSA/_css/png',
+						'./_BSA/_fonts',
+						'./_BSA/_HTMLincludes',
+						'./_BSA/_img',
+						'./_BSA/_js/libs',
+						'./_BSA/_less',
+						'./_BSA/_svg',
 
-						'./STG/_css/png',
-						'./STG/_fonts',
-						'./STG/_HTMLincludes',
-						'./STG/_img',
-						'./STG/_js/libs',
-						'./STG/_less',
-						'./STG/_svg',
+						'./_STG/_css/png',
+						'./_STG/_fonts',
+						'./_STG/_HTMLincludes',
+						'./_STG/_img',
+						'./_STG/_js/libs',
+						'./_STG/_less',
+						'./_STG/_svg',
 
-						'./WBC/_css/png',
-						'./WBC/_fonts',
-						'./WBC/_HTMLincludes',
-						'./WBC/_img',
-						'./WBC/_js/libs',
-						'./WBC/_less',
-						'./WBC/_svg',
+						'./_WBC/_css/png',
+						'./_WBC/_fonts',
+						'./_WBC/_HTMLincludes',
+						'./_WBC/_img',
+						'./_WBC/_js/libs',
+						'./_WBC/_less',
+						'./_WBC/_svg',
 					],
 				},
 			},
@@ -307,7 +307,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/BOM/css/<%= currentVersion %>.min.css': './BOM/_less/_settings.less',
+					'./PROD/BOM/css/<%= currentVersion %>.min.css': './_BOM/_less/_settings.less',
 				},
 			},
 
@@ -319,7 +319,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/BSA/css/<%= currentVersion %>.min.css': './BSA/_less/_settings.less',
+					'./PROD/BSA/css/<%= currentVersion %>.min.css': './_BSA/_less/_settings.less',
 				},
 			},
 
@@ -331,7 +331,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/STG/css/<%= currentVersion %>.min.css': './STG/_less/_settings.less',
+					'./PROD/STG/css/<%= currentVersion %>.min.css': './_STG/_less/_settings.less',
 				},
 			},
 
@@ -343,7 +343,7 @@ module.exports = function (grunt) {
 					report: 'min',
 				},
 				files: {
-					'./PROD/WBC/css/<%= currentVersion %>.min.css': './WBC/_less/_settings.less',
+					'./PROD/WBC/css/<%= currentVersion %>.min.css': './_WBC/_less/_settings.less',
 				},
 			}
 		},
@@ -381,11 +381,12 @@ module.exports = function (grunt) {
 		uglify: {
 			options: {
 				mangle: false,
+				report: 'gzip',
 			},
 
 			BOM: { //minify js files while excluding the _test folder for BOM
 				files: {
-					'./temp/BOM/js/zzz.min.js': [
+					'./temp/BOM/js/zzzzz_precompile.min.js': [
 						'./_CORE/_js/**/*.js',
 						'!./_CORE/_js/_tests/**/*.js',
 					],
@@ -394,7 +395,7 @@ module.exports = function (grunt) {
 
 			BSA: { //minify js files while excluding the _test folder for BSA
 				files: {
-					'./temp/BSA/js/zzz.min.js': [
+					'./temp/BSA/js/zzzzz_precompile.min.js': [
 						'./_CORE/_js/**/*.js',
 						'!./_CORE/_js/_tests/**/*.js',
 					],
@@ -403,7 +404,7 @@ module.exports = function (grunt) {
 
 			STG: { //minify js files while excluding the _test folder for STG
 				files: {
-					'./temp/STG/js/zzz.min.js': [
+					'./temp/STG/js/zzzzz_precompile.min.js': [
 						'./_CORE/_js/**/*.js',
 						'!./_CORE/_js/_tests/**/*.js',
 					],
@@ -412,7 +413,7 @@ module.exports = function (grunt) {
 
 			WBC: { //minify js files while excluding the _test folder for WBC
 				files: {
-					'./temp/WBC/js/zzz.min.js': [
+					'./temp/WBC/js/zzzzz_precompile.min.js': [
 						'./_CORE/_js/**/*.js',
 						'!./_CORE/_js/_tests/**/*.js',
 					],
@@ -430,31 +431,57 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		concat: {
 			BOM: { //concatenate files together for BOM
-				src: [
-					['./temp/BOM/js/**/*'],
-				],
+				src: ['./temp/BOM/js/**/*'],
 				dest: './PROD/BOM/js/<%= currentVersion %>.min.js',
 			},
 
 			BSA: { //concatenate files together for BSA
-				src: [
-					['./temp/BSA/js/**/*'],
-				],
+				src: ['./temp/BSA/js/**/*'],
 				dest: './PROD/BSA/js/<%= currentVersion %>.min.js',
 			},
 
 			STG: { //concatenate files together for STG
-				src: [
-					['./temp/STG/js/**/*'],
-				],
+				src: ['./temp/STG/js/**/*'],
 				dest: './PROD/STG/js/<%= currentVersion %>.min.js',
 			},
 
 			WBC: { //concatenate files together for WBC
-				src: [
-					['./temp/WBC/js/**/*'],
-				],
+				src: ['./temp/WBC/js/**/*'],
 				dest: './PROD/WBC/js/<%= currentVersion %>.min.js',
+			},
+
+
+
+			devBOM: { //concatenate files into a temp file for BOM
+				src: [
+					'./_CORE/_js/**/*',
+					'!./_CORE/_js/_test/**/*.js',
+				],
+				dest: './temp/BOM/js/zzzzz_precompile.js',
+			},
+
+			devBSA: { //concatenate files into a temp file for BSA
+				src: [
+					'./_CORE/_js/**/*',
+					'!./_CORE/_js/_test/**/*.js',
+				],
+				dest: './temp/BSA/js/zzzzz_precompile.js',
+			},
+
+			devSTG: { //concatenate files into a temp file for STG
+				src: [
+					'./_CORE/_js/**/*',
+					'!./_CORE/_js/_test/**/*.js',
+				],
+				dest: './temp/STG/js/zzzzz_precompile.js',
+			},
+
+			devWBC: { //concatenate files into a temp file for WBC
+				src: [
+					'./_CORE/_js/**/*',
+					'!./_CORE/_js/_test/**/*.js',
+				],
+				dest: './temp/WBC/js/zzzzz_precompile.js',
 			},
 		},
 
@@ -465,7 +492,7 @@ module.exports = function (grunt) {
 			BOM: { //minify BOM svgs
 				files: [{
 					expand: true,
-					cwd: './BOM/_svg/',
+					cwd: './_BOM/_svg/',
 					src: ['*.svg'],
 					dest: './temp/BOM/svg/',
 				}],
@@ -474,7 +501,7 @@ module.exports = function (grunt) {
 			BSA: { //minify BSA svgs
 				files: [{
 					expand: true,
-					cwd: './BSA/_svg/',
+					cwd: './_BSA/_svg/',
 					src: ['*.svg'],
 					dest: './temp/BSA/svg/',
 				}],
@@ -483,7 +510,7 @@ module.exports = function (grunt) {
 			STG: { //minify STG svgs
 				files: [{
 					expand: true,
-					cwd: './STG/_svg/',
+					cwd: './_STG/_svg/',
 					src: ['*.svg'],
 					dest: './temp/STG/svg/',
 				}],
@@ -492,7 +519,7 @@ module.exports = function (grunt) {
 			WBC: { //minify WBC svgs
 				files: [{
 					expand: true,
-					cwd: './WBC/_svg/',
+					cwd: './_WBC/_svg/',
 					src: ['*.svg'],
 					dest: './temp/WBC/svg/',
 				}],
@@ -608,7 +635,7 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: './BOM/_img',
+					cwd: './_BOM/_img',
 					src: ['**/*.{png,jpg,gif}'],
 					dest: './PROD/BOM/img/',
 				}],
@@ -620,7 +647,7 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: './BSA/_img',
+					cwd: './_BSA/_img',
 					src: ['**/*.{png,jpg,gif}'],
 					dest: './PROD/BSA/img/',
 				}],
@@ -632,7 +659,7 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: './STG/_img',
+					cwd: './_STG/_img',
 					src: ['**/*.{png,jpg,gif}'],
 					dest: './PROD/STG/img/',
 				}],
@@ -644,7 +671,7 @@ module.exports = function (grunt) {
 				},
 				files: [{
 					expand: true,
-					cwd: './WBC/_img',
+					cwd: './_WBC/_img',
 					src: ['**/*.{png,jpg,gif}'],
 					dest: './PROD/WBC/img/',
 				}],
@@ -706,7 +733,7 @@ module.exports = function (grunt) {
 			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMBrandincludes: { //move html includes into the BOM temp includes folder
 				files: [{
-					cwd: './BOM/_HTMLincludes/',
+					cwd: './_BOM/_HTMLincludes/',
 					src: ['**/*.html'],
 					dest: './temp/BOM/_HTMLincludes/',
 					filter: 'isFile',
@@ -716,7 +743,7 @@ module.exports = function (grunt) {
 
 			BSABrandincludes: { //move html includes into the BSA temp includes folder
 				files: [{
-					cwd: './BSA/_HTMLincludes/',
+					cwd: './_BSA/_HTMLincludes/',
 					src: ['**/*.html'],
 					dest: './temp/BSA/_HTMLincludes/',
 					filter: 'isFile',
@@ -726,7 +753,7 @@ module.exports = function (grunt) {
 
 			STGBrandincludes: { //move html includes into the STG temp includes folder
 				files: [{
-					cwd: './STG/_HTMLincludes/',
+					cwd: './_STG/_HTMLincludes/',
 					src: ['**/*.html'],
 					dest: './temp/STG/_HTMLincludes/',
 					filter: 'isFile',
@@ -736,7 +763,7 @@ module.exports = function (grunt) {
 
 			WBCBrandincludes: { //move html includes into the STG temp includes folder
 				files: [{
-					cwd: './WBC/_HTMLincludes/',
+					cwd: './_WBC/_HTMLincludes/',
 					src: ['**/*.html'],
 					dest: './temp/WBC/_HTMLincludes/',
 					filter: 'isFile',
@@ -749,7 +776,7 @@ module.exports = function (grunt) {
 			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMJS: { //move BOM js folder content
 				files: [{
-					cwd: './BOM/_js/',
+					cwd: './_BOM/_js/',
 					src: ['**/*.js'],
 					dest: './PROD/BOM/js/',
 					filter: 'isFile',
@@ -759,7 +786,7 @@ module.exports = function (grunt) {
 
 			BSAJS: { //move BSA js folder content
 				files: [{
-					cwd: './BSA/_js/',
+					cwd: './_BSA/_js/',
 					src: ['**/*.js'],
 					dest: './PROD/BSA/js/',
 					filter: 'isFile',
@@ -769,7 +796,7 @@ module.exports = function (grunt) {
 
 			STGJS: { //move STG js folder content
 				files: [{
-					cwd: './STG/_js/',
+					cwd: './_STG/_js/',
 					src: ['**/*.js'],
 					dest: './PROD/STG/js/',
 					filter: 'isFile',
@@ -779,7 +806,7 @@ module.exports = function (grunt) {
 
 			WBCJS: { //move WBC js folder content
 				files: [{
-					cwd: './WBC/_js/',
+					cwd: './_WBC/_js/',
 					src: ['**/*.js'],
 					dest: './PROD/WBC/js/',
 					filter: 'isFile',
@@ -792,7 +819,7 @@ module.exports = function (grunt) {
 			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMCSS: { //move BOM css folder content
 				files: [{
-					cwd: './BOM/_css/',
+					cwd: './_BOM/_css/',
 					src: ['**/*'],
 					dest: './PROD/BOM/css/',
 					filter: 'isFile',
@@ -802,7 +829,7 @@ module.exports = function (grunt) {
 
 			BSACSS: { //move BSA css folder content
 				files: [{
-					cwd: './BSA/_css/',
+					cwd: './_BSA/_css/',
 					src: ['**/*'],
 					dest: './PROD/BSA/css/',
 					filter: 'isFile',
@@ -812,7 +839,7 @@ module.exports = function (grunt) {
 
 			STGCSS: { //move STG css folder content
 				files: [{
-					cwd: './STG/_css/',
+					cwd: './_STG/_css/',
 					src: ['**/*'],
 					dest: './PROD/STG/css/',
 					filter: 'isFile',
@@ -822,7 +849,7 @@ module.exports = function (grunt) {
 
 			WBCCSS: { //move WBC css folder content
 				files: [{
-					cwd: './WBC/_css/',
+					cwd: './_WBC/_css/',
 					src: ['**/*'],
 					dest: './PROD/WBC/css/',
 					filter: 'isFile',
@@ -835,7 +862,7 @@ module.exports = function (grunt) {
 			//--------------------------------------------------------------------------------------------------------------------------------------------------------
 			BOMFonts: { //move BOM fonts folder content
 				files: [{
-					cwd: './BOM/_fonts/',
+					cwd: './_BOM/_fonts/',
 					src: ['**/*'],
 					dest: './PROD/BOM/fonts/',
 					filter: 'isFile',
@@ -845,7 +872,7 @@ module.exports = function (grunt) {
 
 			BSAFonts: { //move BSA fonts folder content
 				files: [{
-					cwd: './BSA/_fonts/',
+					cwd: './_BSA/_fonts/',
 					src: ['**/*'],
 					dest: './PROD/BSA/fonts/',
 					filter: 'isFile',
@@ -855,7 +882,7 @@ module.exports = function (grunt) {
 
 			STGFonts: { //move STG fonts folder content
 				files: [{
-					cwd: './STG/_fonts/',
+					cwd: './_STG/_fonts/',
 					src: ['**/*'],
 					dest: './PROD/STG/fonts/',
 					filter: 'isFile',
@@ -865,7 +892,7 @@ module.exports = function (grunt) {
 
 			WBCFonts: { //move WBC fonts folder content
 				files: [{
-					cwd: './WBC/_fonts/',
+					cwd: './_WBC/_fonts/',
 					src: ['**/*'],
 					dest: './PROD/WBC/fonts/',
 					filter: 'isFile',
@@ -1012,7 +1039,7 @@ module.exports = function (grunt) {
 				},
 
 				src: './temp/BOM/theme.zip',
-				dest: './BOM/',
+				dest: './_BOM/',
 			},
 
 			BSA: { //unzip BSA zip and sort in
@@ -1043,7 +1070,7 @@ module.exports = function (grunt) {
 				},
 
 				src: './temp/BSA/theme.zip',
-				dest: './BSA/',
+				dest: './_BSA/',
 			},
 
 			STG: { //unzip STG zip and sort in
@@ -1074,7 +1101,7 @@ module.exports = function (grunt) {
 				},
 
 				src: './temp/STG/theme.zip',
-				dest: './STG/',
+				dest: './_STG/',
 			},
 
 			WBC: { //unzip WBC zip and sort in
@@ -1105,7 +1132,7 @@ module.exports = function (grunt) {
 				},
 
 				src: './temp/WBC/theme.zip',
-				dest: './WBC/',
+				dest: './_WBC/',
 			}
 		},
 
@@ -1118,37 +1145,60 @@ module.exports = function (grunt) {
 				options: {
 					questions: [
 						{
-							config: 'setupKind',
+							config: 'sure',
+							type: 'confirm',
+							message: "\n\n" +
+								'		|-----------------------------------------------------------|'.red + "\n" +
+								'		|                                                           |'.red + "\n" +
+								'		|   ATTENTION! This setup will delete all exisiting files   |'.red + "\n" +
+								'		|                                                           |'.red + "\n" +
+								'		|-----------------------------------------------------------|'.red + "\n\n" +
+								'		Do you really want to run the Setup now?'.magenta,
+						},
+						{
+							when: function(answer) {
+								return answer['sure'] === true;
+							},
+							config: 'setupTemplate',
 							type: 'list',
 							message: "\n\n" + '		With what kind of template do you want to start your project?'.magenta + "\n\n",
 							choices: [
 								{
 									value: 'angular',
-									name: 'Angular SPA with library files and prepared folders plus less files with settings for each brand and some commenly used HTMLincludes.',
+									name: 'Angular SPA with library files and prepared folders plus less files with settings for each brand and some commonly used HTMLincludes.',
 								},
 								{
 									value: 'less',
-									name: 'Only less files with settings for each brand plus some commenly used HTMLincludes',
+									name: 'Only less files with settings for each brand plus some commonly used HTMLincludes',
 								},
 								{
 									value: 'clean',
-									name: 'A clean start without any assumtions about your project plus some commenly used HTMLincludes',
+									name: 'A clean start without any assumtions about your project plus some commonly used HTMLincludes',
 								},
 							]
 						},
 						{
+							when: function(answer) {
+								return answer['sure'] === true;
+							},
 							config: 'setupGUI',
 							type: 'list',
 							message: "\n\n" + '		Do you want to download and install the latest GUI files?'.magenta + "\n\n",
 							choices: ['YES', 'NO'],
 						},
 						{
+							when: function(answer) {
+								return answer['sure'] === true;
+							},
 							config: 'setupName',
 							type: 'input',
 							message: "\n\n" + '		Please provide a new name for your project!'.magenta + "\n\n" +
 								'Current name: ' + '<%= pkg.name %>'.yellow + ' (leave empty to keep current)',
 						},
 						{
+							when: function(answer) {
+								return answer['sure'] === true;
+							},
 							config: 'setupVersion',
 							type: 'list',
 							message: "\n\n" + '		With what version number would you like to start your project?'.magenta + "\n\n",
@@ -1164,72 +1214,98 @@ module.exports = function (grunt) {
 							]
 						},
 						{
-							config: 'setupVersion',
-							type: 'input',
-							message: "\n\n" + '		What specific version(?.?.?) would you like it to be?'.magenta + "\n\n",
 							when: function(answers) {
 								return answers['setupVersion'] === 'custom';
 							},
+							config: 'setupVersion',
+							type: 'input',
+							message: "\n\n" + '		What specific version(?.?.?) would you like it to be?'.magenta + "\n\n",
 						},
 					],
 					then: function(results) {
-						var packageFile = grunt.file.readJSON('package.json');
-						var messages = '';
+						if(results.sure) {
+							var packageFile = grunt.file.readJSON('package.json');
+							var messages = '';
 
 
-						// create folders and copy template files
-						grunt.task.run('mkdir:brands'); //create base folders
-						grunt.task.run('mkdir:clean'); //create clean template folders
-						grunt.task.run('copy:setupClean'); //copy clean template files
+							// create folders and copy template files
+							grunt.task.run('mkdir:brands'); //create base folders
+							grunt.task.run('mkdir:clean'); //create clean template folders
+							grunt.task.run('copy:setupClean'); //copy clean template files
 
-						if(results.setupKind === 'less' || results.setupKind === 'angular') {
-							grunt.task.run('mkdir:less'); //create less template folders
-							grunt.task.run('copy:setupLess'); //copy less template files
+							if(results.setupTemplate === 'less' || results.setupTemplate === 'angular') {
+								grunt.task.run('mkdir:less'); //create less template folders
+								grunt.task.run('copy:setupLess'); //copy less template files
+							}
+							if(results.setupTemplate === 'angular') {
+								grunt.task.run('mkdir:angular'); //create angular template folders
+								grunt.task.run('copy:setupAngular'); //copy angular template files
+							}
+							messages += "\n" + '• We created all folders and copied the template "'.green + results.setupTemplate.yellow + '" into them...'.green;
+
+
+							// download and install GUI
+							if(results.setupGUI === 'YES') {
+								grunt.task.run(['curl', 'unzip', 'clean:post']);
+								messages += "\n" + '• We downloaded the GUI for you and installed it into your folders...'.green;
+							}
+							else {
+								messages += "\n" + '- We did not download the GUI for you...'.grey;
+							}
+
+
+							// set the app name
+							if(results.setupName !== '') {
+								packageFile.name = handleize( results.setupName );
+								grunt.file.write('package.json', JSON.stringify( packageFile ) );
+
+								messages += "\n" + '• We set the new name "'.green + handleize( results.setupName ).yellow + '" for you...'.green;
+							}
+							else {
+								messages += "\n" + '- We left the current name "'.grey + packageFile.name.yellow + '" alone...'.grey;
+							}
+
+
+							// set the app version
+							if(results.setupVersion !== '##') {
+								packageFile.version = results.setupVersion;
+								grunt.file.write('package.json', JSON.stringify( packageFile ) );
+
+								messages += "\n" + '• We set the new version to '.green + results.setupVersion.yellow + ' for you...'.green;
+							}
+
+
+							// report what has run and what hasn't
+							grunt.registerTask('report', 'Report the summary', function() {
+								console.log("\n" + messages + "\n\n");
+							});
+
+							grunt.task.run(['font:summary', 'report']);
 						}
-						if(results.setupKind === 'angular') {
-							grunt.task.run('mkdir:angular'); //create angular template folders
-							grunt.task.run('copy:setupAngular'); //copy angular template files
-						}
-						messages += "\n" + '• We created all folders and copied the template into them...'.green;
+					},
+				},
+			},
 
 
-						// download and install GUI
-						if(results.setupGUI === 'YES') {
-							grunt.task.run(['curl', 'unzip', 'clean:post']);
-							messages += "\n" + '• We downloaded the GUI for you and installed it into your folders...'.green;
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			// Run setup
+			//--------------------------------------------------------------------------------------------------------------------------------------------------------
+			runSetup: {
+				options: {
+					questions: [
+						{
+							config: 'runSetup',
+							type: 'confirm',
+							message: "\n\n" + '		Do you want to run the Setup now?'.magenta,
+						},
+					],
+					then: function(results) { //writing package.json
+						if(results.runSetup) {
+							grunt.task.run(['setup']);
 						}
 						else {
-							messages += "\n" + '- We did not download the GUI for you...'.grey;
+							console.log("\n" + '	No worries...'.grey);
 						}
-
-
-						// set the app name
-						if(results.setupName !== '') {
-							packageFile.name = handleize( results.setupName );
-							grunt.file.write('package.json', JSON.stringify( packageFile ) );
-
-							messages += "\n" + '• We set your new name for you...'.green;
-						}
-						else {
-							messages += "\n" + '- We left the current name alone...'.grey;
-						}
-
-
-						// set the app version
-						if(results.setupVersion !== '##') {
-							packageFile.version = results.setupVersion;
-							grunt.file.write('package.json', JSON.stringify( packageFile ) );
-
-							messages += "\n" + '• We set the new version for you...'.green;
-						}
-
-
-						// report what has run and what hasn't
-						grunt.registerTask('report', 'Report the summary', function() {
-							console.log("\n" + messages + "\n\n");
-						});
-
-						grunt.task.run(['font:summary', 'report']);
 					},
 				},
 			},
@@ -1337,10 +1413,10 @@ module.exports = function (grunt) {
 
 			HTML: { //watch all HTML files
 				files: [
-					'BOM/**/*.html',
-					'BSA/**/*.html',
-					'STG/**/*.html',
-					'WBC/**/*.html',
+					'./_BOM/**/*.html',
+					'./_BSA/**/*.html',
+					'./_STG/**/*.html',
+					'./_WBC/**/*.html',
 					'_CORE/**/*.html',
 				],
 				tasks: [
@@ -1366,10 +1442,10 @@ module.exports = function (grunt) {
 
 			less: { //watch all less files
 				files: [
-					'BOM/**/*.less',
-					'BSA/**/*.less',
-					'STG/**/*.less',
-					'WBC/**/*.less',
+					'./_BOM/**/*.less',
+					'./_BSA/**/*.less',
+					'./_STG/**/*.less',
+					'./_WBC/**/*.less',
 					'_CORE/**/*.less',
 				],
 				tasks: [
@@ -1387,10 +1463,10 @@ module.exports = function (grunt) {
 
 			svg: { //watch all svg files
 				files: [
-					'BOM/**/*.svg', '!BOM/**/fonts/*.svg',
-					'BSA/**/*.svg', '!BSA/**/fonts/*.svg',
-					'STG/**/*.svg', '!STG/**/fonts/*.svg',
-					'WBC/**/*.svg', '!WBC/**/fonts/*.svg',
+					'./_BOM/**/*.svg', '!BOM/**/fonts/*.svg',
+					'./_BSA/**/*.svg', '!BSA/**/fonts/*.svg',
+					'./_STG/**/*.svg', '!STG/**/fonts/*.svg',
+					'./_WBC/**/*.svg', '!WBC/**/fonts/*.svg',
 					'_CORE/**/*.svg', '!_CORE/**/fonts/*.svg',
 				],
 				tasks: [
@@ -1409,10 +1485,10 @@ module.exports = function (grunt) {
 
 			jsBOM: { //watch all BOM js files
 				files: [
-					'BOM/**/*.js',
+					'./_BOM/**/*.js',
 				],
 				tasks: [
-					'uglify:BOM',
+					'concat:devBOM',
 					'copy:BOMJS',
 					'replace:BOM',
 					'concat:BOM',
@@ -1423,10 +1499,10 @@ module.exports = function (grunt) {
 
 			jsBSA: { //watch all BSA js files
 				files: [
-					'BSA/**/*.js',
+					'./_BSA/**/*.js',
 				],
 				tasks: [
-					'uglify:BSA',
+					'concat:devBSA',
 					'copy:BSAJS',
 					'replace:BSA',
 					'concat:BSA',
@@ -1437,10 +1513,10 @@ module.exports = function (grunt) {
 
 			jsSTG: { //watch all STG js files
 				files: [
-					'STG/**/*.js',
+					'./_STG/**/*.js',
 				],
 				tasks: [
-					'uglify:STG',
+					'concat:devSTG',
 					'copy:STGJS',
 					'replace:STG',
 					'concat:STG',
@@ -1451,10 +1527,10 @@ module.exports = function (grunt) {
 
 			jsWBC: { //watch all WBC js files
 				files: [
-					'WBC/**/*.js',
+					'./_WBC/**/*.js',
 				],
 				tasks: [
-					'uglify:WBC',
+					'concat:devWBC',
 					'copy:WBCJS',
 					'replace:WBC',
 					'concat:WBC',
@@ -1468,13 +1544,19 @@ module.exports = function (grunt) {
 					'_CORE/**/*.js',
 				],
 				tasks: [
-					'uglify',
+					'concat:devBOM',
+					'concat:devBSA',
+					'concat:devSTG',
+					'concat:devWBC',
 					'copy:BOMJS',
 					'copy:BSAJS',
 					'copy:STGJS',
 					'copy:WBCJS',
 					'replace',
-					'concat',
+					'concat:BOM',
+					'concat:BSA',
+					'concat:STG',
+					'concat:WBC',
 					'clean:post',
 					'wakeup',
 				],
@@ -1482,10 +1564,10 @@ module.exports = function (grunt) {
 
 			fonts: { //watch all font files
 				files: [
-					'BOM/**/*.woff', 'BOM/**/*.woff2', 'BOM/**/*.ttf', 'BOM/**/*.eot', 'BOM/**/fonts/*.svg',
-					'BSA/**/*.woff', 'BSA/**/*.woff2', 'BSA/**/*.ttf', 'BSA/**/*.eot', 'BSA/**/fonts/*.svg',
-					'STG/**/*.woff', 'STG/**/*.woff2', 'STG/**/*.ttf', 'STG/**/*.eot', 'STG/**/fonts/*.svg',
-					'WBC/**/*.woff', 'WBC/**/*.woff2', 'WBC/**/*.ttf', 'WBC/**/*.eot', 'WBC/**/fonts/*.svg',
+					'./_BOM/**/*.woff', './_BOM/**/*.woff2', './_BOM/**/*.ttf', './_BOM/**/*.eot', './_BOM/**/fonts/*.svg',
+					'./_BSA/**/*.woff', './_BSA/**/*.woff2', './_BSA/**/*.ttf', './_BSA/**/*.eot', './_BSA/**/fonts/*.svg',
+					'./_STG/**/*.woff', './_STG/**/*.woff2', './_STG/**/*.ttf', './_STG/**/*.eot', './_STG/**/fonts/*.svg',
+					'./_WBC/**/*.woff', './_WBC/**/*.woff2', './_WBC/**/*.ttf', './_WBC/**/*.eot', './_WBC/**/fonts/*.svg',
 					'_CORE/**/*.woff', '_CORE/**/*.woff2', '_CORE/**/*.ttf', '_CORE/**/*.eot', '_CORE/**/fonts/*.svg',
 				],
 				tasks: [
@@ -1500,10 +1582,10 @@ module.exports = function (grunt) {
 
 			img: { //watch all image files
 				files: [
-					'BOM/**/*.jpg', 'BOM/**/*.jpeg', 'BOM/**/*.png', 'BOM/**/*.gif',
-					'BSA/**/*.jpg', 'BSA/**/*.jpeg', 'BSA/**/*.png', 'BSA/**/*.gif',
-					'STG/**/*.jpg', 'STG/**/*.jpeg', 'STG/**/*.png', 'STG/**/*.gif',
-					'WBC/**/*.jpg', 'WBC/**/*.jpeg', 'WBC/**/*.png', 'WBC/**/*.gif',
+					'./_BOM/**/*.jpg', './_BOM/**/*.jpeg', './_BOM/**/*.png', './_BOM/**/*.gif',
+					'./_BSA/**/*.jpg', './_BSA/**/*.jpeg', './_BSA/**/*.png', './_BSA/**/*.gif',
+					'./_STG/**/*.jpg', './_STG/**/*.jpeg', './_STG/**/*.png', './_STG/**/*.gif',
+					'./_WBC/**/*.jpg', './_WBC/**/*.jpeg', './_WBC/**/*.png', './_WBC/**/*.gif',
 					'_CORE/**/*.jpg', '_CORE/**/*.jpeg', '_CORE/**/*.png', '_CORE/**/*.gif',
 				],
 				tasks: [
@@ -1524,24 +1606,25 @@ module.exports = function (grunt) {
 	grunt.registerTask('check', 'Check if setup has run yet', function() {
 		var _hasPackage = grunt.file.isFile('./package.json');
 		var _hasCore = grunt.file.isDir('./_CORE');
-		var _hasBOM = grunt.file.isDir('./BOM');
-		var _hasBSA = grunt.file.isDir('./BSA');
-		var _hasSTG = grunt.file.isDir('./STG');
-		var _hasWBC = grunt.file.isDir('./WBC');
+		var _hasBOM = grunt.file.isDir('./_BOM');
+		var _hasBSA = grunt.file.isDir('./_BSA');
+		var _hasSTG = grunt.file.isDir('./_STG');
+		var _hasWBC = grunt.file.isDir('./_WBC');
 
 		if(! (_hasPackage === _hasCore === _hasBOM === _hasBSA === _hasSTG === _hasWBC) ) { //if any false
 
-			console.log("\n\n" + 'The installation is incomplete.'.red.bold + "\n" +
-				'Please run '.red + 'grunt setup'.yellow + ' to potential fix the issues files.'.red + "\n\n" +
-				'Is the package.json file present?: ' + colorize(_hasPackage) + "\n" +
-				'Is the _CORE folder present?:      ' + colorize(_hasCore) + "\n" +
-				'Is the BOM folder present?:        ' + colorize(_hasBOM) + "\n" +
-				'Is the BSA folder present?:        ' + colorize(_hasBSA) + "\n" +
-				'Is the STG folder present?:        ' + colorize(_hasSTG) + "\n" +
-				'Is the WBC folder present?:        ' + colorize(_hasWBC) + "\n"
+			console.log("\n\n" + '		The installation is incomplete.'.red.bold + "\n" +
+				'		Please run '.red + 'grunt setup'.yellow + ' to potential fix the issues below.'.red + "\n\n" +
+				'Is the package.json file present?:  ' + colorize(_hasPackage) + "\n" +
+				'Is the _CORE folder present?:       ' + colorize(_hasCore) + "\n" +
+				'Is the _BOM folder present?:        ' + colorize(_hasBOM) + "\n" +
+				'Is the _BSA folder present?:        ' + colorize(_hasBSA) + "\n" +
+				'Is the _STG folder present?:        ' + colorize(_hasSTG) + "\n" +
+				'Is the _WBC folder present?:        ' + colorize(_hasWBC) + "\n"
 			);
 
 			grunt.task.clearQueue(); //clear queue
+			grunt.task.run(['prompt:runSetup']);
 		}
 	});
 
@@ -1584,7 +1667,10 @@ module.exports = function (grunt) {
 		'copy:STGHTML',
 		'copy:WBCHTML',
 		'replace',
-		'concat',
+		'concat:BOM',
+		'concat:BSA',
+		'concat:STG',
+		'concat:WBC',
 		'clean:post',
 		'wakeup',
 	]);
@@ -1682,10 +1768,10 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('setup', ['font:setup', 'prompt:setup', 'wakeup']); //setup your project by running this task first
 
-	grunt.registerTask('buildBOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM']); //build only BOM
-	grunt.registerTask('buildBSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA']); //build only BSA
-	grunt.registerTask('buildSTG', ['font:logo', 'check', 'font:logo', 'connect', 'STG']); //build only STG
-	grunt.registerTask('buildWBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC']); //build only WBC
+	grunt.registerTask('BOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM', 'watch']); //build only BOM
+	grunt.registerTask('BSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA', 'watch']); //build only BSA
+	grunt.registerTask('STG', ['font:logo', 'check', 'font:logo', 'connect', 'STG', 'watch']); //build only STG
+	grunt.registerTask('WBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC', 'watch']); //build only WBC
 
 	grunt.registerTask('bump', ['font:logo', 'check', 'prompt:bumpup', 'build']); //bump up to new version
 
