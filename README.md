@@ -4,11 +4,11 @@ Westpac Starter-Pack
 > A grunt workflow to get you started with your GUI multi-brand project.
 
 This is a starter package to help you work in a multi-brand, best-practice kinda way.  
-You can:
+It will:
 
 - [x] [Create the folder structure](#create-folders)
-- [x] [Download the latest theme and install it](#download-theme)
-- [x] [Run you project against a watch](#run)
+- [x] [Install some preselected templates](#start-with-templates)
+- [x] [Run your project and watch for changes](#running)
 - [x] [Version it](#cache-busting-and-new-versions)
 
 
@@ -21,23 +21,22 @@ If you have any suggestions, questions or bugs please [launch an issue](https://
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Setup
+# Setting up
 
 ### MAC
-2. Download [NodeJS](http://nodejs.org/) and install on your computer.
-2. Run `sudo npm install npm -g` to update to the newest NPM version.
-2. Run `sudo npm install -g grunt-cli` to install grunt globally (You might need to install the xCode command line tools)
+1. Download [NodeJS](http://nodejs.org/) and install on your computer.
+1. Run `npm install npm -g` to update to the newest NPM version.
+1. Run `npm install -g grunt-cli` to install grunt globally (You might need to install the xCode command line tools)
 
 ### PC
-2. Download [NodeJS](http://nodejs.org/) and install on your computer.
-2. Run `npm install npm -g` to update to the newest NPM version.
-2. Run `npm install -g grunt-cli` to install grunt globally
+1. Download [NodeJS](http://nodejs.org/) and install on your computer.
+1. Run `npm install npm -g` to update to the newest NPM version.
+1. Run `npm install -g grunt-cli` to install grunt globally
 
-After that, download, unzip, `cd` into the folder and install all dependencies:
-
-4. [Download this repo](https://github.com/WestpacCXTeam/Starter-Pack/archive/master.zip) and unpack it into a folder of your choice.
-4. CD into the folder `cd c:/Users/MYNAME/Sites/MYPROJECT`
-4. Run `npm install` to install all dependencies.
+### Both
+1. [Download this repo](https://github.com/WestpacCXTeam/Starter-Pack/archive/master.zip) and unpack it into a folder of your choice.
+1. `cd` into the folder e.g. `cd c:/Users/MYNAME/Sites/MYPROJECT` within your shell enviroment.
+1. Run `npm install` to install all dependencies. This may take some time.
 
 # Start with templates
 
@@ -61,15 +60,107 @@ The setup will save your project name and version in the `package.json`.
 
 And depending on what kind of template you chose it will provide some js, less and HTML files to get you running asap.
 
-# Run
 
-Now runt the default grunt task to watch your files for changes:
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Running
+
+Now run the default grunt task to watch your files for changes:
 
 ```
 grunt
 ```
 
-Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder.
+Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder.  
+
+> This first time you run `grunt` the script will build your `PROD` folder ready fro production so JavaScript is uglified. Once you change a file the watch
+> **will not** uglify your JS code as this would take too long. Instead it just concatenate all JS files together to save time. Rmember to run `grunt` before you
+> deliver your production code to avoid giving out large JS files.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Editing
+
+Now that you have your project setup and running you can go ahead and edit the files you want.
+
+#### _Notes_
+
+Make sure you don't edit any files in the `PROD` folder as this folder is being deleted and regenerated on each change the watch detects.
+
+
+#### _Working with GUI_
+
+All templates come with a set of commonly used HTMLincludes for including the GUI in your files. All you have to do is include them in your files:  
+
+In the `<head>` of your file:
+```HTML
+include "defaults/theme-head.html"
+```
+
+Before the closing for the `<body>` tag:
+```HTML
+include "defaults/theme-foot.html"
+```
+
+
+#### _Less_
+
+Try setting up your less that helps you not repeat anything across brands. We have supplied you with a couple less files (included in the less and angluar
+templates) that help you with that. In the `_CORE` folder you can setup all of your modules less files and reference only variables within those files.
+In the e.g. `_BOM/_less/_settings.less` file you can map those variables to a brand specific value.
+The compiled file can be referenced in your HTML with:
+
+```HTML
+<link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
+```
+
+_More about the process of file naming in the [next section](#cache-busting-and-new-versions)_
+
+
+#### _Javascript_
+
+All javascript files found in either `_CORE/_js/` or the brand folders `_BOM/_js/`, `_BSA/_js/`, `_STG/_js/`, `_WBC/_js/` will be concatenated and minified
+into one file and referenced in your HTML with:
+
+```HTML
+<script type="text/javascript" src="js/--currentVersion--.min.js"></script>
+```
+
+_More about the process of file naming in the [next section](#cache-busting-and-new-versions)_
+
+
+#### _Images_
+
+All images in the `_CORE` and brand folders are minified and moved into the `img/` folder for each brand within the `PROD` folder.
+
+
+#### _SVG_
+
+SVGs in the `_CORE` and brand folders are running through a [grunticon](https://github.com/filamentgroup/grunticon) task and be put into the `css/` folder
+in the `--currentVersion--` namespace. The css classes are prefixed with `sitesymbol-` to avoid overwrites with the GUI.  
+To include the compiled file into your HTML use below code in your `<head>`:
+
+```HTML
+include "defaults/svgs.html"
+```
+
+
+#### _Fonts_
+
+All files in the brand folders `_BOM/_fonts/`, `_BSA/_fonts/`, `_STG/_fonts/`, `_WBC/_fonts/` are moved to `/fonts` in it's respective brand folder within `PROD`.
+
+
+#### _Css_
+
+All files in the brand folders `_BOM/_css/`, `_BSA/_css/`, `_STG/_css/`, `_WBC/_css/` are moved to `/css` in it's respective brand folder within `PROD`.
+
+
+#### _Watch_
+
+
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -123,10 +214,10 @@ The below folder structure will explain what should go where:
 
 ```
 .
-├── BOM                                  // BRAND FOLDER FOR BOM (1)
-├── BSA                                  // BRAND FOLDER FOR BSA (1)
-├── STG                                  // BRAND FOLDER FOR STG (1)
-├── WBC                                  // BRAND FOLDER FOR WBC (1)
+├── _BOM                                  // BRAND FOLDER FOR BOM (1)
+├── _BSA                                  // BRAND FOLDER FOR BSA (1)
+├── _STG                                  // BRAND FOLDER FOR STG (1)
+├── _WBC                                  // BRAND FOLDER FOR WBC (1)
 │   │
 │   ├── _css                             // The _css brand folder (2)
 │   │   ├── png
@@ -138,12 +229,7 @@ The below folder structure will explain what should go where:
 │   │   └── font.ttf
 │   │
 │   ├── _HTMLincludes                    // The _HTMLincludes folder (4)
-│   │   ├── defaults
-│   │   │   ├── svgs.html
-│   │   │   ├── theme-foot.html
-│   │   │   └── theme-head.html
-│   │   ├── modernizr.html
-│   │   └── windows.html
+│   │   └── logo.html
 │   │
 │   ├── _img                             // The _img brand folder (5)
 │   │   ├── image.jpg
@@ -216,7 +302,7 @@ The below folder structure will explain what should go where:
 ```
 
 
-### BRAND FOLDER FOR BOM/BSA/STG/WBC (1)
+### BRAND FOLDER FOR _BOM/_BSA/_STG/_WBC (1)
 
 The brand folders represent the difference of the codebase between each other.
 Files changed here will feed into its counterpart in `PROD`.

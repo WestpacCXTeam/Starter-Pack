@@ -23,10 +23,10 @@
 	<meta charset="UTF-8">
 	<title>Example page</title>
 
+	include "defaults/theme-head.html"
+
 	<link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
 	<meta name="viewport" content="width=device-width">
-
-	include "defaults/theme-head.html"
 
 	<!-- Uncomment the following line if you are using custom svgs -->
 	<!-- include "defaults/svgs.html" -->
@@ -36,15 +36,19 @@
 	include "windows.html"
 
 </head>
-<body class="home">
+<body>
 
-	<main class="main">
-		<div data-ui-view=""></div>
-	</main>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div data-ui-view=""></div>
+			</div>
+		</div>
+	</div>
 
 
 	<script type="text/javascript" src="js/--currentVersion--.min.js"></script>
-
 	include "defaults/theme-foot.html"
 </body>
 </html>
