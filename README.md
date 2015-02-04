@@ -38,7 +38,11 @@ If you have any suggestions, questions or bugs please [launch an issue](https://
 1. `cd` into the folder e.g. `cd c:/Users/MYNAME/Sites/MYPROJECT` within your shell enviroment.
 1. Run `npm install` to install all dependencies. This may take some time.
 
-# Start with templates
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Setting up
 
 The first time after you installed all packages run below command to setup your folders, the name of your project, the GUI files and all the other goodies
 that come with the Starter-Pack.
@@ -74,9 +78,9 @@ grunt
 
 Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder.  
 
-> This first time you run `grunt` the script will build your `PROD` folder ready fro production so JavaScript is uglified. Once you change a file the watch
-> **will not** uglify your JS code as this would take too long. Instead it just concatenate all JS files together to save time. Rmember to run `grunt` before you
-> deliver your production code to avoid giving out large JS files.
+> This first time you run `grunt` the script will build your `PROD` folder ready for production (JavaScript is uglified) and start the watch.
+> Once you change a file the watch **will not** uglify your JS code as this would take too long. Instead it just concatenate all JS files together to save time.
+> Remember to run `grunt` before you deliver your production code to avoid giving out large JS files.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -86,21 +90,21 @@ Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder
 
 Now that you have your project setup and running you can go ahead and edit the files you want.
 
-#### _Notes_
+#### _HTML_
 
 Make sure you don't edit any files in the `PROD` folder as this folder is being deleted and regenerated on each change the watch detects.
 
 
-#### _Working with GUI_
+#### _GUI Includes_
 
 All templates come with a set of commonly used HTMLincludes for including the GUI in your files. All you have to do is include them in your files:  
 
-In the `<head>` of your file:
+Inside the `<head>` of your file:
 ```HTML
 include "defaults/theme-head.html"
 ```
 
-Before the closing for the `<body>` tag:
+Before the closed `</body>` tag:
 ```HTML
 include "defaults/theme-foot.html"
 ```
@@ -153,14 +157,18 @@ include "defaults/svgs.html"
 All files in the brand folders `_BOM/_fonts/`, `_BSA/_fonts/`, `_STG/_fonts/`, `_WBC/_fonts/` are moved to `/fonts` in it's respective brand folder within `PROD`.
 
 
-#### _Css_
+#### _CSS_
 
 All files in the brand folders `_BOM/_css/`, `_BSA/_css/`, `_STG/_css/`, `_WBC/_css/` are moved to `/css` in it's respective brand folder within `PROD`.
 
 
 #### _Watch_
 
+The build in watch is looking at all relevant files and evokes the appropriate tasks when one of these change.
 
+> This first time you run `grunt` the script will build your `PROD` folder ready for production (JavaScript is uglified) and start the watch.
+> Once you change a file the watch **will not** uglify your JS code as this would take too long. Instead it just concatenate all JS files together to save time.
+> Remember to run `grunt` before you deliver your production code to avoid giving out large JS files.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -449,5 +457,5 @@ _Remember: Less files are cheap and so is documentation in less_
 
 
 # Release History
-* 0.9.0 - Fixed bugs, added better watch, questionnaire
-* 0.0.1 - Alpha/beta test
+* 1.1.0 - Added Yeoman like character, better watch, more documentation
+* 1.0.0 - Fixed bugs, added better watch, questionnaire
