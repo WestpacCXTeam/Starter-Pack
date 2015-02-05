@@ -3,19 +3,19 @@ Westpac Starter-Pack
 
 > A grunt workflow to get you started with your GUI multi-brand project.
 
-This is a starter package to help you work in a multi-brand, best-practice kinda way.  
+This is a starter pack to help you work in a multi-brand, best-practice kinda way.  
 It will:
 
 - [x] [Create the folder structure](#create-folders)
 - [x] [Install some preselected templates](#start-with-templates)
 - [x] [Run your project and watch for changes](#running)
-- [x] [Version it](#cache-busting-and-new-versions)
+- [x] [And Version your project](#cache-busting-and-new-versions) (yay!)
 
 
 #### To read more about the theme and how to use it, visit: [GEL](http://info.westpac.com.au/cx/GEL/)
 #### For even more on about how we work, read the [Wiki](https://github.com/WestpacCXTeam/Starter-Pack/wiki)
 
-If you have any suggestions, questions or bugs please [launch an issue](https://github.com/WestpacCXTeam/Starter-Pack/issues).
+If you have any suggestions, questions or bugs please [raise an issue](https://github.com/WestpacCXTeam/Starter-Pack/issues).
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -36,7 +36,7 @@ If you have any suggestions, questions or bugs please [launch an issue](https://
 ### Both
 1. [Download this repo](https://github.com/WestpacCXTeam/Starter-Pack/archive/master.zip) and unpack it into a folder of your choice.
 1. `cd` into the folder e.g. `cd c:/Users/MYNAME/Sites/MYPROJECT` within your shell enviroment.
-1. Run `npm install` to install all dependencies. This may take some time.
+1. Run `npm install` to install all dependencies. Go get a cup of tea, this may take some time.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -44,14 +44,14 @@ If you have any suggestions, questions or bugs please [launch an issue](https://
 
 # Setting up
 
-The first time after you installed all packages run below command to setup your folders, the name of your project, the GUI files and all the other goodies
+The first time after you installed all packages run the command below to setup your folders, the name of your project, the GUI files and all the other goodies
 that come with the Starter-Pack.
 
 ```shell
 grunt setup
 ```
 
-The setup will save your project name and version in the `package.json`.
+The setup will save your projects name and version in the `package.json`.
 
 ```JSON
 {
@@ -62,7 +62,7 @@ The setup will save your project name and version in the `package.json`.
 	etc...
 ```
 
-And depending on what kind of template you chose it will provide some js, less and HTML files to get you running asap.
+And depending on what kind of template you chose we'll throw in some js, less and HTML files to get you running asap.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -95,11 +95,11 @@ Now that you have your project setup and running you can go ahead and edit the f
 Make sure you don't edit any files in the `PROD` folder as this folder is being deleted and regenerated on each change the watch detects.
 
 
-#### _GUI Includes_
+#### _GUI includes_
 
-All templates come with a set of commonly used HTMLincludes for including the GUI in your files. All you have to do is include them in your files:  
+All templates come with a set of commonly used HTMLincludes. All you have to do is include them in your files:  
 
-Inside the `<head>` of your file:
+Inside `<head>` of your file:
 ```HTML
 include "defaults/theme-head.html"
 ```
@@ -112,9 +112,10 @@ include "defaults/theme-foot.html"
 
 #### _Less_
 
-Try setting up your less that helps you not repeat anything across brands. We have supplied you with a couple less files (included in the less and angluar
-templates) that help you with that. In the `_CORE` folder you can setup all of your modules less files and reference only variables within those files.
-In the e.g. `_BOM/_less/_settings.less` file you can map those variables to a brand specific value.
+We have supplied you with a couple less files (included in the less and angluar templates).
+Use the `settings.less` files in each respective brand folder to add brand specific values like colors.
+That way you only have to change the setting files to apply the different brand styles.
+
 The compiled file can be referenced in your HTML with:
 
 ```HTML
@@ -143,8 +144,10 @@ All images in the `_CORE` and brand folders are minified and moved into the `img
 
 #### _SVG_
 
-SVGs in the `_CORE` and brand folders are running through a [grunticon](https://github.com/filamentgroup/grunticon) task and be put into the `css/` folder
-in the `--currentVersion--` namespace. The css classes are prefixed with `sitesymbol-` to avoid overwrites with the GUI.  
+SVGs in the `_CORE` and brand folders are running through a [grunticon](https://github.com/filamentgroup/grunticon) task.
+This takes the svgs and generates three css files and a `sitepng/` folder with png fallbacks.
+This is then put into the `css/` folder with the `--currentVersion--` namespace.
+The css classes are prefixed with `sitesymbol-` to avoid overwrites with the GUI.  
 To include the compiled file into your HTML use below code in your `<head>`:
 
 ```HTML
@@ -164,7 +167,7 @@ All files in the brand folders `_BOM/_css/`, `_BSA/_css/`, `_STG/_css/`, `_WBC/_
 
 #### _Watch_
 
-The build in watch is looking at all relevant files and evokes the appropriate tasks when one of these change.
+The build in watch is looking at all relevant files and evokes the appropriate tasks when one of these changes.
 
 > This first time you run `grunt` the script will build your `PROD` folder ready for production (JavaScript is uglified) and start the watch.
 > Once you change a file the watch **will not** uglify your JS code as this would take too long. Instead it just concatenate all JS files together to save time.
@@ -188,8 +191,8 @@ If you want to reference the new version string in your HTML, JS or CSS just use
 --currentVersion--
 ```
 
-It will be replaced by grunt with the current version string. Both CSS and Javascript files that are compiled for you will be named according to your
-name and version of your project.
+This string will be replaced by grunt with the current version string. Both CSS and Javascript files that are compiled for you will be named according to your
+name and the version of your project.
 
 To include your Javascript, CSS files use:
 ```HTML
@@ -208,9 +211,9 @@ and
 
 We are maintaining two branches here:
 
-* [master](https://github.com/WestpacCXTeam/Starter-Pack/tree/master) -> This branch has a stable running version of the Starter Pack.
+* [master](https://github.com/WestpacCXTeam/Starter-Pack/tree/master) -> This branch has a stable running version of the Starter Pack.  
   _Please only use this branch for development of new GUI applications._
-* [dev](https://github.com/WestpacCXTeam/Starter-Pack/tree/dev) -> In `dev` we work on new features and this branch might not be stable at any point in time.
+* [dev](https://github.com/WestpacCXTeam/Starter-Pack/tree/dev) -> In `dev` we work on new features and this branch might be a bit off at times.
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -218,14 +221,15 @@ We are maintaining two branches here:
 
 # Folder structure
 
-The below folder structure will explain what should go where:
+The below folder structure will explain what goes where:  
+_(get ready to scroll... :scroll:)_
 
 ```
 .
-├── _BOM                                  // BRAND FOLDER FOR BOM (1)
-├── _BSA                                  // BRAND FOLDER FOR BSA (1)
-├── _STG                                  // BRAND FOLDER FOR STG (1)
-├── _WBC                                  // BRAND FOLDER FOR WBC (1)
+├── _BOM                                 // BRAND FOLDER FOR BOM (1)
+├── _BSA                                 // BRAND FOLDER FOR BSA (1)
+├── _STG                                 // BRAND FOLDER FOR STG (1)
+├── _WBC                                 // BRAND FOLDER FOR WBC (1)
 │   │
 │   ├── _css                             // The _css brand folder (2)
 │   │   ├── png
@@ -313,6 +317,7 @@ The below folder structure will explain what should go where:
 ### BRAND FOLDER FOR _BOM/_BSA/_STG/_WBC (1)
 
 The brand folders represent the difference of the codebase between each other.
+So files in the brand folders are uniqe to that brand.
 Files changed here will feed into its counterpart in `PROD`.
 
 
