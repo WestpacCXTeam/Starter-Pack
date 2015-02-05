@@ -21,7 +21,7 @@ If you have any suggestions, questions or bugs please [launch an issue](https://
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Setting up
+# Installing
 
 ### MAC
 1. Download [NodeJS](http://nodejs.org/) and install on your computer.
