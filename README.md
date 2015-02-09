@@ -24,7 +24,7 @@ If you have any suggestions, questions or bugs please [raise an issue](https://g
 # Content
 
 * [Installing](#installing)
-* [Setting up](Setting #up)
+* [Setting up](#setting-up)
 * [Running](#running)
 * [Editing](#editing)
 * [Cache busting](#cache-busting)
