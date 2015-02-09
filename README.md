@@ -21,6 +21,23 @@ If you have any suggestions, questions or bugs please [raise an issue](https://g
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+# Content
+
+* [Installing](#installing)
+* [Setting up](Setting #up)
+* [Running](#running)
+* [Editing](#editing)
+* [Cache busting](#cache-busting)
+* [Delivering](#delivering)
+
+* [Branches](#branches)
+* [Folder structure](#folder-structure)
+* [Release History](#release-history)
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 # Installing
 
 ### MAC
@@ -177,7 +194,7 @@ The build in watch is looking at all relevant files and evokes the appropriate t
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Cache busting and new versions
+# Cache busting
 
 Run the below code to bump up to the next version and cache bust your application:
 
@@ -203,6 +220,16 @@ and
 <link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
 ```
 
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+# Delivering
+
+We have created some tools to help with the HTML deliverable:
+
+* A Chrome bookmarklet to show you the grid overlay, [install gridly](https://github.com/dominikwilkowski/gridly)
+* A chrome extension for your dev tools to map colors to it's tints, [install GEL inspector](https://github.com/dominikwilkowski/GEL-inspector)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
