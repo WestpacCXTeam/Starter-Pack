@@ -1404,7 +1404,16 @@ module.exports = function (grunt) {
 
 			logo: {
 				text: '|Starter-Pack',
-			}
+			},
+
+			server: {
+				options: {
+					font: 'console',
+					colors: ['black'],
+					background: 'white',
+				},
+				text: '|	Server running on http://localhost:9000',
+			},
 		},
 
 
@@ -1779,13 +1788,13 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('setup', ['font:setup', 'prompt:setup', 'wakeup']); //setup your project by running this task first
 
-	grunt.registerTask('BOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM', 'watch']); //build only BOM
-	grunt.registerTask('BSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA', 'watch']); //build only BSA
-	grunt.registerTask('STG', ['font:logo', 'check', 'font:logo', 'connect', 'STG', 'watch']); //build only STG
-	grunt.registerTask('WBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC', 'watch']); //build only WBC
+	grunt.registerTask('BOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM', 'font:server', 'watch']); //build only BOM
+	grunt.registerTask('BSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA', 'font:server', 'watch']); //build only BSA
+	grunt.registerTask('STG', ['font:logo', 'check', 'font:logo', 'connect', 'STG', 'font:server', 'watch']); //build only STG
+	grunt.registerTask('WBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC', 'font:server', 'watch']); //build only WBC
 
 	grunt.registerTask('bump', ['font:logo', 'check', 'prompt:bumpup', 'build']); //bump up to new version
 
 
-	grunt.registerTask('default', ['font:logo', 'check', 'connect', 'build', 'watch']); //work
+	grunt.registerTask('default', ['font:logo', 'check', 'connect', 'build', 'font:server', 'watch']); //work
 };
