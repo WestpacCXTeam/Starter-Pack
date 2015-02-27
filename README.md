@@ -1,7 +1,7 @@
-Westpac Starter-Pack 
+Westpac Starter-Pack
 ====================
 
-> A grunt workflow to get you started with your GUI multi-brand project. :bowtie:
+> A grunt workflow to get you started with your GUI multi-brand project.
 
 This is a starter pack to help you work in a multi-brand, best-practice kinda way.  
 It will:
@@ -23,22 +23,22 @@ If you have any suggestions, questions or bugs please [raise an issue](https://g
 
 # Content
 
-###### [:minidisc: Installing](#installing)
-###### [:house_with_garden: Setting up](#setting-up)
-###### [:herb: Templating](#templating)
-###### [:rocket: Running](#running)
-###### [:pencil2: Editing](#editing)
-###### [:boom: Cache busting](#cache-busting)
-###### [:truck: Delivering](#delivering)
-###### [:busts_in_silhouette: Branches](#branches)
-###### [:open_file_folder: Folder structure](#folder-structure)
-###### [:books: Release History](#release-history)
+###### [Installing](#installing)
+###### [Setting up](#setting-up)
+###### [Templating](#templating)
+###### [Running](#running)
+###### [Editing](#editing)
+###### [Cache busting](#cache-busting)
+###### [Delivering](#delivering)
+###### [Branches](#branches)
+###### [Folder structure](#folder-structure)
+###### [Release History](#release-history)
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Installing :minidisc:
+# Installing
 
 ### MAC
 1. Download [NodeJS](http://nodejs.org/) and install on your computer.
@@ -53,7 +53,7 @@ If you have any suggestions, questions or bugs please [raise an issue](https://g
 ### Both
 1. [Download this repo](https://github.com/WestpacCXTeam/Starter-Pack/archive/master.zip) and unpack it into a folder of your choice.
 1. `cd` into the folder e.g. `cd c:/Users/MYNAME/Sites/MYPROJECT` within your shell enviroment.
-1. Run `npm install` to install all dependencies. Go get a cup of tea :tea:, this may take some time.
+1. Run `npm install` to install all dependencies. Go get a cup of tea, this may take some time.
 
 **[⬆ back to top](#content)**
 
@@ -61,7 +61,7 @@ If you have any suggestions, questions or bugs please [raise an issue](https://g
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Setting up :house_with_garden:
+# Setting up
 
 The first time after you installed all packages run the command below to setup your folders, the name of your project, the GUI files and all the other goodies
 that come with the Starter-Pack.
@@ -91,7 +91,7 @@ And depending on what kind of template you chose we'll throw in some js, less an
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Templating :herb:
+# Templating
 
 The Starter Pack comes currently with four templates:
 
@@ -274,7 +274,7 @@ The Starter Pack comes currently with four templates:
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Running :rocket:
+# Running
 
 Now run the default grunt task to watch your files for changes:
 
@@ -294,7 +294,7 @@ Visit [http://localhost:9000/](http://localhost:9000/) to see your `PROD` folder
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Editing :pencil2:
+# Editing
 
 Now that you have your project setup and running you can go ahead and edit the files you want.
 
@@ -389,7 +389,7 @@ The build in watch is looking at all relevant files and evokes the appropriate t
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Cache busting :boom:
+# Cache busting
 
 Run the below code to bump up to the next version and cache bust your application:
 
@@ -421,7 +421,7 @@ and
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Delivering :truck:
+# Delivering
 
 We have created some tools to help with the HTML deliverable:
 
@@ -433,7 +433,7 @@ We have created some tools to help with the HTML deliverable:
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Branches :busts_in_silhouette:
+# Branches
 
 We are maintaining two branches here:
 
@@ -447,10 +447,10 @@ We are maintaining two branches here:
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Folder structure :open_file_folder:
+# Folder structure
 
 The below folder structure will explain what goes where:  
-_(get ready to scroll... :scroll:)_
+_(get ready to scroll...)_
 
 ```
 .
@@ -693,7 +693,7 @@ _Remember: Less files are cheap and so is documentation in less_
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-# Release History :books:
+# Release History
 * 1.1.1 - Added `javascript` template and documentation
 * 1.1.0 - Added Yeoman like character, better watch, more documentation
 * 1.0.0 - Fixed bugs, added better watch, questionnaire
