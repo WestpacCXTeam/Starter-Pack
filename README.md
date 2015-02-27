@@ -23,16 +23,16 @@ If you have any suggestions, questions or bugs please [raise an issue](https://g
 
 # Content
 
-###### [Installing](#installing)
-###### [Setting up](#setting-up)
-###### [Templating](#templating)
-###### [Running](#running)
-###### [Editing](#editing)
-###### [Cache busting](#cache-busting)
-###### [Delivering](#delivering)
-###### [Branches](#branches)
-###### [Folder structure](#folder-structure)
-###### [Release History](#release-history)
+* [Installing](#installing)
+* [Setting up](#setting-up)
+* [Templating](#templating)
+* [Running](#running)
+* [Editing](#editing)
+* [Cache busting](#cache-busting)
+* [Delivering](#delivering)
+* [Branches](#branches)
+* [Folder structure](#folder-structure)
+* [Release History](#release-history)
 
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------
