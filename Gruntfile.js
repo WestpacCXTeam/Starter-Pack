@@ -9,7 +9,7 @@
 //                         ╚══════╝    ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═╝    ╚═╝    ╚══════╝ ╚═╝  ╚═╝        ╚═╝      ╚═╝  ╚═╝  ╚═════╝ ╚═╝  ╚═╝
 //                                                                                            Created by Westpac CX, Dominik Wilkowski
 //
-// Version:  1.1.0
+// Version:  1.1.1
 // URL:      https://github.com/WestpacCXTeam/Starter-Pack
 // Issues:   https://github.com/WestpacCXTeam/Starter-Pack/issues
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -24,7 +24,12 @@ var figures = require('figures');
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 // Custom functions
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
-function nextVersion( grunt ) { //get current version and increment by one
+/*
+ * get current version and increment by one
+ *
+ * grunt  object  Grunt object
+ */
+function NextVersion( grunt ) {
 	var pkg = grunt.file.readJSON('package.json');
 	var newVersion = pkg.version.split(".");
 	newVersion[ (newVersion.length - 1) ] = parseInt( newVersion[ (newVersion.length - 1) ] ) + 1;
@@ -33,13 +38,55 @@ function nextVersion( grunt ) { //get current version and increment by one
 }
 
 
-function handleize( string ) { //handleize a string
+/*
+ * handleize a string
+ *
+ * string  string  A string to be handelized
+ */
+function Handleize( string ) {
 	return string.replace(/\W+/g, '-').toLowerCase();
 }
 
 
-function colorize( boolen ) { //colorize a boolen value
+/*
+ * colorize a boolen value
+ *
+ * boolen  boolen  A boolen expression to be epressed with colors
+ */
+function Colorize( boolen ) {
 	return boolen ? figures.tick.green + '  true'.green : figures.cross.red + '  false'.red;
+}
+
+
+/*
+ * unzip GUI files and put in correct folder
+ *
+ * filepath  string  Filepath of each unziped file
+ */
+function UnzipGUI( filepath ) {
+	var $dir = filepath.split('/'); //get full file path
+	var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
+	var $path = filepath.replace($file, ''); //get path
+
+	var $newDirs = {
+		'fonts': '_fonts',
+		'js': '_js',
+		'css': '_css',
+		'brand': '',
+	};
+
+	$dir[0] = $newDirs[ $dir[0] ];
+	var newPath = $dir.join('/');
+
+	if(newPath === '/less/colors.less') { //move colors.less
+		return '_less/colors.less';
+	}
+	else if(newPath === '/less/') {
+		return '_less/';
+	}
+	else {
+		return newPath;
+	}
 }
 
 
@@ -979,6 +1026,16 @@ module.exports = function (grunt) {
 				}],
 			},
 
+			setupJavascript: { //move javascript template files
+				files: [{
+					cwd: './.templates/javascript/',
+					src: ['**/*'],
+					dest: './',
+					filter: 'isFile',
+					expand: true,
+				}],
+			},
+
 			setupAngular: { //move angular template files
 				files: [{
 					cwd: './.templates/angular/',
@@ -1023,124 +1080,28 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		unzip: {
 			BOM: { //unzip Bom zip and sort in
-				router: function (filepath) {
-					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
-					var $path = filepath.replace($file, ''); //get path
-
-					var $newDirs = {
-						'fonts': '_fonts',
-						'js': '_js',
-						'css': '_css',
-						'brand': '',
-					};
-
-					$dir[0] = $newDirs[ $dir[0] ];
-					var newPath = $dir.join('/');
-
-					if(newPath === '/less/colors.less') { //move colors.less
-						return '_less/colors.less';
-					}
-					else if(newPath === '/less/') {
-						return '_less/';
-					}
-					else {
-						return newPath;
-					}
-				},
+				router: UnzipGUI,
 
 				src: './temp/BOM/theme.zip',
 				dest: './_BOM/',
 			},
 
 			BSA: { //unzip BSA zip and sort in
-				router: function (filepath) {
-					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
-					var $path = filepath.replace($file, ''); //get path
-
-					var $newDirs = {
-						'fonts': '_fonts',
-						'js': '_js',
-						'css': '_css',
-						'brand': '',
-					};
-
-					$dir[0] = $newDirs[ $dir[0] ];
-					var newPath = $dir.join('/');
-
-					if(newPath === '/less/colors.less') { //move colors.less
-						return '_less/colors.less';
-					}
-					else if(newPath === '/less/') {
-						return '_less/';
-					}
-					else {
-						return newPath;
-					}
-				},
+				router: UnzipGUI,
 
 				src: './temp/BSA/theme.zip',
 				dest: './_BSA/',
 			},
 
 			STG: { //unzip STG zip and sort in
-				router: function (filepath) {
-					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
-					var $path = filepath.replace($file, ''); //get path
-
-					var $newDirs = {
-						'fonts': '_fonts',
-						'js': '_js',
-						'css': '_css',
-						'brand': '',
-					};
-
-					$dir[0] = $newDirs[ $dir[0] ];
-					var newPath = $dir.join('/');
-
-					if(newPath === '/less/colors.less') { //move colors.less
-						return '_less/colors.less';
-					}
-					else if(newPath === '/less/') {
-						return '_less/';
-					}
-					else {
-						return newPath;
-					}
-				},
+				router: UnzipGUI,
 
 				src: './temp/STG/theme.zip',
 				dest: './_STG/',
 			},
 
 			WBC: { //unzip WBC zip and sort in
-				router: function (filepath) {
-					var $dir = filepath.split('/'); //get full file path
-					var $file = $dir[ ( $dir.length - 1 ) ]; //get file name
-					var $path = filepath.replace($file, ''); //get path
-
-					var $newDirs = {
-						'fonts': '_fonts',
-						'js': '_js',
-						'css': '_css',
-						'brand': '',
-					};
-
-					$dir[0] = $newDirs[ $dir[0] ];
-					var newPath = $dir.join('/');
-
-					if(newPath === '/less/colors.less') { //move colors.less
-						return '_less/colors.less';
-					}
-					else if(newPath === '/less/') {
-						return '_less/';
-					}
-					else {
-						return newPath;
-					}
-				},
+				router: UnzipGUI,
 
 				src: './temp/WBC/theme.zip',
 				dest: './_WBC/',
@@ -1179,12 +1140,16 @@ module.exports = function (grunt) {
 									name: 'Angular SPA with library files and prepared folders plus less files with settings for each brand and some commonly used HTMLincludes.',
 								},
 								{
+									value: 'javascript',
+									name: 'Javascript application setup with no dependencies and prepared folders plus less files with settings for each brand and some commonly used HTMLincludes.',
+								},
+								{
 									value: 'less',
-									name: 'Only less files with settings for each brand plus some commonly used HTMLincludes',
+									name: 'Only less files with settings for each brand plus some commonly used HTMLincludes.',
 								},
 								{
 									value: 'clean',
-									name: 'A clean start without any assumtions about your project plus some commonly used HTMLincludes',
+									name: 'A clean start without any assumtions about your project plus some commonly used HTMLincludes.',
 								},
 							]
 						},
@@ -1242,21 +1207,46 @@ module.exports = function (grunt) {
 							// create folders and copy template files
 							grunt.task.run('mkdir:brands'); //create base folders
 							grunt.task.run('mkdir:clean'); //create clean template folders
-							grunt.task.run('copy:setupClean'); //copy clean template files
 
-							if(results.setupTemplate === 'less' || results.setupTemplate === 'angular') {
+							//copy clean template files
+							if(results.setupTemplate === 'clean') {
+								grunt.task.run('copy:setupClean'); //copy clean template files
+							}
+
+							//copy less template files
+							if(results.setupTemplate === 'less') {
+								grunt.task.run('copy:setupClean'); //copy clean template files
+
 								grunt.task.run('mkdir:less'); //create less template folders
 								grunt.task.run('copy:setupLess'); //copy less template files
 							}
+
+							//copy javascript template files
+							if(results.setupTemplate === 'javascript') {
+								grunt.task.run('copy:setupClean'); //copy clean template files
+
+								grunt.task.run('mkdir:less'); //create less template folders
+								grunt.task.run('copy:setupLess'); //copy less template files
+
+								grunt.task.run('copy:setupJavascript'); //copy angular template files
+							}
+
+							//copy angular template files
 							if(results.setupTemplate === 'angular') {
+								grunt.task.run('copy:setupClean'); //copy clean template files
+
+								grunt.task.run('mkdir:less'); //create less template folders
+								grunt.task.run('copy:setupLess'); //copy less template files
+
 								grunt.task.run('mkdir:angular'); //create angular template folders
 								grunt.task.run('copy:setupAngular'); //copy angular template files
 							}
+
 							messages += "\n" + '• We created all folders and copied the template "'.green + results.setupTemplate.yellow + '" into them...'.green;
 
 
 							// download and install GUI
-							if(results.setupGUI === 'YES') {
+							if( results.setupGUI === 'YES' ) {
 								grunt.task.run(['curl', 'unzip', 'clean:post']);
 								messages += "\n" + '• We downloaded the GUI for you and installed it into your folders...'.green;
 							}
@@ -1267,10 +1257,10 @@ module.exports = function (grunt) {
 
 							// set the app name
 							if(results.setupName !== '') {
-								packageFile.name = handleize( results.setupName );
+								packageFile.name = Handleize( results.setupName );
 								grunt.file.write('package.json', JSON.stringify( packageFile ) );
 
-								messages += "\n" + '• We set the new name "'.green + handleize( results.setupName ).yellow + '" for you...'.green;
+								messages += "\n" + '• We set the new name "'.green + Handleize( results.setupName ).yellow + '" for you...'.green;
 							}
 							else {
 								messages += "\n" + '- We left the current name "'.grey + packageFile.name.yellow + '" alone...'.grey;
@@ -1334,8 +1324,8 @@ module.exports = function (grunt) {
 							message: 'Current version: ' + '<%= pkg.version %>'.red,
 							choices: [
 								{
-									value: nextVersion(grunt),
-									name: 'Build: '.yellow + nextVersion(grunt).yellow + ' Next release within this version.',
+									value: NextVersion( grunt ),
+									name: 'Build: '.yellow + NextVersion( grunt ).yellow + ' Next release within this version.',
 								},
 								{
 									value: 'custom',
@@ -1404,7 +1394,16 @@ module.exports = function (grunt) {
 
 			logo: {
 				text: '|Starter-Pack',
-			}
+			},
+
+			server: {
+				options: {
+					font: 'console',
+					colors: ['black'],
+					background: 'white',
+				},
+				text: '|	Server running on http://localhost:9000',
+			},
 		},
 
 
@@ -1626,12 +1625,12 @@ module.exports = function (grunt) {
 
 			console.log("\n\n" + '		The installation is incomplete.'.red.bold + "\n" +
 				'		Please run '.red + 'grunt setup'.yellow + ' to potential fix the issues below.'.red + "\n\n" +
-				'Is the package.json file present?:  ' + colorize(_hasPackage) + "\n" +
-				'Is the _CORE folder present?:       ' + colorize(_hasCore) + "\n" +
-				'Is the _BOM folder present?:        ' + colorize(_hasBOM) + "\n" +
-				'Is the _BSA folder present?:        ' + colorize(_hasBSA) + "\n" +
-				'Is the _STG folder present?:        ' + colorize(_hasSTG) + "\n" +
-				'Is the _WBC folder present?:        ' + colorize(_hasWBC) + "\n"
+				'Is the package.json file present?:  ' + Colorize(_hasPackage) + "\n" +
+				'Is the _CORE folder present?:       ' + Colorize(_hasCore) + "\n" +
+				'Is the _BOM folder present?:        ' + Colorize(_hasBOM) + "\n" +
+				'Is the _BSA folder present?:        ' + Colorize(_hasBSA) + "\n" +
+				'Is the _STG folder present?:        ' + Colorize(_hasSTG) + "\n" +
+				'Is the _WBC folder present?:        ' + Colorize(_hasWBC) + "\n"
 			);
 
 			grunt.task.clearQueue(); //clear queue
@@ -1779,13 +1778,13 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('setup', ['font:setup', 'prompt:setup', 'wakeup']); //setup your project by running this task first
 
-	grunt.registerTask('BOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM', 'watch']); //build only BOM
-	grunt.registerTask('BSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA', 'watch']); //build only BSA
-	grunt.registerTask('STG', ['font:logo', 'check', 'font:logo', 'connect', 'STG', 'watch']); //build only STG
-	grunt.registerTask('WBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC', 'watch']); //build only WBC
+	grunt.registerTask('BOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM', 'font:server', 'watch']); //build only BOM
+	grunt.registerTask('BSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA', 'font:server', 'watch']); //build only BSA
+	grunt.registerTask('STG', ['font:logo', 'check', 'font:logo', 'connect', 'STG', 'font:server', 'watch']); //build only STG
+	grunt.registerTask('WBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC', 'font:server', 'watch']); //build only WBC
 
 	grunt.registerTask('bump', ['font:logo', 'check', 'prompt:bumpup', 'build']); //bump up to new version
 
 
-	grunt.registerTask('default', ['font:logo', 'check', 'connect', 'build', 'watch']); //work
+	grunt.registerTask('default', ['font:logo', 'check', 'connect', 'build', 'font:server', 'watch']); //work
 };
