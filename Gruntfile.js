@@ -9,7 +9,7 @@
 //                         ╚══════╝    ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═╝    ╚═╝    ╚══════╝ ╚═╝  ╚═╝        ╚═╝      ╚═╝  ╚═╝  ╚═════╝ ╚═╝  ╚═╝
 //                                                                                            Created by Westpac CX, Dominik Wilkowski
 //
-// Version:  1.1.1
+// Version:  1.1.2
 // URL:      https://github.com/WestpacCXTeam/Starter-Pack
 // Issues:   https://github.com/WestpacCXTeam/Starter-Pack/issues
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -106,7 +106,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-includes');
+	grunt.loadNpmTasks('grunt-include-replace');
 	grunt.loadNpmTasks('grunt-grunticon');
 	grunt.loadNpmTasks('grunt-svgmin');
 	grunt.loadNpmTasks('grunt-contrib-clean');
@@ -244,8 +244,11 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		// Includes task
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
-		includes: {
+		includereplace: {
 			BOM: { //compile all HTML files in BOM
+				expand: true,
+				flatten: false,
+				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
@@ -253,12 +256,14 @@ module.exports = function (grunt) {
 				],
 				dest: './PROD/BOM/',
 				options: {
-					flatten: false,
-					includePath: './temp/BOM/_HTMLincludes/',
+					includesDir: './temp/BOM/_HTMLincludes/',
 				},
 			},
 
 			BSA: { //compile all HTML files in BSA
+				expand: true,
+				flatten: false,
+				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
@@ -266,12 +271,14 @@ module.exports = function (grunt) {
 				],
 				dest: './PROD/BSA/',
 				options: {
-					flatten: false,
-					includePath: './temp/BSA/_HTMLincludes/',
+					includesDir: './temp/BSA/_HTMLincludes/',
 				},
 			},
 
 			STG: { //compile all HTML files in STG
+				expand: true,
+				flatten: false,
+				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
@@ -279,12 +286,14 @@ module.exports = function (grunt) {
 				],
 				dest: './PROD/STG/',
 				options: {
-					flatten: false,
-					includePath: './temp/STG/_HTMLincludes/',
+					includesDir: './temp/STG/_HTMLincludes/',
 				},
 			},
 
 			WBC: { //compile all HTML files in WBC
+				expand: true,
+				flatten: false,
+				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
@@ -292,8 +301,7 @@ module.exports = function (grunt) {
 				],
 				dest: './PROD/WBC/',
 				options: {
-					flatten: false,
-					includePath: './temp/WBC/_HTMLincludes/',
+					includesDir: './temp/WBC/_HTMLincludes/',
 				},
 			},
 		},
@@ -1438,7 +1446,7 @@ module.exports = function (grunt) {
 					'copy:STGBrandincludes',
 					'copy:WBCCoreincludes',
 					'copy:WBCBrandincludes',
-					'includes',
+					'includereplace',
 					'clean:includes',
 					'copy:BOMHTML',
 					'copy:BSAHTML',
@@ -1652,7 +1660,7 @@ module.exports = function (grunt) {
 		'copy:STGBrandincludes',
 		'copy:WBCCoreincludes',
 		'copy:WBCBrandincludes',
-		'includes',
+		'includereplace',
 		'clean:includes',
 		'less',
 		'autoprefixer',

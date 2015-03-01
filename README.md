@@ -309,12 +309,12 @@ All templates come with a set of commonly used HTMLincludes. All you have to do 
 
 Inside `<head>` of your file:
 ```HTML
-include "defaults/theme-head.html"
+@@include('defaults/theme-head.html')
 ```
 
 Before the closed `</body>` tag:
 ```HTML
-include "defaults/theme-foot.html"
+@@include('defaults/theme-foot.html')
 ```
 
 
@@ -330,7 +330,7 @@ The compiled file can be referenced in your HTML with:
 <link rel="stylesheet" media="all" type="text/css" href="css/--currentVersion--.min.css">
 ```
 
-_More about the process of file naming in the [next section](#cache-busting-and-new-versions)_
+_More about the process of file naming in the [next section](#cache-busting)_
 
 
 #### _Javascript_
@@ -342,7 +342,7 @@ into one file and referenced in your HTML with:
 <script type="text/javascript" src="js/--currentVersion--.min.js"></script>
 ```
 
-_More about the process of file naming in the [next section](#cache-busting-and-new-versions)_
+_More about the process of file naming in the [next section](#cache-busting)_
 
 > If you are using the theme javascript files make sure to include a jQuery version as the theme depends on a recent version of jQuery!
 
@@ -361,7 +361,7 @@ The css classes are prefixed with `sitesymbol-` to avoid overwrites with the GUI
 To include the compiled file into your HTML use below code in your `<head>`:
 
 ```HTML
-include "defaults/svgs.html"
+@@include('defaults/svgs.html')
 ```
 
 
@@ -566,8 +566,10 @@ There are some GUI font files that will fit in here.
 You can merge two HTML files into on with a simple code snippet like:
 
 ```
-include "modernizr.html"
+@@include('defaults/modernizr.html')
 ```
+
+We use `[grunt-include-replace](https://github.com/alanshaw/grunt-include-replace)` for this and you can learn about it in their readme.
 
 _Note: you can also organize your `_HTMLincludes` folder in subfolders_
 
@@ -648,12 +650,13 @@ The `_CORE` folder is where all files sit that are the same on each brand. Try t
 
 This folder should contain all of your HTML files. Organise them into subfolders to keep them clean.
 
-_Remember: you can use your [_HTMLincludes](#the-_htmlincludes-folder-2) to brand these files._
+_Remember: you can use your [_HTMLincludes](#the-_htmlincludes-folder-4) to brand these files._
 
 
 ### The _HTMLincludes core folder (13)
 
 The _HTMLincludes folder is copied into each branch folder, then the brand folders override all the files for each brand.
+We use `[grunt-include-replace](https://github.com/alanshaw/grunt-include-replace)` for this and you can learn about it in their readme.
 
 
 ### The _js core folder (14)
@@ -694,6 +697,7 @@ _Remember: Less files are cheap and so is documentation in less_
 
 
 # Release History
+* 1.1.2 - Moved HTMLincludes to `[grunt-include-replace](https://github.com/alanshaw/grunt-include-replace)`
 * 1.1.1 - Added `javascript` template and documentation
 * 1.1.0 - Added Yeoman like character, better watch, more documentation
 * 1.0.0 - Fixed bugs, added better watch, questionnaire
