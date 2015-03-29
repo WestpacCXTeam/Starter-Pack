@@ -41,7 +41,7 @@ If you have any suggestions, questions or bugs please [raise an issue](https://g
 # Installing
 
 ### MAC
-1. Download [NodeJS](http://nodejs.org/) and install on your computer.
+1. Download [NodeJS](http://nodejs.org/) and install on your computer _(We recommend to use [homebrew](http://brew.sh) for the install)_.
 1. Run `npm install npm -g` to update to the newest NPM version.
 1. Run `npm install -g grunt-cli` to install grunt globally (You might need to install the xCode command line tools)
 
@@ -697,6 +697,7 @@ _Remember: Less files are cheap and so is documentation in less_
 
 
 # Release History
+* 1.1.3 - Fixed some syntax bugs
 * 1.1.2 - Moved HTMLincludes to `[grunt-include-replace](https://github.com/alanshaw/grunt-include-replace)`
 * 1.1.1 - Added `javascript` template and documentation
 * 1.1.0 - Added Yeoman like character, better watch, more documentation
