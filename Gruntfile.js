@@ -9,7 +9,7 @@
 //                         ╚══════╝    ╚═╝    ╚═╝  ╚═╝ ╚═╝  ╚═╝    ╚═╝    ╚══════╝ ╚═╝  ╚═╝        ╚═╝      ╚═╝  ╚═╝  ╚═════╝ ╚═╝  ╚═╝
 //                                                                                            Created by Westpac CX, Dominik Wilkowski
 //
-// Version:  1.1.2
+// Version:  1.1.3
 // URL:      https://github.com/WestpacCXTeam/Starter-Pack
 // Issues:   https://github.com/WestpacCXTeam/Starter-Pack/issues
 //--------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -248,7 +248,6 @@ module.exports = function (grunt) {
 			BOM: { //compile all HTML files in BOM
 				expand: true,
 				flatten: false,
-				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
@@ -263,7 +262,6 @@ module.exports = function (grunt) {
 			BSA: { //compile all HTML files in BSA
 				expand: true,
 				flatten: false,
-				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
@@ -278,7 +276,6 @@ module.exports = function (grunt) {
 			STG: { //compile all HTML files in STG
 				expand: true,
 				flatten: false,
-				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
@@ -293,7 +290,6 @@ module.exports = function (grunt) {
 			WBC: { //compile all HTML files in WBC
 				expand: true,
 				flatten: false,
-				expand: true,
 				cwd: './_CORE/_HTML/',
 				src: [
 					'**/*.html',
