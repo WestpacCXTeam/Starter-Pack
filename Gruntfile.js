@@ -1058,22 +1058,22 @@ module.exports = function (grunt) {
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		curl: {
 			BOM: { //download latest BOM theme
-				src: 'http://thewestpacgroup-gel.io/GUI/BOM/downloads/theme.zip',
+				src: 'http://gel.westpacgroup.com.au/GUI/legacy/v1.1.2/BOM/downloads/theme.zip',
 				dest: './temp/BOM/theme.zip',
 			},
 
 			BSA: { //download latest BSA theme
-				src: 'http://thewestpacgroup-gel.io/GUI/BSA/downloads/theme.zip',
+				src: 'http://gel.westpacgroup.com.au/GUI/legacy/v1.1.2/BSA/downloads/theme.zip',
 				dest: './temp/BSA/theme.zip',
 			},
 
 			STG: { //download latest STG theme
-				src: 'http://thewestpacgroup-gel.io/GUI/StGeorge/downloads/theme.zip',
+				src: 'http://gel.westpacgroup.com.au/GUI/legacy/v1.1.2/StGeorge/downloads/theme.zip',
 				dest: './temp/STG/theme.zip',
 			},
 
 			WBC: { //download latest WBC theme
-				src: 'http://thewestpacgroup-gel.io/GUI/Westpac/downloads/theme.zip',
+				src: 'http://gel.westpacgroup.com.au/GUI/legacy/v1.1.2/Westpac/downloads/theme.zip',
 				dest: './temp/WBC/theme.zip',
 			},
 		},
@@ -1424,6 +1424,9 @@ module.exports = function (grunt) {
 		// Watch for changes
 		//----------------------------------------------------------------------------------------------------------------------------------------------------------
 		watch: {
+			options: {
+				livereload: true,
+			},
 
 			HTML: { //watch all HTML files
 				files: [
