@@ -1694,11 +1694,11 @@ module.exports = function (grunt) {
 
 
 	//brand specific
-	grunt.registerTask('BOM', [
+	grunt.registerTask('buildBOM', [
 		'clean:pre',
 		'copy:BOMCoreincludes',
 		'copy:BOMBrandincludes',
-		'includes:BOM',
+		'includereplace:BOM',
 		'clean:includes',
 		'less:BOM',
 		'autoprefixer:BOM',
@@ -1716,11 +1716,11 @@ module.exports = function (grunt) {
 		'wakeup',
 	]);
 
-	grunt.registerTask('BSA', [
+	grunt.registerTask('buildBSA', [
 		'clean:pre',
 		'copy:BSACoreincludes',
 		'copy:BSABrandincludes',
-		'includes:BSA',
+		'includereplace:BSA',
 		'clean:includes',
 		'less:BSA',
 		'autoprefixer:BSA',
@@ -1738,11 +1738,11 @@ module.exports = function (grunt) {
 		'wakeup',
 	]);
 
-	grunt.registerTask('STG', [
+	grunt.registerTask('buildSTG', [
 		'clean:pre',
 		'copy:STGCoreincludes',
 		'copy:STGBrandincludes',
-		'includes:STG',
+		'includereplace:STG',
 		'clean:includes',
 		'less:STG',
 		'autoprefixer:STG',
@@ -1760,11 +1760,11 @@ module.exports = function (grunt) {
 		'wakeup',
 	]);
 
-	grunt.registerTask('WBC', [
+	grunt.registerTask('buildWBC', [
 		'clean:pre',
 		'copy:WBCCoreincludes',
 		'copy:WBCBrandincludes',
-		'includes:WBC',
+		'includereplace:WBC',
 		'clean:includes',
 		'less:WBC',
 		'autoprefixer:WBC',
@@ -1776,19 +1776,19 @@ module.exports = function (grunt) {
 		'copy:WBCCSS',
 		'copy:WBCFonts',
 		'copy:WBCHTML',
-		'concat:WBC',
 		'replace:WBC',
+		'concat:WBC',
 		'clean:post',
-		'wakeup',
+		'wakeup'
 	]);
 
 
 	grunt.registerTask('setup', ['font:setup', 'prompt:setup', 'wakeup']); //setup your project by running this task first
 
-	grunt.registerTask('BOM', ['font:logo', 'check', 'font:logo', 'connect', 'BOM', 'font:server', 'watch']); //build only BOM
-	grunt.registerTask('BSA', ['font:logo', 'check', 'font:logo', 'connect', 'BSA', 'font:server', 'watch']); //build only BSA
-	grunt.registerTask('STG', ['font:logo', 'check', 'font:logo', 'connect', 'STG', 'font:server', 'watch']); //build only STG
-	grunt.registerTask('WBC', ['font:logo', 'check', 'font:logo', 'connect', 'WBC', 'font:server', 'watch']); //build only WBC
+	grunt.registerTask('BOM', ['font:logo', 'check', 'font:logo', 'connect', 'buildBOM', 'font:server', 'watch']); //build only BOM
+	grunt.registerTask('BSA', ['font:logo', 'check', 'font:logo', 'connect', 'buildBSA', 'font:server', 'watch']); //build only BSA
+	grunt.registerTask('STG', ['font:logo', 'check', 'font:logo', 'connect', 'buildSTG', 'font:server', 'watch']); //build only STG
+	grunt.registerTask('WBC', ['font:logo', 'check', 'font:logo', 'connect', 'buildWBC', 'font:server', 'watch']); //build only WBC
 
 	grunt.registerTask('bump', ['font:logo', 'check', 'prompt:bumpup', 'build']); //bump up to new version
 
