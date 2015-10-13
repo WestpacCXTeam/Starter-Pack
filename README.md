@@ -697,6 +697,7 @@ _Remember: Less files are cheap and so is documentation in less_
 
 
 # Release History
+* 1.1.4 - Fixed GUI URL and added livereload
 * 1.1.3 - Fixed some syntax bugs
 * 1.1.2 - Moved HTMLincludes to `[grunt-include-replace](https://github.com/alanshaw/grunt-include-replace)`
 * 1.1.1 - Added `javascript` template and documentation
